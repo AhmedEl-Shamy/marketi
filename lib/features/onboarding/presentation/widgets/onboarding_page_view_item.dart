@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -55,22 +56,26 @@ class OnboardingPageViewItem extends StatelessWidget {
         ),
         Spacer(),
         CustomButton(
-          onPressed: _onPressed,
+          onPressed: () => _onPressed(context),
           text: (itemIndex != length - 1) ? 'Next' : 'Get Start',
         ),
       ],
     );
   }
 
-  void _onPressed() {
+  void _onPressed(BuildContext context) {
     if (itemIndex != length - 1) {
       pageController.animateToPage(
         itemIndex + 1,
         duration: Duration(milliseconds: 250),
         curve: Curves.linear,
       );
+    } else {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => LogInPage(),
+        ),
+      );
     }
   }
 }
-
-
