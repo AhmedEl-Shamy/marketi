@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/utlis/app_assets.dart';
+import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -52,13 +53,21 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       const Duration(seconds: 1),
       () => animationController.forward(),
     );
-    navigateToNextPage();
+    navigateToNextPage(context);
   }
 
-  void navigateToNextPage() {
+  void navigateToNextPage(BuildContext context) {
     Future.delayed(
       const Duration(milliseconds: 3500),
-      () => print('navigate'),
+      () {
+        if (context.mounted) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const OnboardingPage(),
+            ),
+          );
+        }
+      },
     );
-  } 
+  }
 }
