@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/utlis/app_assets.dart';
-import '../../../../core/widgets/custom_icon_button.dart';
+import '../../../../core/widgets/custom_back_button.dart';
 
 class RegisterPageCustomAppBar extends StatelessWidget {
   const RegisterPageCustomAppBar({
@@ -22,14 +20,7 @@ class RegisterPageCustomAppBar extends StatelessWidget {
             fit: BoxFit.scaleDown,
           ),
         ),
-        CustomIconButton(
-          icon: SvgPicture.asset(
-            AppAssets.kImagesArrowBack,
-          ),
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-        ),
+        CustomBackButton(),
       ],
     );
   }

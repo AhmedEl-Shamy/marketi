@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
@@ -16,7 +18,9 @@ class LogInOptionsWidget extends StatelessWidget {
       children: [
         RememberMeCheckBox(),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouterConfig.kForgotPassPageRoute);
+          },
           child: Text(
             'Forgot Password?',
             style: AppTextStyles.kStyleM12.copyWith(

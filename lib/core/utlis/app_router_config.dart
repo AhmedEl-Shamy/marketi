@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/register_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
@@ -9,6 +10,7 @@ abstract class AppRouterConfig {
   static const String kOnboardingPageRoute = '/onboarding';
   static const String kLogInPageRoute = '/logIn';
   static const String kRegisterPageRoute = '/register';
+  static const String kForgotPassPageRoute = '/forgotPass';
 
   static GoRouter routerConfig = GoRouter(
     routes: [
@@ -28,6 +30,11 @@ abstract class AppRouterConfig {
         path: kRegisterPageRoute,
         builder: (context, state) => RegisterPage(),
       ),
+      GoRoute(
+        path: kForgotPassPageRoute,
+        builder: (context, state) => ForgotPassPage(),
+      ),
+
     ],
   );
 }
