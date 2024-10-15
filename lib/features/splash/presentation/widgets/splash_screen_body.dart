@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/app_assets.dart';
-import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -61,10 +62,8 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       const Duration(milliseconds: 3500),
       () {
         if (context.mounted) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const OnboardingPage(),
-            ),
+          GoRouter.of(context).pushReplacement(
+            AppRouterConfig.kOnboardingPageRoute,
           );
         }
       },

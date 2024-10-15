@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -71,10 +72,8 @@ class OnboardingPageViewItem extends StatelessWidget {
         curve: Curves.linear,
       );
     } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => LogInPage(),
-        ),
+      GoRouter.of(context).pushReplacement(
+        AppRouterConfig.kLogInPageRoute,
       );
     }
   }

@@ -30,9 +30,16 @@ class _RememberMeCheckBoxState extends State<RememberMeCheckBox> {
             borderRadius: BorderRadius.circular(3),
           ),
         ),
-        Text(
-          'Remember Me',
-          style: AppTextStyles.kStyleR12,
+        InkWell(
+          onTap: () {
+            setState(() {
+              isChecked = !isChecked;
+            });
+          },
+          child: Text(
+            'Remember Me',
+            style: AppTextStyles.kStyleR12,
+          ),
         ),
       ],
     );
