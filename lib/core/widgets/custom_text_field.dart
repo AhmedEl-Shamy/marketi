@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
   });
   final String hint;
   final TextInputType inputType;
-  final Icon prefixIcon;
+  final Widget prefixIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -51,9 +51,11 @@ class CustomPasswordTextField extends StatefulWidget {
     super.key,
     required this.hint,
     required this.inputType,
+    required this.prefixIcon,
   });
   final String hint;
   final TextInputType inputType;
+  final Widget prefixIcon;
 
   @override
   State<CustomPasswordTextField> createState() =>
@@ -79,9 +81,7 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
         hintStyle: AppTextStyles.kStyleR12.copyWith(
           color: AppColors.kPlaceholder,
         ),
-        prefixIcon: Icon(
-          Icons.lock_outline,
-        ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: IconButton(
           onPressed: _onPressed,
           icon: Icon(

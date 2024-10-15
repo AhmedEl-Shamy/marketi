@@ -32,7 +32,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       child: ScaleTransition(
         scale: opacityTransition,
         child: Image.asset(
-          AppAssets.kAppLogo,
+          AppAssets.kImagesLogoSplashScreen,
         ),
       ),
     );

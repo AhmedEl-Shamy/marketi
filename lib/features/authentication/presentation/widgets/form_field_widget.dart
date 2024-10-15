@@ -11,11 +11,20 @@ class FormFieldWidget extends StatelessWidget {
     required this.inputType,
     required this.prefixIcon,
   });
+
+  FormFieldWidget.passwordFormField({
+    super.key,
+    required this.hint,
+    this.label,
+  })  : isPassword = true,
+        inputType = TextInputType.visiblePassword,
+        prefixIcon = Icon(Icons.lock_outline);
+
   final bool isPassword;
   final String? label;
   final String hint;
   final TextInputType inputType;
-  final Icon prefixIcon;
+  final Widget prefixIcon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,13 +39,14 @@ class FormFieldWidget extends StatelessWidget {
           CustomPasswordTextField(
             hint: hint,
             inputType: inputType,
+            prefixIcon: prefixIcon,
           )
         else
-        CustomTextField(
-          hint: hint,
-          inputType: inputType,
-          prefixIcon: prefixIcon,
-        )
+          CustomTextField(
+            hint: hint,
+            inputType: inputType,
+            prefixIcon: prefixIcon,
+          )
       ],
     );
   }

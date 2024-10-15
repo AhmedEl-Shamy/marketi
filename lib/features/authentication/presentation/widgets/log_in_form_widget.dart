@@ -23,13 +23,8 @@ class LogInFormWidget extends StatelessWidget {
           SizedBox(
             height: 14,
           ),
-          FormFieldWidget(
-            isPassword: true,
+          FormFieldWidget.passwordFormField(
             hint: 'Password',
-            inputType: TextInputType.name,
-            prefixIcon: Icon(
-              Icons.email_outlined,
-            ),
           ),
         ],
       ),

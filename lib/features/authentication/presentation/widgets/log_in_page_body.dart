@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/utlis/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
 
 import '../../../../core/utlis/app_assets.dart';
@@ -25,7 +24,7 @@ class LogInPageBody extends StatelessWidget {
             children: [SkipButton()],
           ),
           Image.asset(
-            AppAssets.kAppLogo,
+            AppAssets.kImagesLogoSplashScreen,
             fit: BoxFit.scaleDown,
           ),
           SizedBox(
@@ -42,13 +41,6 @@ class LogInPageBody extends StatelessWidget {
           ),
           SizedBox(
             height: 14,
-          ),
-          Text(
-            'Or Continue With',
-            style: AppTextStyles.kStyleR12,
-          ),
-          SizedBox(
-            height: 16,
           ),
           ThirdPartyAuthWidget(),
           SizedBox(

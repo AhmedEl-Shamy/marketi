@@ -98,3 +98,4 @@ flutter_assets:
   output_path: lib/core/utlis/
   filename: app_assets.dart
   field_prefix: k
+  classname: AppAssets
