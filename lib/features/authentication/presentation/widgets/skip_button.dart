@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_constants.dart';
@@ -12,12 +14,13 @@ class SkipButton extends StatelessWidget {
     return SizedBox(
       height: 44,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () => GoRouter.of(context).pushReplacement(AppRouterConfig.kMainAppRoute),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.kDarkLightBlue100,
           padding: EdgeInsets.zero,
           side: BorderSide(
-            color: AppColors.kLightBlue700.withOpacity(0.7),
+            // color: AppColors.kLightBlue700.withOpacity(0.7),
+            color: AppColors.kLightBlue700.withAlpha((255*0.7).round()),
             width: 1,
           ),
           shape: RoundedRectangleBorder(

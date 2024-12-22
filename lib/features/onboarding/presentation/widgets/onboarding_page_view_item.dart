@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
@@ -68,7 +69,7 @@ class OnboardingPageViewItem extends StatelessWidget {
     if (itemIndex != length - 1) {
       pageController.animateToPage(
         itemIndex + 1,
-        duration: Duration(milliseconds: 250),
+        duration: AppConstants.kFastAnimationDuration,
         curve: Curves.linear,
       );
     } else {

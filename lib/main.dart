@@ -19,6 +19,7 @@ class Marketi extends StatelessWidget {
         useMaterial3: true,
       ),
       routerConfig: AppRouterConfig.routerConfig,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
