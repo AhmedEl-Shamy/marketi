@@ -1,10 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:marketi/features/main_app/presentation/widgets/main_app_page_widget.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/register_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
-// import 'package:marketi/features/home/presentation/pages/home_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 

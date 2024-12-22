@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marketi/core/utlis/app_colors.dart';
 import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/core/utlis/app_text_styles.dart';
+
+import '../utlis/app_assets.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -9,10 +12,14 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     required this.inputType,
     required this.prefixIcon,
+    this.textStyle = AppTextStyles.kStyleM12,
+    this.suffixIcon,
   });
   final String hint;
   final TextInputType inputType;
   final Widget prefixIcon;
+  final TextStyle textStyle;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -23,13 +30,14 @@ class CustomTextField extends StatelessWidget {
         }
         return null;
       },
-      style: AppTextStyles.kStyleM12,
+      style: textStyle,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: AppTextStyles.kStyleR12.copyWith(
+        hintStyle: textStyle.copyWith(
           color: AppColors.kPlaceholder,
         ),
         prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
         prefixIconColor: AppColors.kDarkBlue900,
         border: _buildBorder(),
         enabledBorder: _buildBorder(),
@@ -42,7 +50,9 @@ class CustomTextField extends StatelessWidget {
           AppConstants.kBorderCircularRadius,
         ),
         borderSide: BorderSide(
-            color: AppColors.kLightBlue700.withOpacity(0.7), width: 2),
+          color: AppColors.kLightBlue700.withValues(alpha: 255 * 0.7),
+          width: 2,
+        ),
       );
 }
 
@@ -101,12 +111,46 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
           AppConstants.kBorderCircularRadius,
         ),
         borderSide: BorderSide(
-            color: AppColors.kLightBlue700.withOpacity(0.7), width: 2),
+          color: AppColors.kLightBlue700.withValues(alpha: 255 * 0.7),
+          width: 2,
+        ),
       );
 
   void _onPressed() {
     setState(() {
       isNotVisible = !isNotVisible;
     });
+  }
+}
+
+
+class SearchTextField extends StatelessWidget {
+  const SearchTextField({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+      hint: 'What are you looking for ?',
+      inputType: TextInputType.text,
+      prefixIcon: SvgPicture.asset(
+        AppAssets.kImagesSearchIcon,
+        fit: BoxFit.scaleDown,
+      ),
+      textStyle: AppTextStyles.kStyleR16.copyWith(
+        color: AppColors.kDarkBlue900,
+      ),
+      suffixIcon: IconButton(
+        style: IconButton.styleFrom(
+          foregroundColor: AppColors.kDarkLightBlue100,
+        ),
+        icon: SvgPicture.asset(
+          AppAssets.kImagesSearchFilterIcon,
+          fit: BoxFit.scaleDown,
+        ),
+        onPressed: () {},
+      ),
+    );
   }
 }

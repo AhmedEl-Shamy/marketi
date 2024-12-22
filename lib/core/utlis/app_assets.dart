@@ -78,9 +78,21 @@ class AppAssets {
   /// assets/images/Name_Icon.svg
   static const String kImagesNameIcon = "assets/images/Name_Icon.svg";
 
+  /// Assets for kImagesOffer1
+  /// assets/images/Offer_1.png
+  static const String kImagesOffer1 = "assets/images/Offer_1.png";
+
   /// Assets for kImagesPhoneIcon
   /// assets/images/Phone_Icon.svg
   static const String kImagesPhoneIcon = "assets/images/Phone_Icon.svg";
+
+  /// Assets for kImagesSearchFilterIcon
+  /// assets/images/Search_Filter_Icon.svg
+  static const String kImagesSearchFilterIcon = "assets/images/Search_Filter_Icon.svg";
+
+  /// Assets for kImagesSearchIcon
+  /// assets/images/Search_Icon.svg
+  static const String kImagesSearchIcon = "assets/images/Search_Icon.svg";
 
   /// Assets for kImagesUserIcon
   /// assets/images/User_Icon.svg

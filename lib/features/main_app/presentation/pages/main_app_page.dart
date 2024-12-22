@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:marketi/features/home/presentation/widgets/home_body.dart';
 import 'package:marketi/features/main_app/presentation/widgets/main_app_page_widget.dart';
 
 import '../widgets/main_app_page_body.dart';
@@ -32,6 +33,7 @@ class _MainAppPageState extends State<MainAppPage> {
       child: MainAppPageBody(
         pageController: pageController,
         pages: [
+          HomeBody(),
           Container(
             width: MediaQuery.of(context).size.width - 40,
             color: Colors.red,

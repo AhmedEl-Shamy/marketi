@@ -19,8 +19,7 @@ class SkipButton extends StatelessWidget {
           foregroundColor: AppColors.kDarkLightBlue100,
           padding: EdgeInsets.zero,
           side: BorderSide(
-            // color: AppColors.kLightBlue700.withOpacity(0.7),
-            color: AppColors.kLightBlue700.withAlpha((255*0.7).round()),
+            color: AppColors.kLightBlue700.withValues(alpha: 255 * 0.7),
             width: 1,
           ),
           shape: RoundedRectangleBorder(
