@@ -31,18 +31,19 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(
-              AppConstants.kBorderCircularRadius,
-            ),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(
+            AppConstants.kBorderCircularRadius,
           ),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 5,
-              offset: Offset(0, 1),
-              color: AppColors.kDarkLightBlue100,
-            )
-          ]),
+        ),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 5,
+            offset: Offset(0, 1),
+            color: AppColors.kDarkLightBlue100,
+          ),
+        ],
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(
