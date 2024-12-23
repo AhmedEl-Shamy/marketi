@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../utlis/app_text_styles.dart';
-import 'custom_outlined_button.dart';
+import '../../../../core/utlis/app_text_styles.dart';
+import '../../../../core/widgets/custom_outlined_button.dart';
 import 'price_rating_widget.dart';
-import 'product_item_image.dart';
+import 'home_product_item_image.dart';
 
-class ProductItemDetails extends StatelessWidget {
-  const ProductItemDetails({
+class HomeProductItemDetails extends StatelessWidget {
+  const HomeProductItemDetails({
     super.key,
   });
 
@@ -16,7 +16,7 @@ class ProductItemDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 5,
       children: [
-        ProductItemImage(),
+        HomeProductItemImage(),
         PriceRatingWidget(),
         Text(
           'Product Name',

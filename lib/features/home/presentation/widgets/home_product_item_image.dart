@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../utlis/app_colors.dart';
-import 'discount_badge_widget.dart';
-import 'is_favorite_widget.dart';
+import '../../../../core/utlis/app_colors.dart';
+import '../../../../core/widgets/discount_badge_widget.dart';
+import '../../../../core/widgets/is_favorite_widget.dart';
 
-class ProductItemImage extends StatelessWidget {
-  const ProductItemImage({
+class HomeProductItemImage extends StatelessWidget {
+  const HomeProductItemImage({
     super.key,
   });
 
@@ -23,7 +23,13 @@ class ProductItemImage extends StatelessWidget {
           child: FlutterLogo(),
         ),
         DiscountBadgeWidget(),
-        IsFavoriteWidget(),
+        Align(
+          alignment: Alignment.topRight,
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: IsFavoriteWidget(),
+          ),
+        ),
       ],
     );
   }

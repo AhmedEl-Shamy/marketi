@@ -9,24 +9,18 @@ class IsFavoriteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: EdgeInsets.all(5),
-        child: SizedBox.square(
-          dimension: 25,
-          child: IconButton(
-            style: IconButton.styleFrom(
-              padding: EdgeInsets.zero,
-              backgroundColor: Colors.white,
-              foregroundColor: AppColors.kDarkBlue900,
-            ),
-            onPressed: () {},
-            icon: Icon(
-              Icons.favorite_sharp,
-              size: 16,
-            ),
-          ),
+    return SizedBox.square(
+      dimension: 25,
+      child: IconButton(
+        style: IconButton.styleFrom(
+          padding: EdgeInsets.zero,
+          backgroundColor: Colors.white,
+          foregroundColor: AppColors.kDarkBlue900,
+        ),
+        onPressed: () {},
+        icon: Icon(
+          Icons.favorite_sharp,
+          size: 16,
         ),
       ),
     );

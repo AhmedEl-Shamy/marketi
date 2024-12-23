@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../utlis/app_colors.dart';
-import '../utlis/app_constants.dart';
-import 'product_item_details.dart';
+import '../../../../core/utlis/app_colors.dart';
+import '../../../../core/utlis/app_constants.dart';
+import 'home_product_item_details.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+class HomeProductItem extends StatelessWidget {
+  const HomeProductItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ProductItem extends StatelessWidget {
           ),
         ],
       ),
-      child: ProductItemDetails(),
+      child: HomeProductItemDetails(),
     );
   }
 }
