@@ -11,7 +11,7 @@ class RegisterPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(
-        AppConstants.kMainHorizontalPadding,
+        AppConstants.kMainPagePadding,
       ),
       child: Column(
         children: [

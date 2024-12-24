@@ -15,20 +15,22 @@ class MainAppPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(
-          AppConstants.kMainHorizontalPadding,
-        ),
-        child: Column(
-          children: [
-            MainPageAppBar(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: AppConstants.kMainPagePadding,
+              left: AppConstants.kMainPagePadding,
+              right: AppConstants.kMainPagePadding,
+            ),
+            child: MainPageAppBar(
               title: 'Hi Ahmed!',
             ),
-            Expanded(
-              child: child,
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: child,
+          ),
+        ],
       ),
       bottomNavigationBar: CustomButtomNavBar(
         pageController: pageController,

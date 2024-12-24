@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../utlis/app_text_styles.dart';
-
 class ProductItemRatingWidget extends StatelessWidget {
   const ProductItemRatingWidget({
     super.key,
+    required this.style,
   });
-
+  final TextStyle style;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,7 +14,7 @@ class ProductItemRatingWidget extends StatelessWidget {
         Icon(Icons.star_border_rounded),
         Text(
           '4.5',
-          style: AppTextStyles.kStyleM12,
+          style: style,
         ),
       ],
     );

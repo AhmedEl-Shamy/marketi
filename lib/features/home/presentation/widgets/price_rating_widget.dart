@@ -5,9 +5,9 @@ import '../../../../core/widgets/product_item_rating_widget.dart';
 
 class PriceRatingWidget extends StatelessWidget {
   const PriceRatingWidget({
-    super.key,
+    super.key, this.style = AppTextStyles.kStyleM12,
   });
-
+  final TextStyle style;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,9 +15,11 @@ class PriceRatingWidget extends StatelessWidget {
       children: [
         Text(
           '799 EGP',
-          style: AppTextStyles.kStyleM12,
+          style: style,
         ),
-        ProductItemRatingWidget()
+        ProductItemRatingWidget(
+          style: style,
+        )
       ],
     );
   }

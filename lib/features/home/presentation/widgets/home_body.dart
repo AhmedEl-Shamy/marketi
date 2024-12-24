@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_text_field.dart';
 
-import '../../../../core/widgets/category_brand_item.dart';
-import 'home_product_item.dart';
+import '../../../../core/widgets/custom_page_body_widget.dart';
 import 'special_offer_widget.dart';
 
 class HomeBody extends StatelessWidget {
@@ -10,17 +9,14 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 10,
-      children: [
-        SearchTextField(),
-        SpecialOfferWidget(),
-        HomeProductItem(),
-        CategoryBrandItem(),
-      ],
+    return CustomPageBodyWidget(
+      body: Column(
+        spacing: 10,
+        children: [
+          SearchTextField(),
+          SpecialOfferWidget(),
+        ],
+      ),
     );
   }
 }
-
-
-

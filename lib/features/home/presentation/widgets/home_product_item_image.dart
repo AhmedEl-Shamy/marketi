@@ -27,7 +27,12 @@ class HomeProductItemImage extends StatelessWidget {
           alignment: Alignment.topRight,
           child: Padding(
             padding: const EdgeInsets.all(5),
-            child: IsFavoriteWidget(),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+              ),
+              child: IsFavoriteWidget(),
+            ),
           ),
         ),
       ],

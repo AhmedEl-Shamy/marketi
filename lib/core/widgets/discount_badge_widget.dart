@@ -18,9 +18,9 @@ class DiscountBadgeWidget extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.kLightBlue700.withValues(alpha: 0.7),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(5),
-          ),
+          // borderRadius: BorderRadius.only(
+          //   topLeft: Radius.circular(5),
+          // ),
         ),
         child: Text(
           '20% OFF',

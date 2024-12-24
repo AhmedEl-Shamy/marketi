@@ -8,9 +8,11 @@ class CustomOutlinedButton extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.text,
+    this.borderRadius,
   });
   final void Function()? onPressed;
   final String text;
+  final BorderRadius? borderRadius;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,6 +24,9 @@ class CustomOutlinedButton extends StatelessWidget {
           side: BorderSide(
             color: AppColors.kDarkLightBlue100,
             width: 1,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ?? BorderRadius.circular(20),
           ),
         ),
         child: Text(

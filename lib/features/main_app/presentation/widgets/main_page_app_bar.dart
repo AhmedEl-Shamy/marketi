@@ -18,7 +18,7 @@ class MainPageAppBar extends StatelessWidget {
         Container(
           width: 48,
           height: 48,
-          padding: EdgeInsets.all(2),
+          // padding: EdgeInsets.all(2),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(width: 2, color: AppColors.kDarkLightBlue100),
