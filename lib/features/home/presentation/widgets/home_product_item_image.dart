@@ -14,7 +14,7 @@ class HomeProductItemImage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 100,
+          height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.kLightBlue900,
@@ -22,17 +22,15 @@ class HomeProductItemImage extends StatelessWidget {
           ),
           child: FlutterLogo(),
         ),
-        DiscountBadgeWidget(),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: DiscountBadgeWidget(),
+        ),
         Align(
           alignment: Alignment.topRight,
           child: Padding(
             padding: const EdgeInsets.all(5),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-              ),
-              child: IsFavoriteWidget(),
-            ),
+            child: IsFavoriteWidget(),
           ),
         ),
       ],

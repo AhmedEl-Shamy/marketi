@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_text_field.dart';
 
 import '../../../../core/widgets/custom_page_body_widget.dart';
+import 'categories_section.dart';
+import 'popular_products_section.dart';
 import 'special_offer_widget.dart';
 
 class HomeBody extends StatelessWidget {
@@ -15,6 +17,8 @@ class HomeBody extends StatelessWidget {
         children: [
           SearchTextField(),
           SpecialOfferWidget(),
+          PopularProductsSection(),
+          CategoriesSection(),
         ],
       ),
     );

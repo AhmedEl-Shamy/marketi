@@ -14,7 +14,6 @@ class CategoryBrandItem extends StatelessWidget {
         Container(
           width: 105,
           height: 95,
-          padding: EdgeInsets.all(2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
@@ -24,9 +23,13 @@ class CategoryBrandItem extends StatelessWidget {
           ),
           child: FlutterLogo(),
         ),
-        Text(
-          'Category Name',
-          style: AppTextStyles.kStyleM14,
+        SizedBox(
+          width: 105,
+          child: Text(
+            'Category Name',
+            style: AppTextStyles.kStyleM14,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

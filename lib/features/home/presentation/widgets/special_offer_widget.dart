@@ -13,10 +13,11 @@ class SpecialOfferWidget extends StatelessWidget {
       height: 120,
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage(
-              AppAssets.kImagesOffer1,
-            ),
-            fit: BoxFit.scaleDown),
+          image: AssetImage(
+            AppAssets.kImagesOffer1,
+          ),
+          fit: BoxFit.cover,
+        ),
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),

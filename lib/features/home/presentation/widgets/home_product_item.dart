@@ -11,7 +11,7 @@ class HomeProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 160,
-      // height: 175,
+      // height: 200,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
