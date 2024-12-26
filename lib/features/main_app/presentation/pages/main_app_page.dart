@@ -33,7 +33,7 @@ class _MainAppPageState extends State<MainAppPage> {
       child: MainAppPageBody(
         pageController: pageController,
         pages: [
-          HomeBody(),
+          HomePage(),
           Container(
             width: MediaQuery.of(context).size.width - 40,
             color: Colors.red,

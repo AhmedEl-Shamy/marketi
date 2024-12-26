@@ -4,8 +4,8 @@ import '../utlis/app_colors.dart';
 import '../utlis/app_text_styles.dart';
 
 class CategoryBrandItem extends StatelessWidget {
-  const CategoryBrandItem({super.key});
-
+  const CategoryBrandItem({super.key, this.name});
+  final String? name;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,12 +23,14 @@ class CategoryBrandItem extends StatelessWidget {
           ),
           child: FlutterLogo(),
         ),
+        if (name != null)
         SizedBox(
           width: 105,
           child: Text(
-            'Category Name',
+            name!,
             style: AppTextStyles.kStyleM14,
             overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
         ),
       ],

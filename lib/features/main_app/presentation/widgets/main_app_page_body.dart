@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/features/home/presentation/widgets/home_body.dart';
 
 class MainAppPageBody extends StatelessWidget {
   const MainAppPageBody({
@@ -12,15 +13,18 @@ class MainAppPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: PageView.builder(
+      child: PageView(
         allowImplicitScrolling: false,
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         pageSnapping: true,
-        itemCount: pages.length,
-        itemBuilder: (context, index) {
-          return pages[index];
-        },
+        children: [
+          HomePage(),
+          ...List.generate(3, (index) => Container(
+            width: MediaQuery.of(context).size.width - 40,
+            color: [Colors.red, Colors.green, Colors.blue][index],
+          ),)
+        ],
       ),
     );
   }
