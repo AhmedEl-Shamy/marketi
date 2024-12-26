@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
-import 'package:marketi/features/home/presentation/widgets/home_body.dart';
+import 'package:marketi/features/home/presentation/widgets/home_page.dart';
 import 'package:marketi/features/main_app/presentation/widgets/main_app_page_widget.dart';
 
 import '../widgets/main_app_page_body.dart';
