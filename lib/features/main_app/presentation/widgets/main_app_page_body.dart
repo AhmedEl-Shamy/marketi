@@ -10,15 +10,12 @@ class MainAppPageBody extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: PageView(
-        allowImplicitScrolling: false,
-        physics: NeverScrollableScrollPhysics(),
-        controller: pageController,
-        pageSnapping: true,
-        children: pages
-      ),
+    return PageView(
+      allowImplicitScrolling: false,
+      physics: NeverScrollableScrollPhysics(),
+      controller: pageController,
+      pageSnapping: true,
+      children: pages
     );
   }
 }
