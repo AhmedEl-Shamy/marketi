@@ -5,7 +5,7 @@ import '../../../../core/utlis/app_assets.dart';
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
 import '../../../../core/widgets/custom_page_widget.dart';
-import 'home_page_body.dart';
+import '../widgets/home_page_body.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
