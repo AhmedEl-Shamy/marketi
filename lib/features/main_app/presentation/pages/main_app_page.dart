@@ -1,6 +1,5 @@
-// import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
+import 'package:marketi/features/cart/presentation/pages/cart_page.dart';
 import 'package:marketi/features/home/presentation/pages/home_page.dart';
 import 'package:marketi/features/main_app/presentation/widgets/main_app_page_widget.dart';
 
@@ -34,10 +33,7 @@ class _MainAppPageState extends State<MainAppPage> {
         pageController: pageController,
         pages: [
           HomePage(),
-          Container(
-            width: MediaQuery.of(context).size.width - 40,
-            color: Colors.red,
-          ),
+          CartPage(),
           Container(
             width: MediaQuery.of(context).size.width - 40,
             color: Colors.green,

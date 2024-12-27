@@ -15,7 +15,7 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox.square(
-      dimension: 40,
+      dimension: 42,
       child: IconButton(
         onPressed: onPressed,
         icon: icon,

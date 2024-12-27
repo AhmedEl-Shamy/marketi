@@ -7,15 +7,15 @@ class CustomAppBar extends StatefulWidget {
   const CustomAppBar({
     super.key,
     required this.title,
-    required this.leading,
-    required this.trailing,
     required this.scrollController,
     this.centerTitle = false,
+    this.leading,
+    this.trailing,
   });
   final String title;
   final bool centerTitle;
-  final Widget leading;
-  final Widget trailing;
+  final Widget? leading;
+  final Widget? trailing;
   final ScrollController scrollController;
 
   @override
@@ -48,8 +48,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return Container(
       color: _isScrolled
-          // ? AppColors.kLightBlue900
-          ?Theme.of(context).colorScheme.secondaryContainer
+          ? Theme.of(context).colorScheme.secondaryContainer
           : Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(
         horizontal: AppConstants.kMainPagePadding,
@@ -61,13 +60,23 @@ class _CustomAppBarState extends State<CustomAppBar> {
             : MainAxisAlignment.start,
         spacing: 10,
         children: [
-          widget.leading,
+          if (widget.leading != null)
+            widget.leading!
+          else if(widget.centerTitle)
+            SizedBox.square(
+              dimension: 42,
+            ),
           Text(
             widget.title,
             style: AppTextStyles.kStyleM20,
           ),
           if (!widget.centerTitle) Spacer(),
-          widget.trailing,
+          if (widget.trailing != null)
+            widget.trailing!
+          else if(widget.centerTitle)
+            SizedBox.square(
+              dimension: 42,
+            ),
         ],
       ),
     );

@@ -8,15 +8,17 @@ class CustomPageWidget extends StatefulWidget {
     super.key,
     required this.body,
     required this.appBarTitle,
-    required this.leading,
-    required this.trailing,
     this.centerTitle = false,
+    this.leading,
+    this.trailing,
+    this.bottomPageWidget,
   });
 
   final Widget body;
   final String appBarTitle;
-  final Widget leading;
-  final Widget trailing;
+  final Widget? leading;
+  final Widget? trailing;
+  final Widget? bottomPageWidget;
   final bool centerTitle;
   @override
   State<CustomPageWidget> createState() => _CustomPageWidgetState();
@@ -45,8 +47,8 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
           leading: widget.leading,
           trailing: widget.trailing,
           scrollController: _scrollController,
+          centerTitle: widget.centerTitle,
         ),
-
         Expanded(
           child: SingleChildScrollView(
             controller: _scrollController,
@@ -58,6 +60,7 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
             ),
           ),
         ),
+        if (widget.bottomPageWidget != null) widget.bottomPageWidget!
       ],
     );
   }

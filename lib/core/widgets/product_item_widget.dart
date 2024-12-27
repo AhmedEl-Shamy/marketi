@@ -5,34 +5,42 @@ import 'product_item_details.dart';
 import 'product_item_image_widget.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
-
+  const ProductItem({
+    super.key,
+    this.productItemDetails = const ProductItemDetails(),
+  });
+  final Widget productItemDetails;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
-          children: [
-            SizedBox(
-              height: 135,
-              child: Row(
-                spacing: 5,
-                children: [
-                  ProductItemImage(),
-                  Expanded(
-                    child: ProductItemDetails(),
+    return SizedBox(
+      height: 150,
+      child: Column(
+        children: [
+          Expanded(
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: 135,
+                  child: Row(
+                    spacing: 5,
+                    children: [
+                      ProductItemImage(),
+                      Expanded(
+                        child: productItemDetails,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                DiscountBadgeWidget()
+              ],
             ),
-            DiscountBadgeWidget()
-          ],
-        ),
-        Divider(
-          height: 10,
-          thickness: 2,
-        ),
-      ],
+          ),
+          Divider(
+            height: 10,
+            thickness: 2,
+          ),
+        ],
+      ),
     );
   }
 }
