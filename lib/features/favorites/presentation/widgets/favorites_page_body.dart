@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
-import 'cart_items_list_view.dart';
+import 'favorites_page_list_view.dart';
 
-class CartPageBody extends StatelessWidget {
-  const CartPageBody({super.key});
+class FavoritesPageBody extends StatelessWidget {
+  const FavoritesPageBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,10 +17,10 @@ class CartPageBody extends StatelessWidget {
         spacing: 10,
         children: [
           Text(
-            'Proucts on Cart',
+            'Favorite Products',
             style: AppTextStyles.kStyleSB20,
           ),
-          CartItemsListView(),
+          FavoritesPageListView()
         ],
       ),
     );

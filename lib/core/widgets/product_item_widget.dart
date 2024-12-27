@@ -7,9 +7,7 @@ import 'product_item_image_widget.dart';
 class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
-    this.productItemDetails = const ProductItemDetails(),
   });
-  final Widget productItemDetails;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,7 +24,7 @@ class ProductItem extends StatelessWidget {
                     children: [
                       ProductItemImage(),
                       Expanded(
-                        child: productItemDetails,
+                        child: ProductItemDetails(),
                       ),
                     ],
                   ),
