@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/custom_page_item.dart';
 import '../../../../core/widgets/product_item_widget.dart';
 
 class FavoritesPageListView extends StatelessWidget {
@@ -7,10 +8,13 @@ class FavoritesPageListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemBuilder: (context, index) => ProductItem(),
-      itemCount: 8,
-    );
+    return CustomPageItem(
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 15,
+              (context, index) => ProductItem(),
+            ),
+          ),
+        );
   }
 }

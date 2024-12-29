@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/widgets/custom_page_item.dart';
 
-import '../../../../core/widgets/category_brand_item.dart';
+import 'brands_grid_view.dart';
 import 'home_page_section.dart';
 
 class BrandsSection extends StatelessWidget {
@@ -10,21 +11,12 @@ class BrandsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomePageSection(
-      sectionTitle: 'Brands',
-      viewAllOnTap: () {},
-      child: GridView.count(
-        crossAxisCount: 3,
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        mainAxisSpacing: 5,
-        crossAxisSpacing: 5,
-        children: List.generate(
-          3,
-          (index) => FittedBox(
-            fit: BoxFit.scaleDown,
-            child: CategoryBrandItem(),
-          ),
+    return CustomPageItem(
+      sliver: SliverToBoxAdapter(
+        child: HomePageSection(
+          sectionTitle: 'Brands',
+          viewAllOnTap: () {},
+          child: BrandsGridView(),
         ),
       ),
     );

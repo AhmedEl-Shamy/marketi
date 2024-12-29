@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_app_bar.dart';
 
-import '../utlis/app_constants.dart';
-
 class CustomPageWidget extends StatefulWidget {
   const CustomPageWidget({
     super.key,
-    required this.body,
     required this.appBarTitle,
     this.centerTitle = false,
     this.leading,
     this.trailing,
     this.bottomPageWidget,
+    required this.pageItems,
   });
 
-  final Widget body;
   final String appBarTitle;
   final Widget? leading;
   final Widget? trailing;
   final Widget? bottomPageWidget;
   final bool centerTitle;
+  final List<Widget> pageItems;
+
   @override
   State<CustomPageWidget> createState() => _CustomPageWidgetState();
 }
@@ -50,14 +49,9 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
           centerTitle: widget.centerTitle,
         ),
         Expanded(
-          child: SingleChildScrollView(
+          child: CustomScrollView(
             controller: _scrollController,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppConstants.kMainPagePadding,
-              ),
-              child: widget.body,
-            ),
+            slivers: widget.pageItems,
           ),
         ),
         if (widget.bottomPageWidget != null) widget.bottomPageWidget!
@@ -65,3 +59,4 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
     );
   }
 }
+

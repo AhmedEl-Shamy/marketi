@@ -21,7 +21,7 @@ class CustomIconButton extends StatelessWidget {
         icon: icon,
         style: IconButton.styleFrom(
           foregroundColor: AppColors.kDarkBlue900,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           side: BorderSide(
             width: 1,
             color: AppColors.kLightBlue700.withValues(alpha: 255 * 0.7),

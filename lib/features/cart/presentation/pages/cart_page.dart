@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/widgets/custom_page_item.dart';
 import 'package:marketi/core/widgets/custom_page_widget.dart';
 import 'package:marketi/core/widgets/user_avatar_widget.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_items_list_view.dart';
 
+import '../../../../core/utlis/app_text_styles.dart';
 import '../widgets/cart_checkout_widget.dart';
-import '../widgets/cart_page_body.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -11,11 +13,21 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPageWidget(
-      body: CartPageBody(),
       appBarTitle: 'Cart',
       leading: UserAvatarWidget(),
       centerTitle: true,
       bottomPageWidget: CartCheckoutWidget(),
+      pageItems: [
+        CustomPageItem(
+          sliver: SliverToBoxAdapter(
+            child: Text(
+              'Proucts on Cart',
+              style: AppTextStyles.kStyleSB20,
+            ),
+          ),
+        ),
+        CartItemsListView(),
+      ],
     );
   }
 }

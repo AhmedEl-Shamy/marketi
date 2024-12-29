@@ -19,7 +19,6 @@ abstract class AppRouterConfig {
       GoRoute(
         path: kSplashPageRoute,
         builder: (context, state) => SplashScreen(),
-        // builder: (context, state) => MainAppPageWidget(),
       ),
       GoRoute(
         path: kOnboardingPageRoute,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/widgets/custom_page_item.dart';
 
+import 'buy_again_list_view.dart';
 import 'home_page_section.dart';
-import 'home_product_item.dart';
 
 class BuyAgainSection extends StatelessWidget {
   const BuyAgainSection({
@@ -10,18 +11,14 @@ class BuyAgainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomePageSection(
-      sectionTitle: 'Buy Again',
-      viewAllOnTap: () {},
-      child: SizedBox(
-        height: 210,
-        child: ListView.builder(
-          padding: EdgeInsets.only(left: 5),
-          scrollDirection: Axis.horizontal,
-          itemCount: 10,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.only(right: 15, top: 5, bottom: 5),
-            child: HomeProductItem(),
+    return CustomPageItem(
+      sliver: SliverToBoxAdapter(
+        child: HomePageSection(
+          sectionTitle: 'Buy Again',
+          viewAllOnTap: () {},
+          child: SizedBox(
+            height: 210,
+            child: BuyAgainListView(),
           ),
         ),
       ),
