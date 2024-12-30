@@ -23,7 +23,7 @@ class HomeProductItemImage extends StatelessWidget {
           child: FlutterLogo(),
         ),
         ClipRRect(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(5)),
           child: DiscountBadgeWidget(),
         ),
         Align(

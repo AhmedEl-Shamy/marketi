@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/widgets/custom_page_item.dart';
 
+import '../../../../core/utlis/app_router_config.dart';
 import 'buy_again_list_view.dart';
 import 'home_page_section.dart';
 
@@ -15,7 +17,7 @@ class BuyAgainSection extends StatelessWidget {
       sliver: SliverToBoxAdapter(
         child: HomePageSection(
           sectionTitle: 'Buy Again',
-          viewAllOnTap: () {},
+          viewAllOnTap: () => _onTap(context),
           child: SizedBox(
             height: 210,
             child: BuyAgainListView(),
@@ -23,5 +25,9 @@ class BuyAgainSection extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onTap(BuildContext context) {
+    GoRouter.of(context).push(AppRouterConfig.kBuyAgainRoute);
   }
 }

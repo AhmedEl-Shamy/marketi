@@ -19,7 +19,9 @@ class BrandsGridView extends StatelessWidget {
         3,
         (index) => FittedBox(
           fit: BoxFit.scaleDown,
-          child: CategoryBrandItem(),
+          child: CategoryBrandItem(
+            name: 'Brand',
+          ),
         ),
       ),
     );

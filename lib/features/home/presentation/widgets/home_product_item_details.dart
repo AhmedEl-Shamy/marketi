@@ -16,7 +16,9 @@ class HomeProductItemDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 5,
       children: [
-        Expanded(child: HomeProductItemImage()),
+        Expanded(
+          child: HomeProductItemImage(),
+        ),
         PriceRatingWidget(),
         Text(
           'Product Name',
@@ -30,6 +32,3 @@ class HomeProductItemDetails extends StatelessWidget {
     );
   }
 }
-
-
-

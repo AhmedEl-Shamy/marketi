@@ -8,32 +8,37 @@ class CategoryBrandItem extends StatelessWidget {
   final String? name;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 5,
-      children: [
-        Container(
-          width: 105,
-          height: 95,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: AppColors.kLightBlue700.withValues(alpha: 0.7),
+    return SizedBox(
+      width: 150,
+      height: 160,
+      child: Column(
+        spacing: 5,
+        children: [
+          Expanded(
+            child: Container(
+              width: double.infinity,  
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  width: 1,
+                  color: AppColors.kLightBlue700.withValues(alpha: 0.7),
+                ),
+              ),
+              child: FlutterLogo(),
             ),
           ),
-          child: FlutterLogo(),
-        ),
-        if (name != null)
-        SizedBox(
-          width: 105,
-          child: Text(
-            name!,
-            style: AppTextStyles.kStyleM14,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+          if (name != null)
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              name!,
+              style: AppTextStyles.kStyleM14,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

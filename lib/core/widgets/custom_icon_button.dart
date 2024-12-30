@@ -23,8 +23,8 @@ class CustomIconButton extends StatelessWidget {
           foregroundColor: AppColors.kDarkBlue900,
           backgroundColor: Colors.transparent,
           side: BorderSide(
-            width: 1,
-            color: AppColors.kLightBlue700.withValues(alpha: 255 * 0.7),
+            width: 2,
+            color: AppColors.kDarkLightBlue100,
           ),
         ),
       ),
