@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../features/home/presentation/widgets/price_rating_widget.dart';
-import '../utlis/app_colors.dart';
-import '../utlis/app_text_styles.dart';
-import 'custom_outlined_button.dart';
-import 'product_item_deliver_time_widget.dart';
-import 'product_item_title_widget.dart';
+import '../../home/presentation/widgets/price_rating_widget.dart';
+import '../../../core/utlis/app_colors.dart';
+import '../../../core/utlis/app_text_styles.dart';
+import '../../../core/widgets/custom_outlined_button.dart';
+import 'search_product_item_deliver_time_widget.dart';
+import '../../../core/widgets/product_item_title_widget.dart';
 
-class ProductItemDetails extends StatelessWidget {
-  const ProductItemDetails({
+class SearchProductItemDetails extends StatelessWidget {
+  const SearchProductItemDetails({
     super.key,
   });
 
@@ -25,7 +25,7 @@ class ProductItemDetails extends StatelessWidget {
             color: AppColors.kGreyScale,
           ),
         ),
-        ProductItemDliverTimeWidget(),
+        SearchProductItemDliverTimeWidget(),
         PriceRatingWidget(
           style: AppTextStyles.kStyleM14,
         ),

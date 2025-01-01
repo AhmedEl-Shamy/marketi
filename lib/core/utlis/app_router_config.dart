@@ -7,6 +7,7 @@ import 'package:marketi/features/home/presentation/pages/brands_page.dart';
 import 'package:marketi/features/home/presentation/pages/categories_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 
 import '../../features/home/presentation/pages/bay_again_page.dart';
@@ -24,6 +25,7 @@ abstract class AppRouterConfig {
   static const String kBuyAgainRoute = '/buyAgain';
   static const String kCategoriesRoute = '/categories';
   static const String kBrandsRoute = '/brands';
+  static const String kSearchRoute = '/search';
 
   static GoRouter routerConfig = GoRouter(
     routes: [
@@ -70,6 +72,10 @@ abstract class AppRouterConfig {
       GoRoute(
         path: kBrandsRoute,
         builder: (context, state) => BrandsPage(),
+      ),      
+      GoRoute(
+        path: kSearchRoute,
+        builder: (context, state) => SearchPage(),
       ),      
     ],
   );

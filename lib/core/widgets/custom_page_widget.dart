@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_app_bar.dart';
+import 'package:marketi/core/widgets/custom_page_item.dart';
 
 class CustomPageWidget extends StatefulWidget {
   const CustomPageWidget({
@@ -51,7 +52,10 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
         Expanded(
           child: CustomScrollView(
             controller: _scrollController,
-            slivers: widget.pageItems,
+            slivers: [
+              CustomPageItem(sliver: SliverToBoxAdapter()),
+              ...widget.pageItems,
+            ],
           ),
         ),
         if (widget.bottomPageWidget != null) widget.bottomPageWidget!
@@ -59,4 +63,3 @@ class _CustomPageWidgetState extends State<CustomPageWidget> {
     );
   }
 }
-

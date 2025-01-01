@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../utlis/app_colors.dart';
-import '../utlis/app_text_styles.dart';
+import '../../../core/utlis/app_colors.dart';
+import '../../../core/utlis/app_text_styles.dart';
 
-class ProductItemDliverTimeWidget extends StatelessWidget {
-  const ProductItemDliverTimeWidget({
+class SearchProductItemDliverTimeWidget extends StatelessWidget {
+  const SearchProductItemDliverTimeWidget({
     super.key,
   });
 

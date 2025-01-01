@@ -3,7 +3,7 @@ import 'package:marketi/features/home/presentation/widgets/all_categories_brands
 
 import '../../../../core/utlis/app_text_styles.dart';
 import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/custom_icon_button.dart';
+import '../../../../core/widgets/custom_cart_icon_button.dart';
 import '../../../../core/widgets/custom_page_item.dart';
 import '../../../../core/widgets/custom_page_widget.dart';
 
@@ -17,12 +17,7 @@ class BrandsPage extends StatelessWidget {
         appBarTitle: 'Brands',
         centerTitle: true,
         leading: CustomBackButton(),
-        trailing: CustomIconButton(
-          icon: Icon(
-            Icons.shopping_cart_outlined,
-          ),
-          onPressed: () {},
-        ),
+        trailing: CustomCartIconButton(),
         pageItems: [
           CustomPageItem(
             sliver: SliverToBoxAdapter(

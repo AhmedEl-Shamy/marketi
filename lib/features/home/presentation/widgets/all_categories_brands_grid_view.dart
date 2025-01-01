@@ -17,7 +17,7 @@ class AllCategoriesBrandsGridView extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: (constraints.crossAxisExtent / 165).floor(),
               // mainAxisExtent: 200,
-              childAspectRatio: 160 / 200,
+              childAspectRatio: 160 / 120,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
@@ -25,7 +25,7 @@ class AllCategoriesBrandsGridView extends StatelessWidget {
               builder: (context, constraints) {
                 // print('width: ${constraints.maxWidth} | height: ${constraints.maxHeight} | A.R: ${constraints.maxWidth/constraints.maxHeight}');
                 return CategoryBrandItem(
-                  name: 'Category $index',
+                  name: 'Item $index',
                 );
               },
             ),

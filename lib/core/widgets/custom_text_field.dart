@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marketi/core/utlis/app_colors.dart';
 import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/core/utlis/app_text_styles.dart';
-
-import '../utlis/app_assets.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -14,22 +11,41 @@ class CustomTextField extends StatelessWidget {
     required this.prefixIcon,
     this.textStyle = AppTextStyles.kStyleM12,
     this.suffixIcon,
+    this.onTap,
+    this.onFieldSubmitted,
+    this.focusNode,
+    this.controller,
+    this.textInputAction,
+    this.autofocus,
   });
   final String hint;
   final TextInputType inputType;
   final Widget prefixIcon;
   final TextStyle textStyle;
   final Widget? suffixIcon;
+  final void Function()? onTap;
+  final void Function(String value)? onFieldSubmitted;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
+  final TextEditingController? controller;
+  final bool? autofocus;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       keyboardType: inputType,
+      autofocus: autofocus ?? false,
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'This is Required Field';
         }
         return null;
       },
+      textInputAction: textInputAction,
+      focusNode: focusNode,
+      onTap: onTap,
+      onFieldSubmitted: onFieldSubmitted,
       style: textStyle,
       decoration: InputDecoration(
         hintText: hint,
@@ -62,11 +78,16 @@ class CustomPasswordTextField extends StatefulWidget {
     required this.hint,
     required this.inputType,
     required this.prefixIcon,
+    this.focusNode,
+    this.controller,
+    this.textInputAction,
   });
   final String hint;
   final TextInputType inputType;
   final Widget prefixIcon;
-
+  final FocusNode? focusNode;
+  final TextEditingController? controller;
+  final TextInputAction? textInputAction;
   @override
   State<CustomPasswordTextField> createState() =>
       _CustomPasswordTextFieldState();
@@ -77,7 +98,10 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: widget.focusNode,
       keyboardType: widget.inputType,
+      controller: widget.controller,
+      textInputAction: widget.textInputAction,
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'This is Required Field';
@@ -120,37 +144,5 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     setState(() {
       isNotVisible = !isNotVisible;
     });
-  }
-}
-
-
-class SearchTextField extends StatelessWidget {
-  const SearchTextField({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomTextField(
-      hint: 'What are you looking for ?',
-      inputType: TextInputType.text,
-      prefixIcon: SvgPicture.asset(
-        AppAssets.kImagesSearchIcon,
-        fit: BoxFit.scaleDown,
-      ),
-      textStyle: AppTextStyles.kStyleR16.copyWith(
-        color: AppColors.kDarkBlue900,
-      ),
-      suffixIcon: IconButton(
-        style: IconButton.styleFrom(
-          foregroundColor: AppColors.kDarkLightBlue100,
-        ),
-        icon: SvgPicture.asset(
-          AppAssets.kImagesSearchFilterIcon,
-          fit: BoxFit.scaleDown,
-        ),
-        onPressed: () {},
-      ),
-    );
   }
 }
