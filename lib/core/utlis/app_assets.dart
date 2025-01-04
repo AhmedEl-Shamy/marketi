@@ -14,6 +14,14 @@ class AppAssets {
   /// assets/images/Bell_Icon_UIA.svg
   static const String kImagesBellIconUIA = "assets/images/Bell_Icon_UIA.svg";
 
+  /// Assets for kImagesBuyAgainIcon
+  /// assets/images/Buy_Again_Icon.svg
+  static const String kImagesBuyAgainIcon = "assets/images/Buy_Again_Icon.svg";
+
+  /// Assets for kImagesChatSupportIcon
+  /// assets/images/Chat_Support_Icon.svg
+  static const String kImagesChatSupportIcon = "assets/images/Chat_Support_Icon.svg";
+
   /// Assets for kImagesFacebookLogo
   /// assets/images/Facebook_Logo.svg
   static const String kImagesFacebookLogo = "assets/images/Facebook_Logo.svg";
@@ -73,6 +81,10 @@ class AppAssets {
   /// Assets for kImagesLogoSplashScreen
   /// assets/images/Logo_Splash_Screen.png
   static const String kImagesLogoSplashScreen = "assets/images/Logo_Splash_Screen.png";
+
+  /// Assets for kImagesMyOrdersIcon
+  /// assets/images/My_Orders_Icon.svg
+  static const String kImagesMyOrdersIcon = "assets/images/My_Orders_Icon.svg";
 
   /// Assets for kImagesNameIcon
   /// assets/images/Name_Icon.svg

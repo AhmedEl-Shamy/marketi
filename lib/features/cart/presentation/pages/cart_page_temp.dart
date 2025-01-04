@@ -16,7 +16,9 @@ class CartPageTemp extends StatelessWidget {
     return CustomPageWidget(
       appBarTitle: 'Cart',
       leading: CustomBackButton(),
-      trailing: UserAvatarWidget(),
+      trailing: UserAvatarWidget(
+        onPressed: Scaffold.of(context).openDrawer,
+      ),
       centerTitle: true,
       bottomPageWidget: CartCheckoutWidget(),
       pageItems: [

@@ -6,13 +6,15 @@ import '../utlis/app_text_styles.dart';
 class UserAvatarWidget extends StatelessWidget {
   const UserAvatarWidget({
     super.key,
+    required this.onPressed,
   });
+
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 42,
-      height: 42,
+      // width: double.infinity,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -20,10 +22,20 @@ class UserAvatarWidget extends StatelessWidget {
           color: AppColors.kDarkLightBlue100,
         ),
       ),
-      child: CircleAvatar(
-        child: Text(
-          'A',
-          style: AppTextStyles.kStyleM20,
+      child: FilledButton(
+        onPressed: onPressed,
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.kLightBlue900,
+          shape: CircleBorder(),
+          padding: EdgeInsets.zero,
+          foregroundColor: AppColors.kDarkBlue900,
+        ),
+        child: CircleAvatar(
+          backgroundColor: Colors.transparent,
+          child: Text(
+            'A',
+            style: AppTextStyles.kStyleM20,
+          ),
         ),
       ),
     );

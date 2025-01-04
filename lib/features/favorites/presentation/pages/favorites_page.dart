@@ -14,7 +14,9 @@ class FavoritesPage extends StatelessWidget {
     return CustomPageWidget(
       appBarTitle: 'Favorites',
       centerTitle: true,
-      leading: UserAvatarWidget(),
+      leading: UserAvatarWidget(
+        onPressed: Scaffold.of(context).openDrawer,
+      ),
       pageItems: [
         CustomPageItem(
           sliver: SliverToBoxAdapter(

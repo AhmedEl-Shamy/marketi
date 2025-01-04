@@ -23,11 +23,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPageWidget(
       appBarTitle: 'Hi, Ahmed',
-      leading: UserAvatarWidget(),
+      leading: UserAvatarWidget(
+        onPressed: Scaffold.of(context).openDrawer,
+      ),
       trailing: IconButton(
         iconSize: 30,
         color: AppColors.kDarkLightBlue100,
-        onPressed: () {},
+        onPressed: (){},
         icon: SvgPicture.asset(
           AppAssets.kImagesBellIconUIA,
           fit: BoxFit.scaleDown,

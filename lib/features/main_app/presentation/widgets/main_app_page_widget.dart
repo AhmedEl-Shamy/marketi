@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/custom_drawer.dart';
 import 'custom_bottom_nav_bar.dart';
 
 class MainAppPageWidget extends StatelessWidget {
@@ -13,13 +14,8 @@ class MainAppPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: child,
-          ),
-        ],
-      ),
+      drawer: CustomAppDrawer(),
+      body: child,
       bottomNavigationBar: CustomButtomNavBar(
         pageController: pageController,
       ),

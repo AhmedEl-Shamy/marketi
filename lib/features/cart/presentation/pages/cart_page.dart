@@ -14,7 +14,9 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPageWidget(
       appBarTitle: 'Cart',
-      leading: UserAvatarWidget(),
+      leading: UserAvatarWidget(
+        onPressed: Scaffold.of(context).openDrawer,
+      ),
       centerTitle: true,
       bottomPageWidget: CartCheckoutWidget(),
       pageItems: [
