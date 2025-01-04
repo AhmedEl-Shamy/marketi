@@ -58,6 +58,7 @@ class HomeSearchField extends StatelessWidget {
     return CustomPageItem(
       sliver: SliverToBoxAdapter(
         child: SearchTextField(
+          readOnly: true,
           onTap: () => _onTap(context),
         ),
       ),

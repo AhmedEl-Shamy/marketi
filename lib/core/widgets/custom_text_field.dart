@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.textInputAction,
     this.autofocus,
+    this.readOnly,
   });
   final String hint;
   final TextInputType inputType;
@@ -29,10 +30,12 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextEditingController? controller;
   final bool? autofocus;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly ?? false,
       controller: controller,
       keyboardType: inputType,
       autofocus: autofocus ?? false,

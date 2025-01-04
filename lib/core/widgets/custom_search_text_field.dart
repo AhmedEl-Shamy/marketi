@@ -14,6 +14,7 @@ class SearchTextField extends StatelessWidget {
     this.focusNode,
     this.controller,
     this.autofocus,
+    this.readOnly,
   });
 
   final void Function()? onTap;
@@ -21,10 +22,12 @@ class SearchTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final bool? autofocus;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      readOnly: readOnly,
       autofocus: autofocus ?? false,
       controller: controller,
       focusNode: focusNode,
