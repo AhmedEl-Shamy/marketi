@@ -8,6 +8,8 @@ import 'package:marketi/features/home/presentation/pages/categories_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:marketi/features/product/presentation/pages/product_details_page.dart';
+import 'package:marketi/features/profile/domain/entities/user_entity.dart';
+import 'package:marketi/features/profile/presentation/pages/profile_page.dart';
 import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 
@@ -28,6 +30,7 @@ abstract class AppRouterConfig {
   static const String kCategoriesRoute = '/categories';
   static const String kBrandsRoute = '/brands';
   static const String kSearchRoute = '/search';
+  static const String kProfileRoute = '/profile';
   static const String kProductDetailsRoute = '/productDetails';
 
   static GoRouter routerConfig = GoRouter(
@@ -79,6 +82,12 @@ abstract class AppRouterConfig {
       GoRoute(
         path: kSearchRoute,
         builder: (context, state) => SearchPage(),
+      ),
+      GoRoute(
+        path: kProfileRoute,
+        builder: (context, state) => ProfilePage(
+          user: state.extra as UserEntity,
+        ),
       ),
       GoRoute(
         path: kProductDetailsRoute,

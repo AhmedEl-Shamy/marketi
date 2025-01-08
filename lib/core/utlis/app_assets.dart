@@ -98,6 +98,10 @@ class AppAssets {
   /// assets/images/Phone_Icon.svg
   static const String kImagesPhoneIcon = "assets/images/Phone_Icon.svg";
 
+  /// Assets for kImagesProfileShapes
+  /// assets/images/Profile_Shapes.svg
+  static const String kImagesProfileShapes = "assets/images/Profile_Shapes.svg";
+
   /// Assets for kImagesSearchFilterIcon
   /// assets/images/Search_Filter_Icon.svg
   static const String kImagesSearchFilterIcon = "assets/images/Search_Filter_Icon.svg";

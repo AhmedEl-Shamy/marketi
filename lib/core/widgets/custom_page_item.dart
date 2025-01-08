@@ -5,10 +5,9 @@ import '../utlis/app_constants.dart';
 class CustomPageItem extends StatelessWidget {
   const CustomPageItem({
     super.key,
-    required this.sliver, this.bottomPadding,
+    required this.sliver,
   });
   final Widget sliver;
-  final double? bottomPadding;
   @override
   Widget build(BuildContext context) {
     return SliverPadding(

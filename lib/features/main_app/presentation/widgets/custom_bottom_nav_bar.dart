@@ -52,16 +52,7 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
         ),
         child: BottomNavigationBar(
           currentIndex: selectedItem,
-          onTap: (value) {
-            setState(() {
-              selectedItem = value;
-              widget.pageController.animateToPage(
-                value,
-                duration: AppConstants.kFastAnimationDuration,
-                curve: Curves.linear,
-              );
-            });
-          },
+          onTap: _onTap,
           selectedItemColor: AppColors.kDarkLightBlue100,
           unselectedItemColor: AppColors.kGreyScale,
           selectedLabelStyle: AppTextStyles.kStyleM12,
@@ -101,5 +92,20 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
         ),
       ),
     );
+  }
+
+  void _onTap(int value) {
+    if (value == 3) {
+      Scaffold.of(context).openDrawer();
+      return;
+    }
+    setState(() {
+      selectedItem = value;
+      widget.pageController.animateToPage(
+        value,
+        duration: AppConstants.kFastAnimationDuration,
+        curve: Curves.linear,
+      );
+    });
   }
 }

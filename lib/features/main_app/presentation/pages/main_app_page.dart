@@ -36,10 +36,6 @@ class _MainAppPageState extends State<MainAppPage> {
           HomePage(),
           CartPage(),
           FavoritesPage(),
-          Container(
-            width: MediaQuery.of(context).size.width - 40,
-            color: Colors.blue,
-          ),
         ],
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/app_constants.dart';
 
 import '../utlis/app_colors.dart';
+import '../utlis/app_router_config.dart';
 import '../utlis/app_text_styles.dart';
 import 'user_avatar_widget.dart';
 
@@ -19,7 +21,10 @@ class CustomDrawerHeader extends StatelessWidget {
         children: [
           Expanded(
             child: UserAvatarWidget(
-              onPressed: () {},
+              onPressed: () => GoRouter.of(context).push(
+                AppRouterConfig.kProfileRoute,
+                extra: AppConstants.kTempUserData,
+              ),
             ),
           ),
           Text(
