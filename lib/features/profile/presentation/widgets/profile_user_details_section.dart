@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marketi/features/profile/domain/entities/user_entity.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 
 import '../../../../core/utlis/app_assets.dart';
 import '../../../../core/widgets/custom_page_item.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
-import 'package:marketi/features/profile/domain/entities/user_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';

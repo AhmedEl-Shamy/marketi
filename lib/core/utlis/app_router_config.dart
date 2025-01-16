@@ -8,7 +8,7 @@ import 'package:marketi/features/home/presentation/pages/categories_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:marketi/features/product/presentation/pages/product_details_page.dart';
-import 'package:marketi/features/profile/domain/entities/user_entity.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 import 'package:marketi/features/profile/presentation/pages/profile_page.dart';
 import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';

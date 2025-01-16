@@ -1,4 +1,4 @@
-import 'package:marketi/features/profile/domain/entities/user_entity.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 
 abstract class AppConstants {
   static const double kMainPagePadding = 15;
@@ -7,9 +7,10 @@ abstract class AppConstants {
   static const String kMontserratFamily = 'Montserrat';
   static const Duration kFastAnimationDuration = Duration(milliseconds: 200);
   static const UserEntity kTempUserData = UserEntity(
-        name: 'Ahmed El-Shamy',
-        userName: '@ahmedelshamy',
-        image: '/',
-      );
+    id: '',
+    name: 'Ahmed El-Shamy',
+    userName: '@ahmedelshamy',
+    image: '/',
+  );
   // static const Duration kFastAnimationDuration = Duration(milliseconds: 200);
 }
