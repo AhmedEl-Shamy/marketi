@@ -3,8 +3,9 @@ import 'package:marketi/core/entities/user_entity.dart';
 import 'package:marketi/core/utlis/failure.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, UserEntity>> register({
-    required String name,
+  Future<Either<Failure, bool>> register({
+    // required String name,
+    // required String username,
     required String email,
     required String password,
   });
@@ -12,6 +13,7 @@ abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> logInByEmail({
     required String email,
     required String password,
+    required bool rememberMe,
   });
 
   Future<Either<Failure, UserEntity>> logInByToken({
@@ -26,5 +28,6 @@ abstract class AuthRepo {
     required String otp,
   });
 
-  Future<Either<Failure, void>> logOut();
+  Future<void> logOut();
+  bool isLogedIn();
 }

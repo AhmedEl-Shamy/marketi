@@ -7,11 +7,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
-  print(dotenv.env['API_URL']);
-  // await Supabase.initialize(
-  //   url: dotenv.env['API_URL'] ?? '',
-  //   anonKey: dotenv.env['API_KEY'] ?? '',
-  // );
+  await Supabase.initialize(
+    url: dotenv.env['API_URL'] ?? '',
+    anonKey: dotenv.env['API_KEY'] ?? '',
+  );
   runApp(const Marketi());
 }
 

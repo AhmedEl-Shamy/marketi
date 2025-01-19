@@ -29,7 +29,7 @@ class UserProfileDetails extends StatelessWidget {
           style: AppTextStyles.kStyleSB18,
         ),
         Text(
-          user.userName,
+          user.username,
           style: AppTextStyles.kStyleM14.copyWith(
             color: AppColors.kGreyScale,
           ),

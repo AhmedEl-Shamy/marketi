@@ -11,7 +11,8 @@ class LogInUsecase {
   Future<Either<Failure, void>> call({
     required String email,
     required String password,
+    required bool rememberMe,
   }) async {
-    return authRepo.logInByEmail(email: email, password: password);
+    return authRepo.logInByEmail(email: email, password: password, rememberMe: rememberMe);
   }
 }

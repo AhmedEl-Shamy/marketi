@@ -9,7 +9,8 @@ abstract class AppConstants {
   static const UserEntity kTempUserData = UserEntity(
     id: '',
     name: 'Ahmed El-Shamy',
-    userName: '@ahmedelshamy',
+    username: '@ahmedelshamy',
+    email: 'ahmedel@marketi.com',
     image: '/',
   );
   // static const Duration kFastAnimationDuration = Duration(milliseconds: 200);
