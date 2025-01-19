@@ -3,7 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/entities/user_entity.dart';
 
-abstract class RemoteDataSource {
+abstract class AuthRemoteDataSource {
   Future<UserEntity> getUserData(String userId);
   Future<void> setUserData({
     required String id,
@@ -13,10 +13,10 @@ abstract class RemoteDataSource {
   });
 }
 
-class RemoteDataSourceImpl extends RemoteDataSource {
+class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final SupabaseClient client;
 
-  RemoteDataSourceImpl({required this.client});
+  AuthRemoteDataSourceImpl({required this.client});
   @override
   Future<UserEntity> getUserData(String userId) async {
     final PostgrestList data =

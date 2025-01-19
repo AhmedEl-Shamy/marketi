@@ -4,7 +4,10 @@ sealed class AuthCubitState {}
 
 final class AuthCubitInitial extends AuthCubitState {}
 final class AuthCubitLoading extends AuthCubitState {}
-final class AuthCubitLogInSuccess extends AuthCubitState {}
+final class AuthCubitLogInSuccess extends AuthCubitState {
+  final UserEntity user;
+  AuthCubitLogInSuccess({required this.user});
+}
 final class AuthCubitRegisterSuccess extends AuthCubitState {}
 final class AuthCubitLogOutSuccess extends AuthCubitState {}
 final class AuthCubitFailure extends AuthCubitState {

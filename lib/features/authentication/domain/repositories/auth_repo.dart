@@ -10,7 +10,7 @@ abstract class AuthRepo {
     required String password,
   });
 
-  Future<Either<Failure, UserEntity>> logInByEmail({
+  Future<Either<Failure, UserEntity>> logIn({
     required String email,
     required String password,
     required bool rememberMe,
@@ -20,14 +20,14 @@ abstract class AuthRepo {
     required String token,
   });
 
-  Future<Either<Failure, void>> forgotPassword({
+  Future<Either<Failure, bool>> forgotPassword({
     required String email,
   });
 
-  Future<Either<Failure, void>> confirmEmail({
+  Future<Either<Failure, bool>> confirmEmail({
     required String otp,
   });
 
-  Future<void> logOut();
+  Future<bool> logOut();
   bool isLogedIn();
 }

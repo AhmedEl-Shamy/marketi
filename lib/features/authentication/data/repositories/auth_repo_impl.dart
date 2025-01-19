@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:marketi/core/entities/user_entity.dart';
 import 'package:marketi/core/utlis/failure.dart';
-import 'package:marketi/features/authentication/data/data_sources/local_data_source.dart';
-import 'package:marketi/features/authentication/data/data_sources/remote_data_source.dart';
+import 'package:marketi/features/authentication/data/data_sources/auth_local_data_source.dart';
+import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
 import 'package:marketi/features/authentication/domain/failures/auth_failure.dart';
 import 'package:marketi/features/authentication/domain/repositories/auth_repo.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final SupabaseClient client;
-  final LocalDataSource localDataSource;
-  final RemoteDataSource remoteDataSource;
+  final AuthLocalDataSource localDataSource;
+  final AuthRemoteDataSource remoteDataSource;
 
   AuthRepoImpl({
     required this.client,
@@ -19,19 +19,19 @@ class AuthRepoImpl extends AuthRepo {
   });
 
   @override
-  Future<Either<Failure, void>> confirmEmail({required String otp}) {
+  Future<Either<Failure, bool>> confirmEmail({required String otp}) {
     // TODO: implement confirmEmail
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, void>> forgotPassword({required String email}) {
+  Future<Either<Failure, bool>> forgotPassword({required String email}) {
     // TODO: implement forgotPassword
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, UserEntity>> logInByEmail({
+  Future<Either<Failure, UserEntity>> logIn({
     required String email,
     required String password,
     required bool rememberMe,
@@ -57,8 +57,9 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> logOut() async {
+  Future<bool> logOut() async {
     await client.auth.signOut();
+    return true;
   }
 
   @override

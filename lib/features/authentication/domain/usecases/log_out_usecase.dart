@@ -6,7 +6,7 @@ class LogOutUsecase {
 
   LogOutUsecase({required this.authRepo});
 
-  Future<void> call() async {
+  Future<bool> call() async {
     return authRepo.logOut();
   }
 }
