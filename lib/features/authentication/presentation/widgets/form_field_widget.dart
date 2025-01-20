@@ -10,12 +10,16 @@ class FormFieldWidget extends StatelessWidget {
     required this.hint,
     required this.inputType,
     required this.prefixIcon,
+    required this.controller,
+    this.validator,
   });
 
   FormFieldWidget.passwordFormField({
     super.key,
     required this.hint,
     this.label,
+    required this.controller,
+    this.validator,
   })  : isPassword = true,
         inputType = TextInputType.visiblePassword,
         prefixIcon = Icon(Icons.lock_outline);
@@ -23,8 +27,11 @@ class FormFieldWidget extends StatelessWidget {
   final bool isPassword;
   final String? label;
   final String hint;
+  final TextEditingController controller;
   final TextInputType inputType;
   final Widget prefixIcon;
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,15 +44,19 @@ class FormFieldWidget extends StatelessWidget {
           ),
         if (isPassword)
           CustomPasswordTextField(
+            controller: controller,
             hint: hint,
             inputType: inputType,
             prefixIcon: prefixIcon,
+            validator: validator,
           )
         else
           CustomTextField(
+            controller: controller,
             hint: hint,
             inputType: inputType,
             prefixIcon: prefixIcon,
+            validator: validator,
           )
       ],
     );

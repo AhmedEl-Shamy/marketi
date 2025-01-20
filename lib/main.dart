@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:marketi/core/utlis/app_colors.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
-import 'package:marketi/features/authentication/presentation/controllers/auth_cubit_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -23,7 +23,7 @@ class Marketi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl.get<AuthCubit>(),
+      create: (context) => sl.get<LogInCubit>(),
       child: MaterialApp.router(
         title: 'Marketi',
         theme: ThemeData(

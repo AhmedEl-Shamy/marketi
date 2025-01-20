@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction,
     this.autofocus,
     this.readOnly,
+    this.validator,
   });
   final String hint;
   final TextInputType inputType;
@@ -31,6 +32,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? autofocus;
   final bool? readOnly;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +41,13 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       keyboardType: inputType,
       autofocus: autofocus ?? false,
-      validator: (value) {
-        if (value?.isEmpty ?? true) {
-          return 'This is Required Field';
-        }
-        return null;
-      },
+      validator: validator ??
+          (value) {
+            if (value?.isEmpty ?? true) {
+              return 'This is Required Field';
+            }
+            return null;
+          },
       textInputAction: textInputAction,
       focusNode: focusNode,
       onTap: onTap,
@@ -84,6 +87,7 @@ class CustomPasswordTextField extends StatefulWidget {
     this.focusNode,
     this.controller,
     this.textInputAction,
+    this.validator,
   });
   final String hint;
   final TextInputType inputType;
@@ -91,6 +95,8 @@ class CustomPasswordTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
+
   @override
   State<CustomPasswordTextField> createState() =>
       _CustomPasswordTextFieldState();
@@ -105,7 +111,7 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
       keyboardType: widget.inputType,
       controller: widget.controller,
       textInputAction: widget.textInputAction,
-      validator: (value) {
+      validator: widget.validator ?? (value) {
         if (value?.isEmpty ?? true) {
           return 'This is Required Field';
         }

@@ -11,7 +11,8 @@ import 'package:marketi/features/authentication/domain/usecases/log_in_usecase.d
 import 'package:marketi/features/authentication/domain/usecases/log_in_with_token_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/log_out_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/register_usecase.dart';
-import 'package:marketi/features/authentication/presentation/controllers/auth_cubit_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final GetIt sl = GetIt.I;
@@ -74,14 +75,18 @@ void setupLoactor() {
   );
 
   // cubits
-  sl.registerSingleton<AuthCubit>(
-    AuthCubit(
+  sl.registerSingleton<LogInCubit>(
+    LogInCubit(
       logInUsecase: sl.get<LogInUsecase>(),
       logInWithTokenUsecase: sl.get<LogInWithTokenUsecase>(),
-      registerUsecase: sl.get<RegisterUsecase>(),
       forgotPasswordUsecase: sl.get<ForgotPasswordUsecase>(),
-      confirmEmailUsecase: sl.get<ConfirmEmailUsecase>(),
       logOutUsecase: sl.get<LogOutUsecase>(),
+    ),
+  );
+  sl.registerFactory<RegisterCubit>(
+    () => RegisterCubit(
+      registerUsecase: sl.get<RegisterUsecase>(),
+      confirmEmailUsecase: sl.get<ConfirmEmailUsecase>(),
     ),
   );
 }

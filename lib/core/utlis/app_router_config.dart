@@ -1,4 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/service_locator.dart';
+import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/register_page.dart';
@@ -49,7 +52,10 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kRegisterPageRoute,
-        builder: (context, state) => RegisterPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl.get<RegisterCubit>(),
+          child: RegisterPage(),
+        ),
       ),
       GoRoute(
         path: kForgotPassPageRoute,
