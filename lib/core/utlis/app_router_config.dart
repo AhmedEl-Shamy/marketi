@@ -2,8 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/verify_cubit/verify_cubit.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
+import 'package:marketi/features/authentication/presentation/pages/otp_verfication_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/register_page.dart';
 import 'package:marketi/features/home/presentation/pages/best_for_you_page.dart';
 import 'package:marketi/features/home/presentation/pages/brands_page.dart';
@@ -26,6 +28,7 @@ abstract class AppRouterConfig {
   static const String kLogInPageRoute = '/logIn';
   static const String kRegisterPageRoute = '/register';
   static const String kForgotPassPageRoute = '/forgotPass';
+  static const String kOTPVerification = '/otpVerfy';
   static const String kMainAppRoute = '/app';
   static const String kPopularProductsRoute = '/popularProducts';
   static const String kBestForYouRoute = '/bestForYou';
@@ -99,6 +102,15 @@ abstract class AppRouterConfig {
         path: kProductDetailsRoute,
         builder: (context, state) => ProductDetailsPage(
           product: state.extra as ProductEntity,
+        ),
+      ),
+      GoRoute(
+        path: kOTPVerification,
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl.get<VerifyCubit>(),
+          child: OtpVerficationPage(
+            email: state.extra as String,
+          ),
         ),
       )
     ],

@@ -9,14 +9,14 @@ class RegisterUsecase {
   RegisterUsecase({required this.authRepo});
 
   Future<Either<Failure, void>> call({
-    // required String name,
-    // required String username,
+    required String name,
+    required String username,
     required String email,
     required String password,
   }) async {
     return authRepo.register(
-      // name: name,
-      // username: username,
+      name: name,
+      username: username,
       email: email,
       password: password,
     );

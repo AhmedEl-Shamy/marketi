@@ -7,7 +7,10 @@ class ConfirmEmailUsecase {
 
   ConfirmEmailUsecase({required this.authRepo});
 
-  Future<Either<Failure, void>> call(String otp) async {
-    return authRepo.confirmEmail(otp: otp);
+  Future<Either<Failure, bool>> call({
+    required String otp,
+    required String email,
+  }) async {
+    return authRepo.confirmEmail(otp: otp, email: email);
   }
 }

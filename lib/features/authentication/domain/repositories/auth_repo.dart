@@ -4,8 +4,8 @@ import 'package:marketi/core/utlis/failure.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, bool>> register({
-    // required String name,
-    // required String username,
+    required String name,
+    required String username,
     required String email,
     required String password,
   });
@@ -26,6 +26,7 @@ abstract class AuthRepo {
 
   Future<Either<Failure, bool>> confirmEmail({
     required String otp,
+    required String email,
   });
 
   Future<bool> logOut();

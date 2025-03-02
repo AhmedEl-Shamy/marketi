@@ -74,7 +74,7 @@ class OnboardingPageViewItem extends StatelessWidget {
       );
     } else {
       GoRouter.of(context).pushReplacement(
-        AppRouterConfig.kLogInPageRoute,
+        AppRouterConfig.kMainAppRoute,
       );
     }
   }

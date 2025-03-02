@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marketi/features/authentication/presentation/widgets/otp_form_widget.dart';
 
 import '../../../../core/utlis/app_assets.dart';
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_constants.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import 'forgot_pass_form_widget.dart';
 import 'forgot_password_custom_app_bar.dart';
 
-class ForgotPassPageBody extends StatelessWidget {
-  const ForgotPassPageBody({super.key});
-
+class OtpVerficationPageBody extends StatelessWidget {
+  const OtpVerficationPageBody({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,19 +25,30 @@ class ForgotPassPageBody extends StatelessWidget {
             height: 22,
           ),
           SvgPicture.asset(
-            AppAssets.kImagesIllustrationForgotPasswordWithEmail,
+            AppAssets.kImagesIllustrationVerificationCodeWithEmail,
           ),
           SizedBox(
             width: 285,
-            child: Text(
-              'Please enter your email address to receive a verification code',
+            child: Text.rich(
+              TextSpan(
+                text: 'Please enter the 6 digit code\n',
+                children: [
+                  TextSpan(text: 'send to: '),
+                  TextSpan(
+                    text: email,
+                    style: TextStyle(
+                      color: AppColors.kDarkLightBlue100,
+                    ),
+                  ),
+                ],
+              ),
               style: AppTextStyles.kStyleM16.copyWith(
                 color: AppColors.kNavy,
               ),
               textAlign: TextAlign.center,
             ),
           ),
-          ForgotPassFormWidget(),
+          OtpFormWidget(email: email,),
         ],
       ),
     );

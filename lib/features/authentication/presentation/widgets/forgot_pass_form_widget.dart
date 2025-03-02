@@ -12,10 +12,23 @@ class ForgotPassFormWidget extends StatefulWidget {
 
 class _ForgotPassFormWidgetState extends State<ForgotPassFormWidget> {
   late final TextEditingController emailController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20,
+      spacing: 80,
       children: [
         FormFieldWidget(
           controller: emailController,
@@ -26,9 +39,6 @@ class _ForgotPassFormWidgetState extends State<ForgotPassFormWidget> {
           prefixIcon: Icon(
             Icons.email_outlined,
           ),
-        ),
-        SizedBox(
-          height: 20,
         ),
         CustomButton(
           text: 'Send Email',

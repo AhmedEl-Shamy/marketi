@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 import '../../../../core/utlis/app_assets.dart';
 import '../../../../core/utlis/app_constants.dart';
+import 'error_msg_widget.dart';
 import 'log_in_form_widget.dart';
 import 'register_page_navigation.dart';
 import 'skip_button.dart';
@@ -17,6 +20,7 @@ class LogInPageBody extends StatelessWidget {
         AppConstants.kMainPagePadding,
       ),
       child: Column(
+        spacing: 10,
         children: [
           Row(
             children: [SkipButton()],
@@ -25,17 +29,24 @@ class LogInPageBody extends StatelessWidget {
             AppAssets.kImagesLogoSplashScreen,
             fit: BoxFit.scaleDown,
           ),
-          SizedBox(
-            height: 32,
+          BlocBuilder<LogInCubit, LogInState>(
+            builder: (context, state) {
+              return ErrorMsgWidget(
+                msg: (state is LogInFailure)? state.failure.errorMsg : '',
+                isVisible: state is LogInFailure,
+              );
+            },
           ),
           LogInFormWidget(),
-          ThirdPartyAuthWidget(),
           SizedBox(
-            height: 14,
+            height: 5,
           ),
+          ThirdPartyAuthWidget(),
           RegisterPageNavigation()
         ],
       ),
     );
   }
 }
+
+

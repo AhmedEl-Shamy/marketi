@@ -19,9 +19,15 @@ class AuthRepoImpl extends AuthRepo {
   });
 
   @override
-  Future<Either<Failure, bool>> confirmEmail({required String otp}) {
-    // TODO: implement confirmEmail
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> confirmEmail({required String otp, required String email}) async {
+    try {
+      await client.auth.verifyOTP(type: OtpType.email, token: otp, email: email);
+      return right(true);
+    } on AuthException catch (e) {
+      return left(
+        AuthFailure.fromAuthException(exception: e),
+      );
+    }
   }
 
   @override
@@ -64,24 +70,50 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, bool>> register({
-    // required String name,
-    // required String username,
+    required String name,
+    required String username,
     required String email,
     required String password,
   }) async {
     try {
-      await client.auth.signInWithPassword(password: password, email: email);
+      await _checkExsistUsername(username);
+      AuthResponse response = await client.auth.signUp(
+        password: password,
+        email: email,
+      );
+      if (response.user != null) {
+        await remoteDataSource.setUserData(
+          id: response.user!.id,
+          name: name,
+          username: username,
+          email: email,
+        );
+      }
       return right(true);
     } on AuthException catch (e) {
       return left(
         AuthFailure.fromAuthException(exception: e),
       );
+    } on PostgrestException catch (e) {
+      return left(
+        PostgresFaliure.fromPostgresException(exception: e),
+      );
     }
   }
 
   @override
-  bool isLogedIn () {
-    if(client.auth.currentUser == null) return false;
+  bool isLogedIn() {
+    if (client.auth.currentUser == null) return false;
     return true;
+  }
+
+  Future<void> _checkExsistUsername(String username) async {
+    PostgrestList data =
+        await client.from('Profiles').select().eq('username', username);
+    if (data.isNotEmpty) {
+      throw PostgrestException(
+        message: 'Username is taken. Try another.',
+      );
+    }
   }
 }

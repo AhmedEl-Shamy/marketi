@@ -22,8 +22,9 @@ class CustomDrawerHeader extends StatelessWidget {
           Expanded(
             child: UserAvatarWidget(
               onPressed: () => GoRouter.of(context).push(
-                AppRouterConfig.kProfileRoute,
-                extra: AppConstants.kTempUserData,
+                // AppRouterConfig.kProfileRoute,
+                // extra: AppConstants.kTempUserData,
+                AppRouterConfig.kLogInPageRoute,
               ),
             ),
           ),
