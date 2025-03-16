@@ -5,16 +5,14 @@ import 'package:marketi/core/utlis/app_colors.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
-  await Supabase.initialize(
-    url: dotenv.env['API_URL'] ?? '',
-    anonKey: dotenv.env['API_KEY'] ?? '',
+  setupLoactor(
+    baseUrl: dotenv.env['BASE_URL']!,
+    apiKey: dotenv.env['API_KEY']!,
   );
-  setupLoactor();
   runApp(const Marketi());
 }
 

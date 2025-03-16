@@ -35,18 +35,17 @@ class _ProductOptionsState extends State<ProductOptions> {
         SegmentedButton(
           showSelectedIcon: false,
           style: SegmentedButton.styleFrom(
-            selectedForegroundColor: Colors.white,
-            selectedBackgroundColor: AppColors.kDarkLightBlue100,
-            iconColor: Colors.white,
-            textStyle: AppTextStyles.kStyleM16,
-            side: BorderSide(
-              color: AppColors.kDarkLightBlue100,
-              width: 1,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            )
-          ),
+              selectedForegroundColor: Colors.white,
+              selectedBackgroundColor: AppColors.kDarkLightBlue100,
+              iconColor: Colors.white,
+              textStyle: AppTextStyles.kStyleM16,
+              side: BorderSide(
+                color: AppColors.kDarkLightBlue100,
+                width: 1,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              )),
           segments: widget.productOptions.values.map(_creteSegment).toList(),
           selected: {selectedOption},
           onSelectionChanged: (selected) {

@@ -1,39 +1,51 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:marketi/core/entities/user_entity.dart';
+import 'package:marketi/core/utlis/exceptions.dart';
 import 'package:marketi/core/utlis/failure.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_local_data_source.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
-import 'package:marketi/features/authentication/domain/failures/auth_failure.dart';
 import 'package:marketi/features/authentication/domain/repositories/auth_repo.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepoImpl extends AuthRepo {
-  final SupabaseClient client;
   final AuthLocalDataSource localDataSource;
   final AuthRemoteDataSource remoteDataSource;
 
   AuthRepoImpl({
-    required this.client,
     required this.localDataSource,
     required this.remoteDataSource,
   });
 
   @override
-  Future<Either<Failure, bool>> confirmEmail({required String otp, required String email}) async {
+  Future<Either<Failure, UserEntity>> verifyOTP({
+    required String otp,
+    required String email,
+    required String verifyType,
+  }) async {
     try {
-      await client.auth.verifyOTP(type: OtpType.email, token: otp, email: email);
-      return right(true);
-    } on AuthException catch (e) {
+      UserEntity user = await remoteDataSource.verifyOTP(
+        otp: otp,
+        email: email,
+        verifyType: verifyType,
+      );
+      return right(user);
+    } on DioException catch (e) {
       return left(
-        AuthFailure.fromAuthException(exception: e),
+        ServerFailure.fromDioException(exception: e),
       );
     }
   }
 
   @override
-  Future<Either<Failure, bool>> forgotPassword({required String email}) {
-    // TODO: implement forgotPassword
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> forgotPassword({required String email}) async {
+    try {
+      await remoteDataSource.forgotPassword(email: email);
+      return right(true);
+    } on DioException catch (e) {
+      return left(
+        ServerFailure.fromDioException(exception: e),
+      );
+    }
   }
 
   @override
@@ -43,29 +55,45 @@ class AuthRepoImpl extends AuthRepo {
     required bool rememberMe,
   }) async {
     try {
-      final AuthResponse response = await client.auth.signInWithPassword(
-        password: password,
+      UserEntity user = await remoteDataSource.logIn(
         email: email,
+        password: password,
       );
-      UserEntity user = await remoteDataSource.getUserData(response.user!.id);
+      List data = await (remoteDataSource.getUserData(user.id));
+      
+      user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
       return right(user);
-    } on AuthException catch (e) {
+    } on DioException catch (e) {
       return left(
-        AuthFailure.fromAuthException(exception: e),
+        ServerFailure.fromDioException(exception: e),
       );
     }
   }
 
   @override
-  Future<Either<Failure, UserEntity>> logInByToken({required String token}) {
-    // TODO: implement logInByToken
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> logInWithToken({
+    required String refreshToken,
+  }) async {
+    try {
+      UserEntity user = await remoteDataSource.updateAccessToken(
+        refreshToken: refreshToken,
+      );
+      return right(user);
+    } on DioException catch (e) {
+      return left(
+        ServerFailure.fromDioException(exception: e),
+      );
+    }
   }
 
   @override
-  Future<bool> logOut() async {
-    await client.auth.signOut();
-    return true;
+  Future<Either<Failure, bool>> logOut(String accessToken) async {
+    try {
+      await remoteDataSource.logOut(accessToken);
+      return right(true);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(exception: e));
+    }
   }
 
   @override
@@ -77,43 +105,38 @@ class AuthRepoImpl extends AuthRepo {
   }) async {
     try {
       await _checkExsistUsername(username);
-      AuthResponse response = await client.auth.signUp(
+      Map<String, dynamic> userData = await remoteDataSource.register(
+        email: email,
         password: password,
+      );
+      await remoteDataSource.setUserData(
+        id: userData['id'],
+        name: name,
+        username: username,
         email: email,
       );
-      if (response.user != null) {
-        await remoteDataSource.setUserData(
-          id: response.user!.id,
-          name: name,
-          username: username,
-          email: email,
-        );
-      }
       return right(true);
-    } on AuthException catch (e) {
+    } on DioException catch (e) {
       return left(
-        AuthFailure.fromAuthException(exception: e),
+        ServerFailure.fromDioException(exception: e),
       );
-    } on PostgrestException catch (e) {
+    } on ServerDBException catch (e) {
       return left(
-        PostgresFaliure.fromPostgresException(exception: e),
+        ServerDBFailure.fromServerDBException(exception: e),
       );
     }
   }
 
   @override
   bool isLogedIn() {
-    if (client.auth.currentUser == null) return false;
+    // if (client.auth.currentUser == null) return false;
     return true;
   }
 
   Future<void> _checkExsistUsername(String username) async {
-    PostgrestList data =
-        await client.from('Profiles').select().eq('username', username);
-    if (data.isNotEmpty) {
-      throw PostgrestException(
-        message: 'Username is taken. Try another.',
-      );
+    bool isExists = await remoteDataSource.isUserNameExists(username);
+    if (isExists) {
+      throw ServerDBException('Username is taken. Try another.');
     }
   }
 }

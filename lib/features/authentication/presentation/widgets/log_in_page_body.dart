@@ -32,7 +32,7 @@ class LogInPageBody extends StatelessWidget {
           BlocBuilder<LogInCubit, LogInState>(
             builder: (context, state) {
               return ErrorMsgWidget(
-                msg: (state is LogInFailure)? state.failure.errorMsg : '',
+                msg: (state is LogInFailure) ? state.failure.errorMsg : '',
                 isVisible: state is LogInFailure,
               );
             },
@@ -48,5 +48,3 @@ class LogInPageBody extends StatelessWidget {
     );
   }
 }
-
-

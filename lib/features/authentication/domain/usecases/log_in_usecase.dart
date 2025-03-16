@@ -6,7 +6,7 @@ import '../repositories/auth_repo.dart';
 
 class LogInUsecase {
   LogInUsecase({required this.authRepo});
-  
+
   final AuthRepo authRepo;
 
   Future<Either<Failure, UserEntity>> call({
@@ -14,6 +14,7 @@ class LogInUsecase {
     required String password,
     required bool rememberMe,
   }) async {
-    return authRepo.logIn(email: email, password: password, rememberMe: rememberMe);
+    return authRepo.logIn(
+        email: email, password: password, rememberMe: rememberMe);
   }
 }

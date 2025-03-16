@@ -26,6 +26,7 @@ class PopularProductsSection extends StatelessWidget {
       ),
     );
   }
+
   void _onTap(BuildContext context) {
     GoRouter.of(context).push(
       AppRouterConfig.kPopularProductsRoute,

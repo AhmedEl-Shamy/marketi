@@ -1,3 +1,5 @@
+
+
 import 'package:marketi/core/entities/user_entity.dart';
 
 abstract class AppConstants {
@@ -6,7 +8,8 @@ abstract class AppConstants {
   static const String kMainFontFamily = 'Poppins';
   static const String kMontserratFamily = 'Montserrat';
   static const Duration kFastAnimationDuration = Duration(milliseconds: 200);
-  static const UserEntity kTempUserData = UserEntity(
+  static  UserEntity kTempUserData = UserEntity(
+    accessToken: "asdasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
     id: '',
     name: 'Ahmed El-Shamy',
     username: '@ahmedelshamy',

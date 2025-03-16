@@ -111,12 +111,13 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
       keyboardType: widget.inputType,
       controller: widget.controller,
       textInputAction: widget.textInputAction,
-      validator: widget.validator ?? (value) {
-        if (value?.isEmpty ?? true) {
-          return 'This is Required Field';
-        }
-        return null;
-      },
+      validator: widget.validator ??
+          (value) {
+            if (value?.isEmpty ?? true) {
+              return 'This is Required Field';
+            }
+            return null;
+          },
       obscureText: isNotVisible,
       style: AppTextStyles.kStyleM12,
       decoration: InputDecoration(

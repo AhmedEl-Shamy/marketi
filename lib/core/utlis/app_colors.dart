@@ -6,13 +6,13 @@ abstract class AppColors {
   static const Color kLightBlue500 = Color(0xFF8CB3FF);
   static const Color kLightBlue700 = Color(0xFFB2CCFF);
   static const Color kLightBlue900 = Color(0xFFD9E6FF);
-  
+
   // static const Color kDarkBlue100 = Color(0xFF3F80FF);
   static const Color kDarkBlue200 = Color(0xFF0056FE);
   static const Color kDarkBlue500 = Color(0xFF0041BF);
   static const Color kDarkBlue700 = Color(0xFF002B7F);
   static const Color kDarkBlue900 = Color(0xFF001640);
- 
+
   static const Color kDarkRed100 = Color(0xFFFF3F50);
   static const Color kDarkRed200 = Color(0xFFFE0017);
   static const Color kDarkRed500 = Color(0xFFBF0011);

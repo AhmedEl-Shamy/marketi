@@ -5,14 +5,22 @@ import 'package:marketi/features/authentication/domain/usecases/confirm_email_us
 part 'verify_state.dart';
 
 class VerifyCubit extends Cubit<VerifyState> {
-  VerifyCubit({required ConfirmEmailUsecase confirmEmailUsecase})
+  VerifyCubit({required VerifyOTPUsecase confirmEmailUsecase})
       : _confirmEmailUsecase = confirmEmailUsecase,
         super(VerifyInitial());
-  final ConfirmEmailUsecase _confirmEmailUsecase;
+  final VerifyOTPUsecase _confirmEmailUsecase;
 
-  Future<void> verify({required String otp, required String email}) async {
+  Future<void> verify({
+    required String otp,
+    required String email,
+    required String verifyType,
+  }) async {
     emit(VerifyLoading());
-    final result = await _confirmEmailUsecase.call(otp: otp, email: email);
+    final result = await _confirmEmailUsecase.call(
+      otp: otp,
+      email: email,
+      VerifyType: verifyType,
+    );
     result.fold(
       (failure) => emit(VerifyFailure(failure: failure)),
       (val) => emit(VerifySuccess()),

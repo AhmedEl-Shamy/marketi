@@ -62,7 +62,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         children: [
           if (widget.leading != null)
             widget.leading!
-          else if(widget.centerTitle)
+          else if (widget.centerTitle)
             SizedBox.square(
               dimension: 42,
             ),
@@ -73,7 +73,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           if (!widget.centerTitle) Spacer(),
           if (widget.trailing != null)
             widget.trailing!
-          else if(widget.centerTitle)
+          else if (widget.centerTitle)
             SizedBox.square(
               dimension: 42,
             ),

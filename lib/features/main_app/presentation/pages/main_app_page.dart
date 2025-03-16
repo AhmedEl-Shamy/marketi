@@ -7,7 +7,9 @@ import 'package:marketi/features/main_app/presentation/widgets/main_app_page_wid
 import '../widgets/main_app_page_body.dart';
 
 class MainAppPage extends StatefulWidget {
-  const MainAppPage({super.key,});
+  const MainAppPage({
+    super.key,
+  });
 
   @override
   State<MainAppPage> createState() => _MainAppPageState();
@@ -26,6 +28,7 @@ class _MainAppPageState extends State<MainAppPage> {
     pageController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return MainAppPageWidget(
@@ -41,5 +44,3 @@ class _MainAppPageState extends State<MainAppPage> {
     );
   }
 }
-
-

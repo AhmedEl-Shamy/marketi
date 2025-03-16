@@ -27,8 +27,6 @@ class LogInCubit extends Cubit<LogInState> {
   // final ForgotPasswordUsecase _forgotPasswordUsecase;
   final LogOutUsecase _logOutUsecase;
 
-  
-
   Future<void> logIn({
     required String email,
     required String password,
@@ -50,7 +48,20 @@ class LogInCubit extends Cubit<LogInState> {
 
   Future<void> logOut() async {
     emit(LogInLoading());
-    await _logOutUsecase.call();
+    if (user == null) {
+      emit(LogInFailure(failure: ServerFailure(errorMsg: 'User not logged in')));
+    }
+    Either<Failure, bool> data = await _logOutUsecase.call(accessToken: user!.accessToken);
+    data.fold(
+      (failure) => emit(LogInFailure(failure: failure)),
+      (success) {
+        if (success) {
+          emit(LogOutSuccess());
+        } else {
+          emit(LogInFailure(failure: ServerFailure(errorMsg: 'Failed to log out')));
+        }
+      },
+    );
     emit(LogOutSuccess());
   }
 }

@@ -59,8 +59,7 @@ class _SearchPageState extends State<SearchPage> {
 
   void _addSearchControllerListener() {
     _searchController.addListener(() {
-      setState(() {
-      });
+      setState(() {});
     });
   }
 }

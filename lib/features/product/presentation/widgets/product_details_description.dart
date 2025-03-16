@@ -13,7 +13,8 @@ class ProductDetailsDescription extends StatefulWidget {
   final ProductEntity product;
 
   @override
-  State<ProductDetailsDescription> createState() => _ProductDetailsDescriptionState();
+  State<ProductDetailsDescription> createState() =>
+      _ProductDetailsDescriptionState();
 }
 
 class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
@@ -25,9 +26,9 @@ class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
       children: [
         Text('Description', style: AppTextStyles.kStyleM16),
         Text(
-          maxLines: (isExpanded)? null : 6,
+          maxLines: (isExpanded) ? null : 6,
           widget.product.description,
-          overflow: (isExpanded)? TextOverflow.visible : TextOverflow.ellipsis,
+          overflow: (isExpanded) ? TextOverflow.visible : TextOverflow.ellipsis,
           style: AppTextStyles.kStyleR12.copyWith(
             color: AppColors.kDarkBlue900,
           ),
@@ -39,12 +40,11 @@ class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
             });
           },
           child: Text(
-            (isExpanded)? 'See Less' :'See More',
+            (isExpanded) ? 'See Less' : 'See More',
             style: AppTextStyles.kStyleR12.copyWith(
-              color: AppColors.kDarkLightBlue100,
-              decoration: TextDecoration.underline,
-              decorationColor: AppColors.kDarkLightBlue100
-            ),
+                color: AppColors.kDarkLightBlue100,
+                decoration: TextDecoration.underline,
+                decorationColor: AppColors.kDarkLightBlue100),
           ),
         )
       ],

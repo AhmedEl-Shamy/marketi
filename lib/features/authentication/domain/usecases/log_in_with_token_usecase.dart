@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 
 import '../../../../core/utlis/failure.dart';
 import '../repositories/auth_repo.dart';
@@ -8,7 +9,7 @@ class LogInWithTokenUsecase {
 
   LogInWithTokenUsecase({required this.authRepo});
 
-  Future<Either<Failure, void>> call({required String token}) async {
-    return authRepo.logInByToken(token: token);
+  Future<Either<Failure, UserEntity>> call({required String refreshToken}) {
+    return authRepo.logInWithToken(refreshToken: refreshToken);
   }
 }

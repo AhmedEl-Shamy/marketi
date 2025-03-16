@@ -32,7 +32,4 @@ class LogInPage extends StatelessWidget {
       GoRouter.of(context).pop();
     }
   }
-
 }
-
-

@@ -18,4 +18,3 @@ class ProductEntity {
     this.options,
   });
 }
-

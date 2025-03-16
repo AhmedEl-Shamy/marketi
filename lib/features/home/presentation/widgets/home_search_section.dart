@@ -21,7 +21,7 @@ class HomeSearchField extends StatelessWidget {
       ),
     );
   }
-  
+
   void _onTap(BuildContext context) {
     GoRouter.of(context).push(AppRouterConfig.kSearchRoute);
   }

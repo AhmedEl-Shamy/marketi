@@ -8,7 +8,7 @@ class ForgotPasswordUsecase {
 
   ForgotPasswordUsecase({required this.authRepo});
 
-  Future<Either<Failure, void>> call({required String email}) async {
+  Future<Either<Failure, void>> call({required String email}) {
     return authRepo.forgotPassword(email: email);
   }
 }

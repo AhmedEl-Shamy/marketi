@@ -22,7 +22,7 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.kDarkBlue900,
   );
-  
+
   static const TextStyle kStyleM14 = TextStyle(
     fontFamily: AppConstants.kMainFontFamily,
     fontSize: 14,
@@ -59,7 +59,7 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.kDarkBlue900,
   );
-  
+
   static const TextStyle kStyleM18 = TextStyle(
     fontFamily: AppConstants.kMainFontFamily,
     fontSize: 18,
@@ -92,13 +92,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.kDarkBlue900,
   );
-  
+
   static const TextStyle kStyleM32 = TextStyle(
     fontFamily: AppConstants.kMainFontFamily,
     fontSize: 32,
     fontWeight: FontWeight.w500,
     color: AppColors.kDarkBlue900,
   );
-
-
 }

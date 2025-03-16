@@ -19,6 +19,7 @@ class OtpVerficationPage extends StatelessWidget {
       ),
     );
   }
+
   void _listener(BuildContext context, VerifyState state) {
     if (state is VerifyLoading) {
       showLoading(context);

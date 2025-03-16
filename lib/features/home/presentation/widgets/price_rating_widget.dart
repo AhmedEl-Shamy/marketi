@@ -5,7 +5,8 @@ import '../../../../core/widgets/product_item_rating_widget.dart';
 
 class PriceRatingWidget extends StatelessWidget {
   const PriceRatingWidget({
-    super.key, this.style = AppTextStyles.kStyleM12,
+    super.key,
+    this.style = AppTextStyles.kStyleM12,
   });
   final TextStyle style;
   @override

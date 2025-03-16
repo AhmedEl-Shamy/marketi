@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:marketi/core/services/api_service.dart';
 import 'package:marketi/core/services/secure_storage_service.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_local_data_source.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
@@ -14,12 +16,25 @@ import 'package:marketi/features/authentication/domain/usecases/register_usecase
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/verify_cubit/verify_cubit.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 final GetIt sl = GetIt.I;
 
-void setupLoactor() {
+void setupLoactor({required String baseUrl, required String apiKey}) {
+  
   // services
+  sl.registerSingleton<Dio>(Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      headers: {
+        "apiKey": apiKey,
+      }
+    ),
+  ));
+  sl.registerSingleton<APIService>(
+    ApiServiceImpl(
+      dio: sl.get<Dio>(),
+    ),
+  );
   sl.registerSingleton<FlutterSecureStorage>(
     FlutterSecureStorage(
       aOptions: AndroidOptions(
@@ -43,13 +58,12 @@ void setupLoactor() {
   );
 
   sl.registerSingleton<AuthRemoteDataSource>(
-    AuthRemoteDataSourceImpl(client: Supabase.instance.client),
+    AuthRemoteDataSourceImpl(apiService: sl.get<APIService>()),
   );
 
   // repos
   sl.registerSingleton<AuthRepo>(
     AuthRepoImpl(
-      client: Supabase.instance.client,
       localDataSource: sl.get<AuthLocalDataSource>(),
       remoteDataSource: sl.get<AuthRemoteDataSource>(),
     ),
@@ -65,8 +79,8 @@ void setupLoactor() {
   sl.registerSingleton<LogOutUsecase>(
     LogOutUsecase(authRepo: sl.get<AuthRepo>()),
   );
-  sl.registerSingleton<ConfirmEmailUsecase>(
-    ConfirmEmailUsecase(authRepo: sl.get<AuthRepo>()),
+  sl.registerSingleton<VerifyOTPUsecase>(
+    VerifyOTPUsecase(authRepo: sl.get<AuthRepo>()),
   );
   sl.registerSingleton<ForgotPasswordUsecase>(
     ForgotPasswordUsecase(authRepo: sl.get<AuthRepo>()),
@@ -92,7 +106,7 @@ void setupLoactor() {
   );
   sl.registerFactory<VerifyCubit>(
     () => VerifyCubit(
-      confirmEmailUsecase: sl.get<ConfirmEmailUsecase>(),
+      confirmEmailUsecase: sl.get<VerifyOTPUsecase>(),
     ),
   );
 }

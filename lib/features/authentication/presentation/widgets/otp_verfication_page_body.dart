@@ -48,7 +48,9 @@ class OtpVerficationPageBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          OtpFormWidget(email: email,),
+          OtpFormWidget(
+            email: email,
+          ),
         ],
       ),
     );

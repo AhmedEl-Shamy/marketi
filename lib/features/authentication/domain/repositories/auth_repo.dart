@@ -16,19 +16,20 @@ abstract class AuthRepo {
     required bool rememberMe,
   });
 
-  Future<Either<Failure, UserEntity>> logInByToken({
-    required String token,
+  Future<Either<Failure, UserEntity>> logInWithToken({
+    required String refreshToken,
   });
 
   Future<Either<Failure, bool>> forgotPassword({
     required String email,
   });
 
-  Future<Either<Failure, bool>> confirmEmail({
+  Future<Either<Failure, UserEntity>> verifyOTP({
     required String otp,
     required String email,
+    required String verifyType,
   });
 
-  Future<bool> logOut();
+  Future<Either<Failure, bool>> logOut(String accessToken);
   bool isLogedIn();
 }

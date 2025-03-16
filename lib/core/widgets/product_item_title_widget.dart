@@ -22,4 +22,3 @@ class ProductItemTitleWidget extends StatelessWidget {
     );
   }
 }
-

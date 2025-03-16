@@ -11,11 +11,10 @@ class MainAppPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
-      allowImplicitScrolling: false,
-      physics: NeverScrollableScrollPhysics(),
-      controller: pageController,
-      pageSnapping: true,
-      children: pages
-    );
+        allowImplicitScrolling: false,
+        physics: NeverScrollableScrollPhysics(),
+        controller: pageController,
+        pageSnapping: true,
+        children: pages);
   }
 }

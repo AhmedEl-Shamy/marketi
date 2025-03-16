@@ -16,7 +16,7 @@ class CategoryBrandItem extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              width: double.infinity,  
+              width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
@@ -28,15 +28,15 @@ class CategoryBrandItem extends StatelessWidget {
             ),
           ),
           if (name != null)
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              name!,
-              style: AppTextStyles.kStyleM14,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                name!,
+                style: AppTextStyles.kStyleM14,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
         ],
       ),
     );

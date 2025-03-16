@@ -7,7 +7,8 @@ import 'user_profile_image_widget.dart';
 
 class UserProfileDetails extends StatelessWidget {
   const UserProfileDetails({
-    super.key, required this.user,
+    super.key,
+    required this.user,
   });
 
   final UserEntity user;
@@ -15,7 +16,6 @@ class UserProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         UserProfileImageWidget(
@@ -25,11 +25,11 @@ class UserProfileDetails extends StatelessWidget {
           height: 10,
         ),
         Text(
-          user.name,
+          user.name?? "Ahmed Osama EM",
           style: AppTextStyles.kStyleSB18,
         ),
         Text(
-          user.username,
+          user.username ?? "@ahmedosamaem",
           style: AppTextStyles.kStyleM14.copyWith(
             color: AppColors.kGreyScale,
           ),

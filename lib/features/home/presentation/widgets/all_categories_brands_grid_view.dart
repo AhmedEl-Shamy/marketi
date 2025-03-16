@@ -3,7 +3,6 @@ import 'package:marketi/core/widgets/category_brand_item.dart';
 
 import '../../../../core/widgets/custom_page_item.dart';
 
-
 class AllCategoriesBrandsGridView extends StatelessWidget {
   const AllCategoriesBrandsGridView({super.key});
 

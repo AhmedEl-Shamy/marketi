@@ -12,7 +12,3 @@ class ForgotPassPage extends StatelessWidget {
     );
   }
 }
-
-
-
-

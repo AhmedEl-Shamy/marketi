@@ -14,7 +14,8 @@ class SkipButton extends StatelessWidget {
     return SizedBox(
       height: 44,
       child: OutlinedButton(
-        onPressed: () => GoRouter.of(context).pushReplacement(AppRouterConfig.kMainAppRoute),
+        onPressed: () =>
+            GoRouter.of(context).pushReplacement(AppRouterConfig.kMainAppRoute),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.kDarkLightBlue100,
           padding: EdgeInsets.zero,

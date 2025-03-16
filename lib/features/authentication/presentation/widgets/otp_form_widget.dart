@@ -66,8 +66,11 @@ class _OtpFormWidgetState extends State<OtpFormWidget> {
               for (var element in controllers) {
                 otp += element.text;
               }
-              // BlocProvider.of<VerifyCubit>(context).verify(otp: otp);
-              context.read<VerifyCubit>().verify(otp: otp, email: widget.email);
+              context.read<VerifyCubit>().verify(
+                    otp: otp,
+                    email: widget.email,
+                    verifyType: 'email',
+                  );
             },
           ),
         ],
