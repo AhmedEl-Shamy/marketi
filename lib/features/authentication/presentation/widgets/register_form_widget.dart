@@ -60,6 +60,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
               AppAssets.kImagesNameIcon,
               fit: BoxFit.scaleDown,
             ),
+            validator: _validator,
           ),
 
           FormFieldWidget(
@@ -72,6 +73,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
               AppAssets.kImagesUserIcon,
               fit: BoxFit.scaleDown,
             ),
+            validator: _validator,
           ),
 
           // FormFieldWidget(
@@ -92,6 +94,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             isPassword: false,
             label: 'Email',
             hint: 'you@gmail.com',
+            validator: _validator,
             inputType: TextInputType.emailAddress,
             prefixIcon: Icon(Icons.email_outlined),
           ),
@@ -100,14 +103,14 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             controller: passController,
             label: 'Password',
             hint: 'Password',
-            validator: _validator,
+            validator: _validatorPass,
           ),
 
           FormFieldWidget.passwordFormField(
             controller: confirmPassController,
             label: 'Confirm Password',
             hint: 'Confirm Password',
-            validator: _validator,
+            validator: _validatorPass,
           ),
           SizedBox(
             height: 10,
@@ -125,13 +128,21 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
     );
   }
 
-  String? _validator(String? str) {
+  String? _validatorPass(String? str) {
     if (str == null || str.isEmpty) {
       return 'Required Field';
     } else if (str.length < 8) {
       return 'Week password';
     } else if (passController.text != confirmPassController.text) {
       return 'Password doesn\'t match';
+    } else {
+      return null;
+    }
+  }
+
+  String? _validator(String? str) {
+    if (str == null || str.isEmpty) {
+      return 'Required Field';
     } else {
       return null;
     }

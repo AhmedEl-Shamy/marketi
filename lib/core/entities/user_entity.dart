@@ -1,8 +1,8 @@
 class UserEntity {
   final String accessToken;
   final String id;
-  final String? name;
-  final String? username;
+  String? name;
+  String? username;
   final String email;
   final String? image;
 
@@ -19,7 +19,7 @@ class UserEntity {
     required String name,
     required String username,
   }) {
-    name = name;
-    username = username;
+    this.name = name;
+    this.username = username;
   }
 }

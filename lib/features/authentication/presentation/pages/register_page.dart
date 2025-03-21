@@ -30,7 +30,10 @@ class RegisterPage extends StatelessWidget {
       GoRouter.of(context).pop();
       GoRouter.of(context).pushReplacement(
         AppRouterConfig.kOTPVerification,
-        extra: state.email,
+        extra: {
+          "email": state.email,
+          "verifyType": "email",
+        },
       );
     } else {
       print((state as RegisterFailure).failure.errorMsg);

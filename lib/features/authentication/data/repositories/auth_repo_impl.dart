@@ -60,8 +60,10 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       List data = await (remoteDataSource.getUserData(user.id));
+      print("User Data: $data");
       
       user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
+      print("User Name: ${user.name}\nUsername: ${user.username}\nUser token: ${user.accessToken}\nUser Email: ${user.email}\n");
       return right(user);
     } on DioException catch (e) {
       return left(
@@ -137,6 +139,16 @@ class AuthRepoImpl extends AuthRepo {
     bool isExists = await remoteDataSource.isUserNameExists(username);
     if (isExists) {
       throw ServerDBException('Username is taken. Try another.');
+    }
+  }
+  
+  @override
+  Future<Either<Failure, bool>> resetPassword({required String accessToken, required String newPass}) async {
+    try {
+      await remoteDataSource.resetPassword(accessToken: accessToken, newPass: newPass);
+      return right(true);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(exception: e));
     }
   }
 }

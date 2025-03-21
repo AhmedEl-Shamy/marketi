@@ -56,7 +56,6 @@ class ApiServiceImpl extends APIService {
     Map<String, dynamic>? body,
   }) async {
     Response response = await dio.get(endPoint);
-    print(response.data);
     return response.data;
   }
 

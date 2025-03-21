@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/user_entity.dart';
 
 import '../utlis/app_colors.dart';
 import '../utlis/app_text_styles.dart';
@@ -7,7 +8,10 @@ class UserAvatarWidget extends StatelessWidget {
   const UserAvatarWidget({
     super.key,
     required this.onPressed,
+    required this.user,
   });
+
+  final UserEntity? user;
 
   final void Function() onPressed;
 
@@ -33,7 +37,7 @@ class UserAvatarWidget extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
           child: Text(
-            'A',
+            user?.name?[0] ?? "A",
             style: AppTextStyles.kStyleM20,
           ),
         ),

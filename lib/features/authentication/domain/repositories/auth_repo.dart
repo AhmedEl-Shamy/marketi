@@ -29,7 +29,10 @@ abstract class AuthRepo {
     required String email,
     required String verifyType,
   });
-
+  Future<Either<Failure, bool>> resetPassword({
+    required String accessToken,
+    required String newPass,
+  });
   Future<Either<Failure, bool>> logOut(String accessToken);
   bool isLogedIn();
 }

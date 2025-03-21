@@ -35,6 +35,7 @@ class UserProfileImageWidget extends StatelessWidget {
         width: 120,
         height: 120,
         child: UserAvatarWidget(
+          user: user,
           onPressed: () {},
         ),
       ),

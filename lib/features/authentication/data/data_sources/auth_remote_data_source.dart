@@ -22,6 +22,11 @@ abstract class AuthRemoteDataSource {
     required String email,
   });
 
+  Future<bool> resetPassword({
+    required String accessToken,
+    required String newPass,
+  });
+
   Future<UserEntity> verifyOTP({
     required String otp,
     required String email,
@@ -106,8 +111,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   }
 
   @override
-  Future<bool> logOut(String accessToken) async{
-    await apiService.post(endPoint: "/auth/v1/logout", headers: {"Authorization" : "Bearer $accessToken"});
+  Future<bool> logOut(String accessToken) async {
+    await apiService.post(
+        endPoint: "/auth/v1/logout",
+        headers: {"Authorization": "Bearer $accessToken"});
     return true;
   }
 
@@ -156,7 +163,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     );
     return UserModel.fromJson(data);
   }
-  
+
   @override
   Future<bool> isUserNameExists(String username) async {
     List data = await apiService.get(
@@ -167,5 +174,22 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     } else {
       return true;
     }
+  }
+
+  @override
+  Future<bool> resetPassword({
+    required String accessToken,
+    required String newPass,
+  }) async {
+    await apiService.put(
+      endPoint: '/auth/v1/user',
+      body: {
+        'password': newPass,
+      },
+      headers: {
+        'Authorization': 'Bearer $accessToken',
+      },
+    );
+    return true;
   }
 }

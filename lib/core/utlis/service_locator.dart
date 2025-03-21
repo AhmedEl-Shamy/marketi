@@ -7,28 +7,26 @@ import 'package:marketi/features/authentication/data/data_sources/auth_local_dat
 import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
 import 'package:marketi/features/authentication/data/repositories/auth_repo_impl.dart';
 import 'package:marketi/features/authentication/domain/repositories/auth_repo.dart';
-import 'package:marketi/features/authentication/domain/usecases/confirm_email_usecase.dart';
+import 'package:marketi/features/authentication/domain/usecases/verify_otp_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/forgot_password_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/log_in_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/log_in_with_token_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/log_out_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/register_usecase.dart';
+import 'package:marketi/features/authentication/domain/usecases/reset_pass_usecase.dart';
+import 'package:marketi/features/authentication/presentation/controllers/cubit/forgot_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
-import 'package:marketi/features/authentication/presentation/controllers/verify_cubit/verify_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 
 final GetIt sl = GetIt.I;
 
 void setupLoactor({required String baseUrl, required String apiKey}) {
-  
   // services
   sl.registerSingleton<Dio>(Dio(
-    BaseOptions(
-      baseUrl: baseUrl,
-      headers: {
-        "apiKey": apiKey,
-      }
-    ),
+    BaseOptions(baseUrl: baseUrl, headers: {
+      "apiKey": apiKey,
+    }),
   ));
   sl.registerSingleton<APIService>(
     ApiServiceImpl(
@@ -88,25 +86,32 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerSingleton<LogInWithTokenUsecase>(
     LogInWithTokenUsecase(authRepo: sl.get<AuthRepo>()),
   );
+  sl.registerSingleton<ResetPassUsecase>(
+    ResetPassUsecase(authRepo: sl.get<AuthRepo>()),
+  );
 
   // cubits
   sl.registerSingleton<LogInCubit>(
     LogInCubit(
       logInUsecase: sl.get<LogInUsecase>(),
       logInWithTokenUsecase: sl.get<LogInWithTokenUsecase>(),
-      forgotPasswordUsecase: sl.get<ForgotPasswordUsecase>(),
       logOutUsecase: sl.get<LogOutUsecase>(),
+      verifyOTPUsecase: sl.get<VerifyOTPUsecase>(),
     ),
   );
   sl.registerFactory<RegisterCubit>(
     () => RegisterCubit(
       registerUsecase: sl.get<RegisterUsecase>(),
-      // confirmEmailUsecase: sl.get<ConfirmEmailUsecase>(),
     ),
   );
-  sl.registerFactory<VerifyCubit>(
-    () => VerifyCubit(
-      confirmEmailUsecase: sl.get<VerifyOTPUsecase>(),
+  sl.registerFactory<ForgotPassCubit>(
+    () => ForgotPassCubit(
+      sl.get<ForgotPasswordUsecase>(),
+    ),
+  );
+  sl.registerFactory<ResetPassCubit>(
+    () => ResetPassCubit(
+      resetPassUsecase: sl.get<ResetPassUsecase>(),
     ),
   );
 }

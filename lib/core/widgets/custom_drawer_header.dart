@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:marketi/core/utlis/app_constants.dart';
 
-import '../utlis/app_colors.dart';
-import '../utlis/app_router_config.dart';
-import '../utlis/app_text_styles.dart';
-import 'user_avatar_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/core/utlis/app_constants.dart';
+import 'package:marketi/core/widgets/not_loged_in_widget.dart';
+import 'package:marketi/core/widgets/user_details_widget.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
+
 
 class CustomDrawerHeader extends StatelessWidget {
   const CustomDrawerHeader({
@@ -14,36 +14,19 @@ class CustomDrawerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DrawerHeader(
-      margin: EdgeInsets.only(top: AppConstants.kMainPagePadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: UserAvatarWidget(
-              onPressed: () => GoRouter.of(context).push(
-                // AppRouterConfig.kProfileRoute,
-                // extra: AppConstants.kTempUserData,
-                AppRouterConfig.kLogInPageRoute,
-              ),
-            ),
-          ),
-          Text(
-            'User Name',
-            textAlign: TextAlign.center,
-            style: AppTextStyles.kStyleM18.copyWith(
-              color: AppColors.kDarkBlue900,
-            ),
-          ),
-          Text(
-            '@username',
-            textAlign: TextAlign.center,
-            style: AppTextStyles.kStyleM14.copyWith(
-              color: AppColors.kGreyScale,
-            ),
-          ),
-        ],
-      ),
+    return BlocBuilder<LogInCubit, LogInState>(
+      buildWhen: (previous, current) =>
+          current is LogInSuccess || current is LogInInitial,
+      builder: (context, state) {
+        return DrawerHeader(
+          margin: EdgeInsets.only(top: AppConstants.kMainPagePadding),
+          child: (context.read<LogInCubit>().user != null)
+              ? UserDetails()
+              : NotLogedInWidget(),
+        );
+      },
     );
   }
 }
+
+

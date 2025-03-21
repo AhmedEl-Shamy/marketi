@@ -4,10 +4,12 @@ import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 
-class ForgotPassCustomAppBar extends StatelessWidget {
-  const ForgotPassCustomAppBar({
+class CustomSimpleAppBar extends StatelessWidget {
+  const CustomSimpleAppBar({
     super.key,
+    required this.pageTitle,
   });
+  final String pageTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ForgotPassCustomAppBar extends StatelessWidget {
           width: 8,
         ),
         Text(
-          'Forgot Password',
+          pageTitle,
           style: AppTextStyles.kStyleM16.copyWith(
             color: AppColors.kNavy,
           ),

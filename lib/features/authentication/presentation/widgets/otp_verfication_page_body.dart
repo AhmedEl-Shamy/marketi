@@ -9,8 +9,13 @@ import '../../../../core/utlis/app_text_styles.dart';
 import 'forgot_password_custom_app_bar.dart';
 
 class OtpVerficationPageBody extends StatelessWidget {
-  const OtpVerficationPageBody({super.key, required this.email});
+  const OtpVerficationPageBody({
+    super.key,
+    required this.email,
+    required this.verifyType,
+  });
   final String email;
+  final String verifyType;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +25,9 @@ class OtpVerficationPageBody extends StatelessWidget {
       child: Column(
         spacing: 22,
         children: [
-          ForgotPassCustomAppBar(),
+          CustomSimpleAppBar(
+            pageTitle: 'Verify Code',
+          ),
           SizedBox(
             height: 22,
           ),
@@ -50,6 +57,7 @@ class OtpVerficationPageBody extends StatelessWidget {
           ),
           OtpFormWidget(
             email: email,
+            verifyType: verifyType,
           ),
         ],
       ),

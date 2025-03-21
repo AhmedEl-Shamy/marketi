@@ -20,7 +20,9 @@ class ForgotPassPageBody extends StatelessWidget {
       child: Column(
         spacing: 22,
         children: [
-          ForgotPassCustomAppBar(),
+          CustomSimpleAppBar(
+            pageTitle: 'Forgot Password',
+          ),
           SizedBox(
             height: 22,
           ),

@@ -1,12 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
+import 'package:marketi/features/authentication/presentation/controllers/cubit/forgot_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
-import 'package:marketi/features/authentication/presentation/controllers/verify_cubit/verify_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/otp_verfication_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/register_page.dart';
+import 'package:marketi/features/authentication/presentation/pages/reset_password_page.dart';
 import 'package:marketi/features/home/presentation/pages/best_for_you_page.dart';
 import 'package:marketi/features/home/presentation/pages/brands_page.dart';
 import 'package:marketi/features/home/presentation/pages/categories_page.dart';
@@ -28,6 +30,7 @@ abstract class AppRouterConfig {
   static const String kLogInPageRoute = '/logIn';
   static const String kRegisterPageRoute = '/register';
   static const String kForgotPassPageRoute = '/forgotPass';
+  static const String kResetPassPageRoute = '/resetPass';
   static const String kOTPVerification = '/otpVerfy';
   static const String kMainAppRoute = '/app';
   static const String kPopularProductsRoute = '/popularProducts';
@@ -62,7 +65,10 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kForgotPassPageRoute,
-        builder: (context, state) => ForgotPassPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl.get<ForgotPassCubit>(),
+          child: ForgotPassPage(),
+        ),
       ),
       GoRoute(
         path: kMainAppRoute,
@@ -106,13 +112,21 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kOTPVerification,
+        builder: (context, state) => OtpVerficationPage(
+          email: (state.extra! as Map)['email'] as String,
+          verifyType: (state.extra! as Map)['verifyType'] as String,
+          nagivationPath: (state.extra! as Map)['nagivationPath'] as String?,
+        ),
+      ),
+      GoRoute(
+        path: kResetPassPageRoute,
         builder: (context, state) => BlocProvider(
-          create: (context) => sl.get<VerifyCubit>(),
-          child: OtpVerficationPage(
-            email: state.extra as String,
+          create: (context) => sl.get<ResetPassCubit>(),
+          child: ResetPasswordPage(
+            accessToken: state.extra as String,
           ),
         ),
-      )
+      ),
     ],
   );
 }

@@ -11,4 +11,6 @@ class ForgotPassPage extends StatelessWidget {
       body: ForgotPassPageBody(),
     );
   }
+
+  
 }
