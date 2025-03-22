@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
@@ -13,16 +15,15 @@ class RememberMeCheckBox extends StatefulWidget {
 }
 
 class _RememberMeCheckBoxState extends State<RememberMeCheckBox> {
-  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Checkbox(
-          value: isChecked,
+          value: context.read<LogInCubit>().rememberMe,
           onChanged: (value) {
             setState(() {
-              isChecked = !isChecked;
+              context.read<LogInCubit>().rememberMe = value!;
             });
           },
           activeColor: AppColors.kDarkLightBlue100,
@@ -33,7 +34,8 @@ class _RememberMeCheckBoxState extends State<RememberMeCheckBox> {
         InkWell(
           onTap: () {
             setState(() {
-              isChecked = !isChecked;
+              context.read<LogInCubit>().rememberMe =
+                  !context.read<LogInCubit>().rememberMe;
             });
           },
           child: Text(

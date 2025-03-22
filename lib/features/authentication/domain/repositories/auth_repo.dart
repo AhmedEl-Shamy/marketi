@@ -16,9 +16,7 @@ abstract class AuthRepo {
     required bool rememberMe,
   });
 
-  Future<Either<Failure, UserEntity>> logInWithToken({
-    required String refreshToken,
-  });
+  Future<Either<Failure, UserEntity>> logInWithToken();
 
   Future<Either<Failure, bool>> forgotPassword({
     required String email,

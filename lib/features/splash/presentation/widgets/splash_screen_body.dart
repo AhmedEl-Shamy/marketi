@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/app_assets.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -26,15 +28,43 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     super.dispose();
   }
 
+  void _listener(BuildContext context, LogInState state) {
+    if (state is LogInSuccess) {
+      GoRouter.of(context).pushReplacement(
+        AppRouterConfig.kMainAppRoute,
+      );
+    } else if (state is LogInTokenFailure) {
+      print(state.failure.errorMsg);
+      GoRouter.of(context).pushReplacement(
+        AppRouterConfig.kOnboardingPageRoute,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ScaleTransition(
-        scale: opacityTransition,
-        child: Image.asset(
-          AppAssets.kImagesLogoSplashScreen,
-        ),
-      ),
+    return BlocConsumer<LogInCubit, LogInState>(
+      listener: _listener,
+      builder: (context, state) {
+        return SizedBox.expand(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ScaleTransition(
+                scale: opacityTransition,
+                child: Image.asset(
+                  AppAssets.kImagesLogoSplashScreen,
+                ),
+              ),
+              Visibility.maintain(
+                visible: state is LogInLoading,
+                child: CircularProgressIndicator(),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -42,7 +72,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 1500,
+        seconds: 1
       ),
     );
     opacityTransition = CurvedAnimation(
@@ -52,19 +82,19 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
 
     Future.delayed(
       const Duration(seconds: 1),
-      () => animationController.forward(),
+      () {
+        animationController.forward();
+      },
     );
-    navigateToNextPage(context);
+    startAutoLogIn(context);
   }
 
-  void navigateToNextPage(BuildContext context) {
+  void startAutoLogIn(BuildContext context) {
     Future.delayed(
-      const Duration(milliseconds: 3500),
+      const Duration(milliseconds: 3000),
       () {
         if (context.mounted) {
-          GoRouter.of(context).pushReplacement(
-            AppRouterConfig.kOnboardingPageRoute,
-          );
+          context.read<LogInCubit>().logInWithToken();
         }
       },
     );

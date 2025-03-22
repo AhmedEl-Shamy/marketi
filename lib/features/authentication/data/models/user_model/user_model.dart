@@ -3,19 +3,17 @@ import 'package:marketi/core/entities/user_entity.dart';
 import 'user.dart';
 
 class UserModel extends UserEntity {
-  // String? accessToken;
   String? tokenType;
   int? expiresIn;
   int? expiresAt;
-  String? refreshToken;
   User? user;
 
   UserModel({
     required super.accessToken,
+    required super.refreshToken,
     this.tokenType,
     this.expiresIn,
     this.expiresAt,
-    this.refreshToken,
     this.user,
   }) : super(
           email: user?.email ?? '',
@@ -27,7 +25,7 @@ class UserModel extends UserEntity {
         tokenType: json['token_type'] as String?,
         expiresIn: json['expires_in'] as int?,
         expiresAt: json['expires_at'] as int?,
-        refreshToken: json['refresh_token'] as String?,
+        refreshToken: json['refresh_token'] as String? ?? '',
         user: json['user'] == null
             ? null
             : User.fromJson(json['user'] as Map<String, dynamic>),

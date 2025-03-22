@@ -30,6 +30,7 @@ class LogInPageBody extends StatelessWidget {
             fit: BoxFit.scaleDown,
           ),
           BlocBuilder<LogInCubit, LogInState>(
+            buildWhen: (previous, current) => current is! LogInTokenFailure,
             builder: (context, state) {
               return ErrorMsgWidget(
                 msg: (state is LogInFailure) ? state.failure.errorMsg : '',

@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 abstract class SecureStorageService {
   Future read(String key);
   Future<void> write(String key, String value);
+  Future<void> delete(String key);
 }
 
 class SecureStorageServiceImpl extends SecureStorageService {
@@ -18,5 +19,10 @@ class SecureStorageServiceImpl extends SecureStorageService {
   @override
   Future<void> write(String key, dynamic value) async {
     return await storage.write(key: key, value: value);
+  }
+
+  @override
+  Future<void> delete(String key) async {
+    return await storage.delete(key: key);
   }
 }

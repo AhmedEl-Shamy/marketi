@@ -17,3 +17,7 @@ final class LogInFailure extends LogInState {
   final Failure failure;
   LogInFailure({required this.failure});
 }
+final class LogInTokenFailure extends LogInState {
+  final Failure failure;
+  LogInTokenFailure({required this.failure});
+}

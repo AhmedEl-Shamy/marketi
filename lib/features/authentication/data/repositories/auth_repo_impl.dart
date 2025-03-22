@@ -64,6 +64,11 @@ class AuthRepoImpl extends AuthRepo {
       
       user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
       print("User Name: ${user.name}\nUsername: ${user.username}\nUser token: ${user.accessToken}\nUser Email: ${user.email}\n");
+
+      if (rememberMe) {
+        await localDataSource.setUserToken(user.refreshToken);
+      }
+
       return right(user);
     } on DioException catch (e) {
       return left(
@@ -73,17 +78,24 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> logInWithToken({
-    required String refreshToken,
-  }) async {
+  Future<Either<Failure, UserEntity>> logInWithToken() async {
     try {
+      final String token = await localDataSource.getUserToken() ?? '';
+      print("Referesh Token: $token");
       UserEntity user = await remoteDataSource.updateAccessToken(
-        refreshToken: refreshToken,
+        refreshToken: token,
       );
+      List data = await (remoteDataSource.getUserData(user.id));      
+      user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
       return right(user);
     } on DioException catch (e) {
+      await localDataSource.deleteUserToken();
       return left(
         ServerFailure.fromDioException(exception: e),
+      );
+    } on SecureStorageException catch (e) {
+      return left(
+        SecureStorageFailure(errorMsg: e.message),
       );
     }
   }
@@ -92,6 +104,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, bool>> logOut(String accessToken) async {
     try {
       await remoteDataSource.logOut(accessToken);
+      await localDataSource.deleteUserToken();
       return right(true);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(exception: e));
@@ -151,4 +164,5 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure.fromDioException(exception: e));
     }
   }
+
 }

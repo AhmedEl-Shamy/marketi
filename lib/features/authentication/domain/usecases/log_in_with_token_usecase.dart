@@ -9,7 +9,7 @@ class LogInWithTokenUsecase {
 
   LogInWithTokenUsecase({required this.authRepo});
 
-  Future<Either<Failure, UserEntity>> call({required String refreshToken}) {
-    return authRepo.logInWithToken(refreshToken: refreshToken);
+  Future<Either<Failure, UserEntity>> call() {
+    return authRepo.logInWithToken();
   }
 }

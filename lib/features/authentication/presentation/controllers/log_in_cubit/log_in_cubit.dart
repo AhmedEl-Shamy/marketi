@@ -27,7 +27,7 @@ class LogInCubit extends Cubit<LogInState> {
   final VerifyOTPUsecase _verifyOTPUsecase;
   final LogInWithTokenUsecase _logInWithTokenUsecase;
   final LogOutUsecase _logOutUsecase;
-
+  bool rememberMe = false;
   Future<void> logIn({
     required String email,
     required String password,
@@ -36,7 +36,7 @@ class LogInCubit extends Cubit<LogInState> {
     final Either<Failure, UserEntity> result = await _logInUsecase.call(
       email: email,
       password: password,
-      rememberMe: true,
+      rememberMe: rememberMe,
     );
     result.fold(
       (failure) => emit(LogInFailure(failure: failure)),
@@ -82,6 +82,18 @@ class LogInCubit extends Cubit<LogInState> {
       (val) => emit(LogInSuccess(
         user: val,
       )),
+    );
+  }
+
+  Future<void> logInWithToken() async {
+    emit(LogInLoading());
+    final Either<Failure, UserEntity> result = await _logInWithTokenUsecase.call();
+    result.fold(
+      (failure) => emit(LogInTokenFailure(failure: failure)),
+      (user) {
+        this.user = user;
+        emit(LogInSuccess(user: user));
+      },
     );
   }
 }

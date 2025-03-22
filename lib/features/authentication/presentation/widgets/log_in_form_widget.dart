@@ -19,6 +19,7 @@ class _LogInFormWidgetState extends State<LogInFormWidget> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   late final GlobalKey<FormState> formKey;
+  bool rememberMe = false;
 
   @override
   void initState() {

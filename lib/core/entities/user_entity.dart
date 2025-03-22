@@ -1,5 +1,6 @@
 class UserEntity {
   final String accessToken;
+  final String refreshToken;
   final String id;
   String? name;
   String? username;
@@ -8,6 +9,7 @@ class UserEntity {
 
   UserEntity({
     required this.accessToken,
+     required this.refreshToken,
     required this.id,
     required this.email,
     this.name,

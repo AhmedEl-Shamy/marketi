@@ -17,6 +17,10 @@ class ServerDBFailure extends Failure {
   }
 }
 
+class SecureStorageFailure extends Failure {
+  SecureStorageFailure({required super.errorMsg});
+}
+
 class ServerFailure extends Failure {
   ServerFailure({required super.errorMsg});
   factory ServerFailure.fromDioException({
@@ -67,8 +71,4 @@ class ServerFailure extends Failure {
   //       return ServerFailure(errorMsg: 'Unknown Error');
   //   }
   }
-}
-
-class SecureStorageFailure extends Failure {
-  SecureStorageFailure({required super.errorMsg});
 }
