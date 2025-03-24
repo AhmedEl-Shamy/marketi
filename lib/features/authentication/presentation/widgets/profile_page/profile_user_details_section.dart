@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marketi/core/entities/user_entity.dart';
 
-import '../../../../core/utlis/app_assets.dart';
-import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
+import '../../../../../core/utlis/app_assets.dart';
+import '../../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import 'user_profile_details.dart';
 
 class ProfileUserDetailsSection extends StatelessWidget {

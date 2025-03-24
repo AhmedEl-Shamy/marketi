@@ -13,15 +13,15 @@ import 'package:marketi/features/home/presentation/pages/brands_page.dart';
 import 'package:marketi/features/home/presentation/pages/categories_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
-import 'package:marketi/features/product/presentation/pages/product_details_page.dart';
-import 'package:marketi/features/profile/presentation/pages/profile_page.dart';
+import 'package:marketi/features/product_details/presentation/pages/product_details_page.dart';
+import 'package:marketi/features/authentication/presentation/pages/profile_page.dart';
 import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import '../../features/home/presentation/pages/bay_again_page.dart';
 import '../../features/home/presentation/pages/popular_products_page.dart';
-import '../../features/product/domain/entities/product_entity.dart';
+import '../../features/product_details/domain/entities/product_entity.dart';
 
 abstract class AppRouterConfig {
   static const String kSplashPageRoute = '/';

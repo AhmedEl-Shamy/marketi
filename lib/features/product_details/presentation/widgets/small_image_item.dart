@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utlis/app_colors.dart';
+import '../../../../../core/utlis/app_colors.dart';
 
 class SmallImageItem extends StatelessWidget {
   const SmallImageItem({

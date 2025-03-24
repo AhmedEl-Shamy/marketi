@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
-import '../../../../core/utlis/app_colors.dart';
-import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
+import '../../../../../core/utlis/app_colors.dart';
+import '../../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import 'profile_menu_item.dart';
 
 class ProfilePageMenu extends StatelessWidget {

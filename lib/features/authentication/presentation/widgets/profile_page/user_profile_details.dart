@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/entities/user_entity.dart';
 
-import '../../../../core/utlis/app_colors.dart';
-import '../../../../core/utlis/app_text_styles.dart';
+import '../../../../../core/utlis/app_colors.dart';
+import '../../../../../core/utlis/app_text_styles.dart';
 import 'user_profile_image_widget.dart';
 
 class UserProfileDetails extends StatelessWidget {

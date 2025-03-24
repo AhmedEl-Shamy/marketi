@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utlis/app_colors.dart';
-import '../../../../core/utlis/app_constants.dart';
+import '../../../../../core/utlis/app_colors.dart';
+import '../../../../../core/utlis/app_constants.dart';
 
 class ImageIndicatorItem extends StatelessWidget {
   const ImageIndicatorItem({

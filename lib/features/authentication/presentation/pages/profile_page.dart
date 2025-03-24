@@ -7,8 +7,8 @@ import 'package:marketi/core/widgets/custom_buttons/custom_cart_icon_button.dart
 import 'package:marketi/core/widgets/custom_page_widget/custom_page_widget.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
-import '../widgets/profile_page_menu.dart';
-import '../widgets/profile_user_details_section.dart';
+import '../widgets/profile_page/profile_page_menu.dart';
+import '../widgets/profile_page/profile_user_details_section.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
