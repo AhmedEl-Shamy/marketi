@@ -18,7 +18,6 @@ class CustomDrawerBodyItem extends StatelessWidget {
       title: Text(title),
       titleTextStyle: AppTextStyles.kStyleSB18,
       leading: icon,
-      // trailing: Icon(Icons.arrow_forward_ios),
       onTap: onTap,
     );
   }

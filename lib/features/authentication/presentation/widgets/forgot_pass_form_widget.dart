@@ -6,7 +6,7 @@ import 'package:marketi/features/authentication/presentation/widgets/error_msg_w
 
 import '../../../../core/utlis/functions.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../controllers/cubit/forgot_pass_cubit.dart';
+import '../controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import 'form_field_widget.dart';
 
 class ForgotPassFormWidget extends StatefulWidget {

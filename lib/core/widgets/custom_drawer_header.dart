@@ -16,11 +16,11 @@ class CustomDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LogInCubit, LogInState>(
       buildWhen: (previous, current) =>
-          current is LogInSuccess || current is LogInInitial,
+          current is LogInSuccess || current is LogOutSuccess,
       builder: (context, state) {
         return DrawerHeader(
           margin: EdgeInsets.only(top: AppConstants.kMainPagePadding),
-          child: (context.read<LogInCubit>().user != null)
+          child: (context.read<LogInCubit>().isLoggedIn)
               ? UserDetails()
               : NotLogedInWidget(),
         );

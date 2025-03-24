@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
-import 'package:marketi/features/authentication/presentation/controllers/cubit/forgot_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
@@ -15,11 +14,11 @@ import 'package:marketi/features/home/presentation/pages/categories_page.dart';
 import 'package:marketi/features/main_app/presentation/pages/main_app_page.dart';
 import 'package:marketi/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:marketi/features/product/presentation/pages/product_details_page.dart';
-import 'package:marketi/core/entities/user_entity.dart';
 import 'package:marketi/features/profile/presentation/pages/profile_page.dart';
 import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 
+import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import '../../features/home/presentation/pages/bay_again_page.dart';
 import '../../features/home/presentation/pages/popular_products_page.dart';
 import '../../features/product/domain/entities/product_entity.dart';
@@ -100,9 +99,7 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kProfileRoute,
-        builder: (context, state) => ProfilePage(
-          user: state.extra as UserEntity,
-        ),
+        builder: (context, state) => ProfilePage(),
       ),
       GoRoute(
         path: kProductDetailsRoute,

@@ -20,32 +20,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPageWidget(
-      appBarTitle: context.read<LogInCubit>().user == null
-          ? "Hi"
-          : "Hi, ${context.read<LogInCubit>().user?.name}",
-      leading: UserAvatarWidget(
-        user: context.read<LogInCubit>().user,
-        onPressed: () => Scaffold.of(context).openDrawer(),
-      ),
-      trailing: IconButton(
-        iconSize: 30,
-        color: AppColors.kDarkLightBlue100,
-        onPressed: () {},
-        icon: SvgPicture.asset(
-          AppAssets.kImagesBellIconUIA,
-          fit: BoxFit.scaleDown,
-        ),
-      ),
-      pageItems: [
-        HomeSearchField(),
-        SpecialOfferWidget(),
-        PopularProductsSection(),
-        CategoriesSection(),
-        BestForYouSection(),
-        BrandsSection(),
-        BuyAgainSection(),
-      ],
+    return BlocBuilder<LogInCubit, LogInState>(
+      buildWhen: (previous, current) =>
+          current is LogInSuccess || current is LogOutSuccess,
+      builder: (context, state) {
+        return CustomPageWidget(
+          appBarTitle: context.read<LogInCubit>().user == null
+              ? "Hi"
+              : "Hi, ${context.read<LogInCubit>().user?.name}",
+          leading: UserAvatarWidget(
+            user: context.read<LogInCubit>().user,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+          trailing: IconButton(
+            iconSize: 30,
+            color: AppColors.kDarkLightBlue100,
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              AppAssets.kImagesBellIconUIA,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          pageItems: [
+            HomeSearchField(),
+            SpecialOfferWidget(),
+            PopularProductsSection(),
+            CategoriesSection(),
+            BestForYouSection(),
+            BrandsSection(),
+            BuyAgainSection(),
+          ],
+        );
+      },
     );
   }
 }

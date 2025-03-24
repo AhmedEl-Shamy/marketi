@@ -11,12 +11,12 @@ import '../../../domain/usecases/verify_otp_usecase.dart';
 part 'log_in_state.dart';
 
 class LogInCubit extends Cubit<LogInState> {
-  LogInCubit({
-    required LogInUsecase logInUsecase,
-    required LogInWithTokenUsecase logInWithTokenUsecase,
-    required LogOutUsecase logOutUsecase,
-    required VerifyOTPUsecase verifyOTPUsecase
-  })  : _logInUsecase = logInUsecase,
+  LogInCubit(
+      {required LogInUsecase logInUsecase,
+      required LogInWithTokenUsecase logInWithTokenUsecase,
+      required LogOutUsecase logOutUsecase,
+      required VerifyOTPUsecase verifyOTPUsecase})
+      : _logInUsecase = logInUsecase,
         _verifyOTPUsecase = verifyOTPUsecase,
         _logInWithTokenUsecase = logInWithTokenUsecase,
         _logOutUsecase = logOutUsecase,
@@ -28,6 +28,8 @@ class LogInCubit extends Cubit<LogInState> {
   final LogInWithTokenUsecase _logInWithTokenUsecase;
   final LogOutUsecase _logOutUsecase;
   bool rememberMe = false;
+  bool get isLoggedIn => user != null;
+
   Future<void> logIn({
     required String email,
     required String password,
@@ -50,20 +52,18 @@ class LogInCubit extends Cubit<LogInState> {
   Future<void> logOut() async {
     emit(LogInLoading());
     if (user == null) {
-      emit(LogInFailure(failure: ServerFailure(errorMsg: 'User not logged in')));
+      emit(
+          LogInFailure(failure: ServerFailure(errorMsg: 'User not logged in')));
     }
-    Either<Failure, bool> data = await _logOutUsecase.call(accessToken: user!.accessToken);
+    Either<Failure, bool> data =
+        await _logOutUsecase.call(accessToken: user!.accessToken);
     data.fold(
       (failure) => emit(LogInFailure(failure: failure)),
       (success) {
-        if (success) {
-          emit(LogOutSuccess());
-        } else {
-          emit(LogInFailure(failure: ServerFailure(errorMsg: 'Failed to log out')));
-        }
+        user = null;
+        emit(LogOutSuccess());
       },
     );
-    emit(LogOutSuccess());
   }
 
   Future<void> verifyOTP({
@@ -87,7 +87,8 @@ class LogInCubit extends Cubit<LogInState> {
 
   Future<void> logInWithToken() async {
     emit(LogInLoading());
-    final Either<Failure, UserEntity> result = await _logInWithTokenUsecase.call();
+    final Either<Failure, UserEntity> result =
+        await _logInWithTokenUsecase.call();
     result.fold(
       (failure) => emit(LogInTokenFailure(failure: failure)),
       (user) {

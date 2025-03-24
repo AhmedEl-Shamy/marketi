@@ -36,6 +36,9 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     } else if (state is LogInTokenFailure) {
       print(state.failure.errorMsg);
       GoRouter.of(context).pushReplacement(
+        AppRouterConfig.kMainAppRoute,
+      );
+      GoRouter.of(context).push(
         AppRouterConfig.kOnboardingPageRoute,
       );
     }

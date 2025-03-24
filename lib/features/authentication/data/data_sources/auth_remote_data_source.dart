@@ -34,9 +34,6 @@ abstract class AuthRemoteDataSource {
   });
 
   Future<bool> logOut(String accessToken);
-
-  bool isLogedIn();
-
   Future<List> getUserData(String userId);
   Future<bool> isUserNameExists(String username);
 
@@ -87,12 +84,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   Future<bool> forgotPassword({required String email}) async {
     await apiService.post(endPoint: "/auth/v1/recover", body: {'email': email});
     return true;
-  }
-
-  @override
-  bool isLogedIn() {
-    // TODO: implement isLogedIn
-    throw UnimplementedError();
   }
 
   @override

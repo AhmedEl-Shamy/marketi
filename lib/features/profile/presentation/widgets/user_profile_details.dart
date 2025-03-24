@@ -25,11 +25,11 @@ class UserProfileDetails extends StatelessWidget {
           height: 10,
         ),
         Text(
-          user.name?? "Ahmed Osama EM",
+          user.name ?? "Ahmed Osama EM",
           style: AppTextStyles.kStyleSB18,
         ),
         Text(
-          user.username ?? "@ahmedosamaem",
+          "@${user.username ?? "@ahmedosamaem"}",
           style: AppTextStyles.kStyleM14.copyWith(
             color: AppColors.kGreyScale,
           ),
