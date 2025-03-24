@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/widgets/custom_back_button.dart';
-import 'package:marketi/core/widgets/custom_page_widget.dart';
+import 'package:marketi/core/widgets/custom_buttons/custom_back_button.dart';
+import 'package:marketi/core/widgets/custom_page_widget/custom_page_widget.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/custom_cart_icon_button.dart';
-import '../../../../core/widgets/custom_page_item.dart';
+import '../../../../core/widgets/custom_buttons/custom_cart_icon_button.dart';
+import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import '../../../../core/widgets/products_grid_view.dart';
 
 class BestForYouPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/custom_page_item.dart';
+import '../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import 'search_product_item.dart';
 
 class SearchResultSection extends StatelessWidget {

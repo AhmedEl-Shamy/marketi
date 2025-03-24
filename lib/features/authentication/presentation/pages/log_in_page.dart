@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 import '../../../../core/utlis/functions.dart';
-import '../widgets/log_in_page_body.dart';
+import '../widgets/log_in_page/log_in_page_body.dart';
 
 class LogInPage extends StatelessWidget {
   const LogInPage({super.key});

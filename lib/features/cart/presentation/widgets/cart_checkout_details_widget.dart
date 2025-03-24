@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_buttons/custom_button.dart';
 
 class CartCheckoutDetailsWidget extends StatelessWidget {
   const CartCheckoutDetailsWidget({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/utlis/app_text_styles.dart';
-import 'package:marketi/core/widgets/custom_text_field.dart';
+import 'package:marketi/core/widgets/custom_text_fields/custom_text_field.dart';
 
 class FormFieldWidget extends StatelessWidget {
   const FormFieldWidget({

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_constants.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/product_item_title_widget.dart';
-import '../../../home/presentation/widgets/price_rating_widget.dart';
+import '../../../../core/widgets/product_item_widget/product_item_title_widget.dart';
+import '../../../home/presentation/widgets/home_product_item/price_rating_widget.dart';
 import 'cart_item_button.dart';
 
 class CartItemDetails extends StatelessWidget {

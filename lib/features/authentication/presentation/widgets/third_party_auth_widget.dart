@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utlis/app_assets.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/custom_icon_button.dart';
+import '../../../../core/widgets/custom_buttons/custom_icon_button.dart';
 
 class ThirdPartyAuthWidget extends StatelessWidget {
   const ThirdPartyAuthWidget({

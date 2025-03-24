@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/functions.dart';
-import 'package:marketi/core/widgets/custom_back_button.dart';
-import 'package:marketi/core/widgets/custom_cart_icon_button.dart';
-import 'package:marketi/core/widgets/custom_page_widget.dart';
+import 'package:marketi/core/widgets/custom_buttons/custom_back_button.dart';
+import 'package:marketi/core/widgets/custom_buttons/custom_cart_icon_button.dart';
+import 'package:marketi/core/widgets/custom_page_widget/custom_page_widget.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 import '../widgets/profile_page_menu.dart';

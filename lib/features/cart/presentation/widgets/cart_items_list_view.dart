@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/utlis/app_constants.dart';
 
-import '../../../../core/widgets/custom_page_item.dart';
+import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import 'cart_item.dart';
 
 class CartItemsListView extends StatelessWidget {

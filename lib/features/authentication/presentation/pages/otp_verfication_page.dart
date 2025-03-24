@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/functions.dart';
-import 'package:marketi/features/authentication/presentation/widgets/otp_verfication_page_body.dart';
+import 'package:marketi/features/authentication/presentation/widgets/otp_verfication_page/otp_verfication_page_body.dart';
 
 import '../controllers/log_in_cubit/log_in_cubit.dart';
 

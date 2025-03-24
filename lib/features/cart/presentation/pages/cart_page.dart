@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi/core/widgets/custom_page_item.dart';
-import 'package:marketi/core/widgets/custom_page_widget.dart';
+import 'package:marketi/core/widgets/custom_page_widget/custom_page_item.dart';
+import 'package:marketi/core/widgets/custom_page_widget/custom_page_widget.dart';
 import 'package:marketi/core/widgets/user_avatar_widget.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/cart/presentation/widgets/cart_items_list_view.dart';

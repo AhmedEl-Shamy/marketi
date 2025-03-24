@@ -5,7 +5,7 @@ import 'package:marketi/core/utlis/app_router_config.dart';
 import 'package:marketi/core/utlis/functions.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 
-import '../widgets/register_page_body.dart';
+import '../widgets/register_page/register_page_body.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});

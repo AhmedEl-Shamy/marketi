@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_buttons/custom_button.dart';
 import '../../domain/entities/product_entity.dart';
 
 class AddToCartWidget extends StatelessWidget {

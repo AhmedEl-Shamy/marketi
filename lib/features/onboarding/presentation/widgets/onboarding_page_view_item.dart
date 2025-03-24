@@ -5,7 +5,7 @@ import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_buttons/custom_button.dart';
 import '../../domain/entities/onboarding_page_entity.dart';
 import 'onboarding_page_view_indicator.dart';
 

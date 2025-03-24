@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utlis/app_colors.dart';
 import '../../../core/utlis/app_text_styles.dart';
-import '../../../core/widgets/custom_page_item.dart';
+import '../../../core/widgets/custom_page_widget/custom_page_item.dart';
 
 class SearchExpansionSection extends StatelessWidget {
   const SearchExpansionSection({

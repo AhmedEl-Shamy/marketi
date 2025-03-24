@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 
 import '../../../../core/utlis/functions.dart';
-import '../widgets/reset_password_page_body.dart';
+import '../widgets/reset_pass_page/reset_password_page_body.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_constants.dart';
 import '../../../../core/widgets/discount_badge_widget.dart';
-import '../../../../core/widgets/product_item_image_widget.dart';
+import '../../../../core/widgets/product_item_widget/product_item_image_widget.dart';
 import 'cart_item_details.dart';
 
 class CartItem extends StatelessWidget {

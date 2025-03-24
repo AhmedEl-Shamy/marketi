@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../home/presentation/widgets/price_rating_widget.dart';
+import '../../home/presentation/widgets/home_product_item/price_rating_widget.dart';
 import '../../../core/utlis/app_colors.dart';
 import '../../../core/utlis/app_text_styles.dart';
-import '../../../core/widgets/custom_outlined_button.dart';
+import '../../../core/widgets/custom_buttons/custom_outlined_button.dart';
 import 'search_product_item_deliver_time_widget.dart';
-import '../../../core/widgets/product_item_title_widget.dart';
+import '../../../core/widgets/product_item_widget/product_item_title_widget.dart';
 
 class SearchProductItemDetails extends StatelessWidget {
   const SearchProductItemDetails({

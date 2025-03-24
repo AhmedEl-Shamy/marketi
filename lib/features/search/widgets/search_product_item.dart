@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/widgets/discount_badge_widget.dart';
 import 'search_product_item_details.dart';
-import '../../../core/widgets/product_item_image_widget.dart';
+import '../../../core/widgets/product_item_widget/product_item_image_widget.dart';
 
 class SearchProductItem extends StatelessWidget {
   const SearchProductItem({
