@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 
 import '../../../../../core/entities/user_entity.dart';
 import '../../../../../core/utlis/app_assets.dart';
@@ -109,7 +111,9 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
           ),
           CustomButton(
             text: "Change Password",
-            onPressed: () {},
+            onPressed: () => GoRouter.of(context).push(
+              AppRouterConfig.kchangePassRoute,
+            ),
           ),
           SizedBox(
             height: 30,

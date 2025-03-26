@@ -4,6 +4,7 @@ import 'package:marketi/core/utlis/service_locator.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:marketi/features/authentication/presentation/pages/account_preferences_page.dart';
+import 'package:marketi/features/authentication/presentation/pages/change_password_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/forgot_pass_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/log_in_page.dart';
 import 'package:marketi/features/authentication/presentation/pages/otp_verfication_page.dart';
@@ -40,7 +41,8 @@ abstract class AppRouterConfig {
   static const String kBrandsRoute = '/brands';
   static const String kSearchRoute = '/search';
   static const String kProfileRoute = '/profile';
-  static const String kAccountPreferences = '/accountPreferences';
+  static const String kAccountPreferencesRoute = '/accountPreferences';
+  static const String kchangePassRoute = '/changePass';
   static const String kProductDetailsRoute = '/productDetails';
 
   static GoRouter routerConfig = GoRouter(
@@ -127,8 +129,12 @@ abstract class AppRouterConfig {
         ),
       ),
       GoRoute(
-        path: kAccountPreferences,
+        path: kAccountPreferencesRoute,
         builder: (context, state) => AccountPreferencesPage(),
+      ),
+      GoRoute(
+        path: kchangePassRoute,
+        builder: (context, state) => ChangePasswordPage(),
       ),
     ],
   );

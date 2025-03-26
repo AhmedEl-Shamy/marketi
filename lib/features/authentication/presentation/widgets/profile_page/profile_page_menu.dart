@@ -22,7 +22,7 @@ class ProfilePageMenu extends StatelessWidget {
             ProfileMenuItem(
               title: 'Account Preferences',
               onTap: () => GoRouter.of(context).push(
-                AppRouterConfig.kAccountPreferences,
+                AppRouterConfig.kAccountPreferencesRoute,
               ),
               leadingIcon: Icon(Icons.person_outline_rounded),
             ),
