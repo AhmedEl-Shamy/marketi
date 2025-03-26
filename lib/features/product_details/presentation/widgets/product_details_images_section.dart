@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import '../../domain/entities/product_entity.dart';
-import 'product_images_widgets/images_indicator.dart';
+
+import 'images_indicator.dart';
 import 'small_images_list_view.dart';
 
 class ProductDetailsImagesSection extends StatefulWidget {

@@ -9,9 +9,11 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
+    this.backgroundColor,
   });
 
   final String text;
+  final Color? backgroundColor;
   final void Function()? onPressed;
 
   @override
@@ -22,7 +24,7 @@ class CustomButton extends StatelessWidget {
       child: FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          backgroundColor: AppColors.kDarkLightBlue100,
+          backgroundColor: backgroundColor ?? AppColors.kDarkLightBlue100,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(

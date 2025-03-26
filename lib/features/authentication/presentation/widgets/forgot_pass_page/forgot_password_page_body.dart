@@ -6,7 +6,7 @@ import '../../../../../core/utlis/app_colors.dart';
 import '../../../../../core/utlis/app_constants.dart';
 import '../../../../../core/utlis/app_text_styles.dart';
 import 'forgot_pass_form_widget.dart';
-import 'forgot_password_custom_app_bar.dart';
+import '../custom_simple_app_bar.dart';
 
 class ForgotPassPageBody extends StatelessWidget {
   const ForgotPassPageBody({super.key});

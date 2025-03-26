@@ -12,6 +12,8 @@ class FormFieldWidget extends StatelessWidget {
     required this.prefixIcon,
     required this.controller,
     this.validator,
+    this.enabled,
+    this.readOnly,
   });
 
   FormFieldWidget.passwordFormField({
@@ -22,6 +24,8 @@ class FormFieldWidget extends StatelessWidget {
     this.validator,
   })  : isPassword = true,
         inputType = TextInputType.visiblePassword,
+        enabled = true,
+        readOnly = false,
         prefixIcon = Icon(Icons.lock_outline);
 
   final bool isPassword;
@@ -31,6 +35,8 @@ class FormFieldWidget extends StatelessWidget {
   final TextInputType inputType;
   final Widget prefixIcon;
   final String? Function(String?)? validator;
+  final bool? enabled;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +63,7 @@ class FormFieldWidget extends StatelessWidget {
             inputType: inputType,
             prefixIcon: prefixIcon,
             validator: validator,
+            readOnly: readOnly ?? false,
           )
       ],
     );

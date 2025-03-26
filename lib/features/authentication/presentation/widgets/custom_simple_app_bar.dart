@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utlis/app_colors.dart';
-import '../../../../../core/utlis/app_text_styles.dart';
-import '../../../../../core/widgets/custom_buttons/custom_back_button.dart';
+import '../../../../core/utlis/app_colors.dart';
+import '../../../../core/utlis/app_text_styles.dart';
+import '../../../../core/widgets/custom_buttons/custom_back_button.dart';
 
 class CustomSimpleAppBar extends StatelessWidget {
   const CustomSimpleAppBar({

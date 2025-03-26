@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketi/core/utlis/app_router_config.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 
 import '../../../../../core/utlis/app_colors.dart';
@@ -19,7 +21,9 @@ class ProfilePageMenu extends StatelessWidget {
           children: [
             ProfileMenuItem(
               title: 'Account Preferences',
-              onTap: () {},
+              onTap: () => GoRouter.of(context).push(
+                AppRouterConfig.kAccountPreferences,
+              ),
               leadingIcon: Icon(Icons.person_outline_rounded),
             ),
             ProfileMenuItem(

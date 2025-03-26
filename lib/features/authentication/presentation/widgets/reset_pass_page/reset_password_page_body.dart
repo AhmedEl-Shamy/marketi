@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marketi/features/authentication/presentation/widgets/forgot_pass_page/forgot_password_custom_app_bar.dart';
+import 'package:marketi/features/authentication/presentation/widgets/custom_simple_app_bar.dart';
 
 import '../../../../../core/utlis/app_assets.dart';
 import '../../../../../core/utlis/app_constants.dart';

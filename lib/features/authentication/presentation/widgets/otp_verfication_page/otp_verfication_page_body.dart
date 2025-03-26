@@ -6,7 +6,7 @@ import '../../../../../core/utlis/app_assets.dart';
 import '../../../../../core/utlis/app_colors.dart';
 import '../../../../../core/utlis/app_constants.dart';
 import '../../../../../core/utlis/app_text_styles.dart';
-import '../forgot_pass_page/forgot_password_custom_app_bar.dart';
+import '../custom_simple_app_bar.dart';
 
 class OtpVerficationPageBody extends StatelessWidget {
   const OtpVerficationPageBody({
