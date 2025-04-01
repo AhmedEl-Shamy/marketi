@@ -11,9 +11,9 @@ class VerifyOTPUsecase {
   Future<Either<Failure, UserEntity>> call({
     required String otp,
     required String email,
-    required String VerifyType,
+    required String verifyType,
 
   }) {
-    return authRepo.verifyOTP(otp: otp, email: email, verifyType: VerifyType);
+    return authRepo.verifyOTP(otp: otp, email: email, verifyType: verifyType);
   }
 }

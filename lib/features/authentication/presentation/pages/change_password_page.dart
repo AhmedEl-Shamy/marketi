@@ -15,8 +15,6 @@ class ChangePasswordPage extends StatelessWidget {
     if (state is ResetPassLoading) {
       showLoading(context);
     } else if (state is ResetPassSuccess) {
-      print(state);
-      // GoRouter.of(context).pop();
       GoRouter.of(context).go(
         AppRouterConfig.kLogInPageRoute,
         extra: AppRouterConfig.kMainAppRoute,
@@ -24,7 +22,6 @@ class ChangePasswordPage extends StatelessWidget {
       showSnackBar(context: context, message: "Password Updated Successfully");
       context.read<LogInCubit>().deleteUser();
     } else if (state is ResetPassFailure) {
-      print(state.failure.errorMsg);
       GoRouter.of(context).pop();
       showSnackBar(
           context: context, message: state.failure.errorMsg, isError: true);

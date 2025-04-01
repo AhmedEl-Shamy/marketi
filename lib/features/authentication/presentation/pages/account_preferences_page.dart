@@ -13,12 +13,10 @@ class AccountPreferencesPage extends StatelessWidget {
     if (state is AccountPreferencesLoading) {
       showLoading(context);
     } else if (state is AccountPreferencesSuccess) {
-      print(state);
       GoRouter.of(context).pop();
       showSnackBar(
           context: context, message: "Account Details Updated Successfully");
     } else if (state is AccountPreferencesFailure) {
-      print(state.failure.errorMsg);
       GoRouter.of(context).pop();
       showSnackBar(
           context: context, message: state.failure.errorMsg, isError: true);

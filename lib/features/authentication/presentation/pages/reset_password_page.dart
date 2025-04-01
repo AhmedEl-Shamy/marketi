@@ -28,11 +28,9 @@ class ResetPasswordPage extends StatelessWidget {
     if (state is ResetPassLoading) {
       showLoading(context);
     } else if (state is ResetPassSuccess) {
-      print(state);
       GoRouter.of(context).pop();
       GoRouter.of(context).pop();
     } else {
-      print((state as ResetPassFailure).failure.errorMsg);
       GoRouter.of(context).pop();
     }
   }

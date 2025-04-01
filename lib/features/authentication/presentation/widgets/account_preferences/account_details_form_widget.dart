@@ -54,7 +54,6 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
 
   void _setUserData() {
     final UserEntity user = context.read<LogInCubit>().user!;
-    print(user.name);
     nameController.text = user.name!;
     usernameController.text = user.username!;
     emailController.text = user.email;

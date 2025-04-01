@@ -33,7 +33,6 @@ class OtpVerficationPage extends StatelessWidget {
     if (state is LogInLoading) {
       showLoading(context);
     } else if (state is LogInSuccess) {
-      print(state);
       if (nagivationPath != null) {
         GoRouter.of(context).pushReplacement(
           nagivationPath!,
@@ -44,7 +43,6 @@ class OtpVerficationPage extends StatelessWidget {
         GoRouter.of(context).pop();
       }
     } else {
-      print((state as LogInFailure).failure.errorMsg);
       GoRouter.of(context).pop();
     }
   }

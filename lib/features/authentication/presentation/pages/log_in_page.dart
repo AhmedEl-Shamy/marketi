@@ -23,12 +23,9 @@ class LogInPage extends StatelessWidget {
     if (state is LogInLoading) {
       showLoading(context);
     } else if (state is LogInSuccess) {
-      print(state);
-      print(context.read<LogInCubit>().user?.name ?? 'Not Loged In');
       GoRouter.of(context).pop();
       GoRouter.of(context).pop();
     } else {
-      print((state as LogInFailure).failure.errorMsg);
       GoRouter.of(context).pop();
     }
   }

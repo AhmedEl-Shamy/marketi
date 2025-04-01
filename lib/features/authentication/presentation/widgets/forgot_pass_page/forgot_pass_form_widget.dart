@@ -37,7 +37,6 @@ class _ForgotPassFormWidgetState extends State<ForgotPassFormWidget> {
     if (state is ForgotPassLoading) {
       showLoading(context);
     } else if (state is ForgotPassSuccess) {
-      print(state);
       GoRouter.of(context).pop();
       GoRouter.of(context).pushReplacement(
         AppRouterConfig.kOTPVerification,
@@ -48,7 +47,6 @@ class _ForgotPassFormWidgetState extends State<ForgotPassFormWidget> {
         },
       );
     } else {
-      print((state as ForgotPassFailure).failure.errorMsg);
       GoRouter.of(context).pop();
     }
   }

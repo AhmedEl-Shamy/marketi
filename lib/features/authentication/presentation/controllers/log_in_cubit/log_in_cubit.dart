@@ -75,7 +75,7 @@ class LogInCubit extends Cubit<LogInState> {
     final Either<Failure, UserEntity> result = await _verifyOTPUsecase.call(
       otp: otp,
       email: email,
-      VerifyType: verifyType,
+      verifyType: verifyType,
     );
     result.fold(
       (failure) => emit(LogInFailure(failure: failure)),

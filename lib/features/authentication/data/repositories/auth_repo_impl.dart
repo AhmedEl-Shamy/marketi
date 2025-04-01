@@ -60,17 +60,11 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       List data = await (remoteDataSource.getUserData(user.id));
-      print("User Data: $data");
-
       user.setUserData(
           name: data[0]['display_name'], username: data[0]['username']);
-      print(
-          "User Name: ${user.name}\nUsername: ${user.username}\nUser token: ${user.accessToken}\nUser Email: ${user.email}\n");
-
       if (rememberMe) {
         await localDataSource.setUserToken(user.refreshToken);
       }
-
       return right(user);
     } on DioException catch (e) {
       return left(
@@ -83,7 +77,6 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> logInWithToken() async {
     try {
       final String token = await localDataSource.getUserToken() ?? '';
-      print("Referesh Token: $token");
       UserEntity user = await remoteDataSource.updateAccessToken(
         refreshToken: token,
       );
@@ -184,6 +177,7 @@ class AuthRepoImpl extends AuthRepo {
       if (oldUsername != username) {
         await _checkExsistUsername(username);
       }
+      await _checkExsistUsername(username);
       await remoteDataSource.updateUserData(
         id: id,
         accessToken: accessToken,

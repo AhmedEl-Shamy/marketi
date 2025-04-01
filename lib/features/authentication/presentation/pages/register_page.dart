@@ -12,8 +12,6 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('${context.read<RegisterCubit>()}');
-
     return Scaffold(
       body: BlocListener<RegisterCubit, RegisterState>(
         listener: _listener,
@@ -26,7 +24,6 @@ class RegisterPage extends StatelessWidget {
     if (state is RegisterLoading) {
       showLoading(context);
     } else if (state is RegisterSuccess) {
-      print(state);
       GoRouter.of(context).pop();
       GoRouter.of(context).pushReplacement(
         AppRouterConfig.kOTPVerification,
@@ -36,7 +33,6 @@ class RegisterPage extends StatelessWidget {
         },
       );
     } else {
-      print((state as RegisterFailure).failure.errorMsg);
       GoRouter.of(context).pop();
     }
   }
