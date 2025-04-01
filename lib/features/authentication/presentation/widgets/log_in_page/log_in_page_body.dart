@@ -11,8 +11,8 @@ import 'skip_button.dart';
 import '../third_party_auth_widget.dart';
 
 class LogInPageBody extends StatelessWidget {
-  const LogInPageBody({super.key});
-
+  const LogInPageBody({super.key, this.skipToRoute});
+  final String? skipToRoute;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +23,11 @@ class LogInPageBody extends StatelessWidget {
         spacing: 10,
         children: [
           Row(
-            children: [SkipButton()],
+            children: [
+              SkipButton(
+                skipToRoute: skipToRoute,
+              ),
+            ],
           ),
           Image.asset(
             AppAssets.kImagesLogoSplashScreen,

@@ -7,14 +7,14 @@ import '../../../../core/utlis/functions.dart';
 import '../widgets/log_in_page/log_in_page_body.dart';
 
 class LogInPage extends StatelessWidget {
-  const LogInPage({super.key});
-
+  const LogInPage({super.key, this.skipToRoute});
+  final String? skipToRoute;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<LogInCubit, LogInState>(
         listener: _listener,
-        child: LogInPageBody(),
+        child: LogInPageBody(skipToRoute: skipToRoute),
       ),
     );
   }

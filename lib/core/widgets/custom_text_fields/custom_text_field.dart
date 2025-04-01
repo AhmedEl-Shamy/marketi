@@ -19,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.autofocus,
     this.readOnly,
     this.validator,
+    this.onChanged,
   });
   final String hint;
   final TextInputType inputType;
@@ -33,6 +34,7 @@ class CustomTextField extends StatelessWidget {
   final bool? autofocus;
   final bool? readOnly;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class CustomTextField extends StatelessWidget {
             }
             return null;
           },
+      onChanged: onChanged,
       textInputAction: textInputAction,
       focusNode: focusNode,
       onTap: onTap,

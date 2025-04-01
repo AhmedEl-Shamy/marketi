@@ -31,6 +31,18 @@ abstract class AuthRepo {
     required String accessToken,
     required String newPass,
   });
+  Future<Either<Failure, bool>> changePassword({
+    required String email,
+    required String oldPass,
+    required String newPass,
+  });
   Future<Either<Failure, bool>> logOut(String accessToken);
   bool isLogedIn();
+  Future<Either<Failure, void>> updateUserData({
+    required String name,
+    required String username,
+    required String oldUsername,
+    required String accessToken,
+    required String id,
+  });
 }

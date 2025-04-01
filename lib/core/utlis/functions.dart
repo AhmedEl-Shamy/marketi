@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/utlis/app_text_styles.dart';
 
 import 'app_colors.dart';
 import 'app_constants.dart';
@@ -25,6 +26,25 @@ Future<dynamic> showLoading(BuildContext context) {
           ),
         ),
       ),
+    ),
+  );
+}
+
+Future<void> showSnackBar({
+  required BuildContext context,
+  required String message,
+  bool isError = false,
+}) async {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      duration: const Duration(seconds: 5),
+      content: Text(
+        message,
+        style: AppTextStyles.kStyleM14.copyWith(
+          color: Colors.white
+        )
+      ),
+      backgroundColor:isError? AppColors.kDarkRed900 : AppColors.kDarkBlue900,
     ),
   );
 }

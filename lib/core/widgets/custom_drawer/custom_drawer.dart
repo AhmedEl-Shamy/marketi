@@ -56,6 +56,7 @@ class CustomAppDrawer extends StatelessWidget {
     );
   }
   void _navigateTo(BuildContext context, String route) {
+    GoRouter.of(context).pop();
     if ((context.read<LogInCubit>().isLoggedIn)) {
       GoRouter.of(context).push(route);
     } else {

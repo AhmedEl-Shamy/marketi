@@ -61,9 +61,11 @@ class AuthRepoImpl extends AuthRepo {
       );
       List data = await (remoteDataSource.getUserData(user.id));
       print("User Data: $data");
-      
-      user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
-      print("User Name: ${user.name}\nUsername: ${user.username}\nUser token: ${user.accessToken}\nUser Email: ${user.email}\n");
+
+      user.setUserData(
+          name: data[0]['display_name'], username: data[0]['username']);
+      print(
+          "User Name: ${user.name}\nUsername: ${user.username}\nUser token: ${user.accessToken}\nUser Email: ${user.email}\n");
 
       if (rememberMe) {
         await localDataSource.setUserToken(user.refreshToken);
@@ -85,8 +87,9 @@ class AuthRepoImpl extends AuthRepo {
       UserEntity user = await remoteDataSource.updateAccessToken(
         refreshToken: token,
       );
-      List data = await (remoteDataSource.getUserData(user.id));      
-      user.setUserData(name: data[0]['display_name'], username: data[0]['username']);
+      List data = await (remoteDataSource.getUserData(user.id));
+      user.setUserData(
+          name: data[0]['display_name'], username: data[0]['username']);
       return right(user);
     } on DioException catch (e) {
       await localDataSource.deleteUserToken();
@@ -154,15 +157,65 @@ class AuthRepoImpl extends AuthRepo {
       throw ServerDBException('Username is taken. Try another.');
     }
   }
-  
+
   @override
-  Future<Either<Failure, bool>> resetPassword({required String accessToken, required String newPass}) async {
+  Future<Either<Failure, bool>> resetPassword({
+    required String accessToken,
+    required String newPass,
+  }) async {
     try {
-      await remoteDataSource.resetPassword(accessToken: accessToken, newPass: newPass);
+      await remoteDataSource.resetPassword(
+          accessToken: accessToken, newPass: newPass);
       return right(true);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(exception: e));
     }
   }
 
+  @override
+  Future<Either<Failure, void>> updateUserData({
+    required String name,
+    required String username,
+    required String oldUsername,
+    required String accessToken,
+    required String id,
+  }) async {
+    try {
+      if (oldUsername != username) {
+        await _checkExsistUsername(username);
+      }
+      await remoteDataSource.updateUserData(
+        id: id,
+        accessToken: accessToken,
+        name: name,
+        username: username,
+      );
+      return right(null);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(exception: e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> changePassword({
+    required String email,
+    required String oldPass,
+    required String newPass,
+  }) async {
+    try {
+      UserEntity user = await remoteDataSource.logIn(
+        email: email,
+        password: oldPass,
+      );
+      await remoteDataSource.resetPassword(
+        accessToken: user.accessToken,
+        newPass: newPass,
+      );
+      return right(true);
+    } on DioException catch (e) {
+      return left(
+        ServerFailure.fromDioException(exception: e),
+      );
+    }
+  }
 }

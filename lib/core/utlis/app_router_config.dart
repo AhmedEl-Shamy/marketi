@@ -20,6 +20,7 @@ import 'package:marketi/features/authentication/presentation/pages/profile_page.
 import 'package:marketi/features/search/pages/search_page.dart';
 import 'package:marketi/features/splash/presentation/pages/splash_screen.dart';
 
+import '../../features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import '../../features/home/presentation/pages/bay_again_page.dart';
 import '../../features/home/presentation/pages/popular_products_page.dart';
@@ -57,7 +58,9 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kLogInPageRoute,
-        builder: (context, state) => LogInPage(),
+        builder: (context, state) => LogInPage(
+          skipToRoute: state.extra as String?,
+        ),
       ),
       GoRoute(
         path: kRegisterPageRoute,
@@ -130,11 +133,24 @@ abstract class AppRouterConfig {
       ),
       GoRoute(
         path: kAccountPreferencesRoute,
-        builder: (context, state) => AccountPreferencesPage(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => sl.get<AccountPreferencesCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => sl.get<ResetPassCubit>(),
+            ),
+          ],
+          child: AccountPreferencesPage(),
+        ),
       ),
       GoRoute(
         path: kchangePassRoute,
-        builder: (context, state) => ChangePasswordPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl.get<ResetPassCubit>(),
+          child: ChangePasswordPage(),
+        ),
       ),
     ],
   );

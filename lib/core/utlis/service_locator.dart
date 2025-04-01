@@ -7,6 +7,7 @@ import 'package:marketi/features/authentication/data/data_sources/auth_local_dat
 import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
 import 'package:marketi/features/authentication/data/repositories/auth_repo_impl.dart';
 import 'package:marketi/features/authentication/domain/repositories/auth_repo.dart';
+import 'package:marketi/features/authentication/domain/usecases/change_password_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/verify_otp_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/forgot_password_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/log_in_usecase.dart';
@@ -14,10 +15,12 @@ import 'package:marketi/features/authentication/domain/usecases/log_in_with_toke
 import 'package:marketi/features/authentication/domain/usecases/log_out_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/register_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/reset_pass_usecase.dart';
+import 'package:marketi/features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 
+import '../../features/authentication/domain/usecases/update_user_data_usecase.dart';
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 
 final GetIt sl = GetIt.I;
@@ -90,6 +93,12 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerSingleton<ResetPassUsecase>(
     ResetPassUsecase(authRepo: sl.get<AuthRepo>()),
   );
+  sl.registerSingleton<ChangePasswordUsecase>(
+    ChangePasswordUsecase(authRepo: sl.get<AuthRepo>()),
+  );
+  sl.registerSingleton<UpdateUserDataUsecase>(
+    UpdateUserDataUsecase(authRepo: sl.get<AuthRepo>()),
+  ); 
 
   // cubits
   sl.registerSingleton<LogInCubit>(
@@ -113,6 +122,13 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerFactory<ResetPassCubit>(
     () => ResetPassCubit(
       resetPassUsecase: sl.get<ResetPassUsecase>(),
+      changePasswordUsecase: sl.get<ChangePasswordUsecase>(),
     ),
   );
+  sl.registerFactory<AccountPreferencesCubit>(
+    () => AccountPreferencesCubit(
+      updateUserDataUsecase: sl.get<UpdateUserDataUsecase>(),
+    ),
+  );
+
 }

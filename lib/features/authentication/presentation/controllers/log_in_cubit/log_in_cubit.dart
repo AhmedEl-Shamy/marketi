@@ -11,12 +11,12 @@ import '../../../domain/usecases/verify_otp_usecase.dart';
 part 'log_in_state.dart';
 
 class LogInCubit extends Cubit<LogInState> {
-  LogInCubit(
-      {required LogInUsecase logInUsecase,
-      required LogInWithTokenUsecase logInWithTokenUsecase,
-      required LogOutUsecase logOutUsecase,
-      required VerifyOTPUsecase verifyOTPUsecase})
-      : _logInUsecase = logInUsecase,
+  LogInCubit({
+    required LogInUsecase logInUsecase,
+    required LogInWithTokenUsecase logInWithTokenUsecase,
+    required LogOutUsecase logOutUsecase,
+    required VerifyOTPUsecase verifyOTPUsecase,
+  })  : _logInUsecase = logInUsecase,
         _verifyOTPUsecase = verifyOTPUsecase,
         _logInWithTokenUsecase = logInWithTokenUsecase,
         _logOutUsecase = logOutUsecase,
@@ -96,5 +96,10 @@ class LogInCubit extends Cubit<LogInState> {
         emit(LogInSuccess(user: user));
       },
     );
+  }
+
+  void deleteUser() {
+    user = null;
+    emit(LogOutSuccess());
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 
 import '../../../../../core/widgets/custom_buttons/custom_button.dart';
 import '../form_field_widget.dart';
@@ -100,5 +103,13 @@ class _ChangePassFormWidgetState extends State<ChangePassFormWidget> {
     );
   }
 
-  void _onPressed() {}
+  void _onPressed() {
+    if (_formKey.currentState!.validate()) {
+      context.read<ResetPassCubit>().changePassword(
+            email: context.read<LogInCubit>().user!.email,
+            oldPass: oldPassController.text,
+            newPass: newPassController.text,
+          );
+    }
+  }
 }

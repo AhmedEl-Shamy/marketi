@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
+import 'package:marketi/features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
 
 import '../../../../../core/entities/user_entity.dart';
 import '../../../../../core/utlis/app_assets.dart';
@@ -24,6 +25,7 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
   late final TextEditingController usernameController;
   late final TextEditingController emailController;
   late final GlobalKey<FormState> _formKey;
+  bool isDataChanged = false;
 
   @override
   void initState() {
@@ -58,6 +60,20 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
     emailController.text = user.email;
   }
 
+  void _onChanged(String value) {
+    final UserEntity user = context.read<LogInCubit>().user!;
+    if (user.name != nameController.text ||
+        user.email != emailController.text) {
+      setState(() {
+        isDataChanged = true;
+      });
+    } else {
+      setState(() {
+        isDataChanged = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -76,26 +92,29 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
               fit: BoxFit.scaleDown,
             ),
             validator: _validator,
+            onChanged: _onChanged,
           ),
           FormFieldWidget(
-            readOnly: true,
             controller: usernameController,
             isPassword: false,
-            label: 'Username (Cannot be changed)',
+            label: 'Username',
             hint: 'Username',
             inputType: TextInputType.name,
             prefixIcon: SvgPicture.asset(
               AppAssets.kImagesUserIcon,
               fit: BoxFit.scaleDown,
             ),
+            onChanged: _onChanged,
             validator: _validator,
           ),
           FormFieldWidget(
+            readOnly: true,
             controller: emailController,
             isPassword: false,
-            label: 'Email',
+            label: 'Email  (Cannot be changed)',
             hint: 'you@gmail.com',
             validator: _validator,
+            // onChanged: _onChanged,
             inputType: TextInputType.emailAddress,
             prefixIcon: Icon(Icons.email_outlined),
           ),
@@ -104,7 +123,7 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
           ),
           CustomButton(
             text: "Update Data",
-            onPressed: _isChanged() ? _updateAccountDetails : null,
+            onPressed: isDataChanged ? _updateAccountDetails : null,
           ),
           SizedBox(
             height: 5,
@@ -128,9 +147,16 @@ class _AccountDetailsFormWidgetState extends State<AccountDetailsFormWidget> {
     );
   }
 
-  bool _isChanged() {
-    return false;
+  void _updateAccountDetails() {
+    if (_formKey.currentState!.validate()) {
+      final UserEntity user = context.read<LogInCubit>().user!;
+      context.read<AccountPreferencesCubit>().updateUserData(
+            name: nameController.text,
+            oldUsername: user.username!,
+            username: usernameController.text,
+            id: user.id,
+            accessToken: user.accessToken,
+          );
+    }
   }
-
-  void _updateAccountDetails() {}
 }

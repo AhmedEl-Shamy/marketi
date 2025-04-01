@@ -6,14 +6,14 @@ import '../../../../../core/utlis/app_constants.dart';
 import '../../../../../core/utlis/app_text_styles.dart';
 
 class SkipButton extends StatelessWidget {
-  const SkipButton({super.key});
-
+  const SkipButton({super.key, this.skipToRoute});
+  final String? skipToRoute;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 44,
       child: OutlinedButton(
-        onPressed: () => GoRouter.of(context).pop(),
+        onPressed: () => _onPressed(context),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.kDarkLightBlue100,
           padding: EdgeInsets.zero,
@@ -35,5 +35,13 @@ class SkipButton extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onPressed(BuildContext context) {
+    if (skipToRoute != null) {
+      GoRouter.of(context).go(skipToRoute!);
+    } else {
+      GoRouter.of(context).pop();
+    }
   }
 }

@@ -43,6 +43,13 @@ abstract class AuthRemoteDataSource {
     required String username,
     required String email,
   });
+
+  Future<void> updateUserData({
+    required String id,
+    required String name,
+    required String username,
+    required String accessToken,
+  });
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
@@ -182,5 +189,22 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       },
     );
     return true;
+  }
+
+  @override
+  Future<void> updateUserData({
+    required String id,
+    required String accessToken,
+    required String name,
+    required String username,
+  }) async {
+    await apiService.patch(
+      endPoint: "/rest/v1/Profiles?id=eq.$id",
+      body: {
+        'id': id,
+        'display_name': name,
+        'username': username,
+      },
+    );
   }
 }
