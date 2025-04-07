@@ -15,7 +15,7 @@ import 'package:marketi/features/authentication/domain/usecases/log_in_with_toke
 import 'package:marketi/features/authentication/domain/usecases/log_out_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/register_usecase.dart';
 import 'package:marketi/features/authentication/domain/usecases/reset_pass_usecase.dart';
-import 'package:marketi/features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/account_preferences_cubit/account_preferences_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';

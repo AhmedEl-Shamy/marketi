@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketi/features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/account_preferences_cubit/account_preferences_cubit.dart';
 
 import '../../../../core/utlis/functions.dart';
 import '../widgets/account_preferences/account_preferences_page_body.dart';

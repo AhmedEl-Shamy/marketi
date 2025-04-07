@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/utlis/app_router_config.dart';
-import 'package:marketi/features/authentication/presentation/controllers/account_manager_cubit/account_preferences_cubit.dart';
+import 'package:marketi/features/authentication/presentation/controllers/account_preferences_cubit/account_preferences_cubit.dart';
 
 import '../../../../../core/entities/user_entity.dart';
 import '../../../../../core/utlis/app_assets.dart';
