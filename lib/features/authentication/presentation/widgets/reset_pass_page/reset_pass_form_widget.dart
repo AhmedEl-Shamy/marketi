@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/features/authentication/presentation/widgets/form_field_widget.dart';
 
 import '../../../../../core/widgets/custom_buttons/custom_button.dart';
-import '../../controllers/reset_pass_cubit/reset_pass_cubit.dart' show ResetPassCubit;
+import '../../controllers/reset_pass_cubit/reset_pass_cubit.dart'
+    show ResetPassCubit;
 
 class ResetPassFormWidget extends StatefulWidget {
   const ResetPassFormWidget({super.key, required this.accessToken});

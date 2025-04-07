@@ -12,7 +12,6 @@ class VerifyOTPUsecase {
     required String otp,
     required String email,
     required String verifyType,
-
   }) {
     return authRepo.verifyOTP(otp: otp, email: email, verifyType: verifyType);
   }

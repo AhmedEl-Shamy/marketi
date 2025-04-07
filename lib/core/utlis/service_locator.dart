@@ -98,7 +98,7 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   );
   sl.registerSingleton<UpdateUserDataUsecase>(
     UpdateUserDataUsecase(authRepo: sl.get<AuthRepo>()),
-  ); 
+  );
 
   // cubits
   sl.registerSingleton<LogInCubit>(
@@ -130,5 +130,4 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
       updateUserDataUsecase: sl.get<UpdateUserDataUsecase>(),
     ),
   );
-
 }

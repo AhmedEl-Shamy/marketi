@@ -72,5 +72,4 @@ class FormFieldWidget extends StatelessWidget {
       ],
     );
   }
-  
 }

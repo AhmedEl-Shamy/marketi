@@ -5,16 +5,12 @@ abstract class AuthLocalDataSource {
   Future<String?> getUserToken();
   Future<void> setUserToken(String token);
   Future<void> deleteUserToken();
-
-  
 }
 
 class AuthLocalDataSourceImpl extends AuthLocalDataSource {
   final SecureStorageService storage;
 
   AuthLocalDataSourceImpl({required this.storage});
-
-  
 
   @override
   Future<String?> getUserToken() async {
@@ -27,9 +23,9 @@ class AuthLocalDataSourceImpl extends AuthLocalDataSource {
   Future<void> setUserToken(String token) async {
     await storage.write('token', token);
   }
-  
+
   @override
   Future<void> deleteUserToken() async {
-     await storage.delete('token');
+    await storage.delete('token');
   }
 }

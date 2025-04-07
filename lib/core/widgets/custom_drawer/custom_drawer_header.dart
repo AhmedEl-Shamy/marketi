@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/core/widgets/not_loged_in_widget.dart';
 import 'package:marketi/core/widgets/user_details_widget.dart';
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
-
 
 class CustomDrawerHeader extends StatelessWidget {
   const CustomDrawerHeader({
@@ -28,5 +26,3 @@ class CustomDrawerHeader extends StatelessWidget {
     );
   }
 }
-
-

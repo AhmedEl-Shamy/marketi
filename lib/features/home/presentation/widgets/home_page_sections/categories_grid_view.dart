@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/category_brand_item.dart';
 
-
 class CategoriesGridView extends StatelessWidget {
   const CategoriesGridView({
     super.key,

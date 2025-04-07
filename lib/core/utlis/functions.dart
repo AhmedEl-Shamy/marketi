@@ -38,13 +38,9 @@ Future<void> showSnackBar({
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       duration: const Duration(seconds: 5),
-      content: Text(
-        message,
-        style: AppTextStyles.kStyleM14.copyWith(
-          color: Colors.white
-        )
-      ),
-      backgroundColor:isError? AppColors.kDarkRed900 : AppColors.kDarkBlue900,
+      content: Text(message,
+          style: AppTextStyles.kStyleM14.copyWith(color: Colors.white)),
+      backgroundColor: isError ? AppColors.kDarkRed900 : AppColors.kDarkBlue900,
     ),
   );
 }

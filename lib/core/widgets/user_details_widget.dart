@@ -40,7 +40,6 @@ class UserDetails extends StatelessWidget {
             color: AppColors.kGreyScale,
           ),
         ),
-        
       ],
     );
   }

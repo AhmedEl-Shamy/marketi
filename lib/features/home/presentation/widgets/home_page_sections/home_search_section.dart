@@ -5,7 +5,6 @@ import '../../../../../core/utlis/app_router_config.dart';
 import '../../../../../core/widgets/custom_page_widget/custom_page_item.dart';
 import '../../../../../core/widgets/custom_text_fields/custom_search_text_field.dart';
 
-
 class HomeSearchField extends StatelessWidget {
   const HomeSearchField({
     super.key,

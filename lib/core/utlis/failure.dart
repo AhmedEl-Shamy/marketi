@@ -26,7 +26,7 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioException({
     required DioException exception,
   }) {
-    switch(exception.type){
+    switch (exception.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure(errorMsg: 'Connection Timeout');
       case DioExceptionType.sendTimeout:
@@ -50,25 +50,25 @@ class ServerFailure extends Failure {
     required Response response,
   }) {
     return ServerFailure(errorMsg: response.data["msg"] ?? 'Unknown Error');
-  //   switch(response.statusCode){
-  //     case 400:
-  //       return ServerFailure(errorMsg: 'Bad Request');
-  //     case 401:
-  //       return ServerFailure(errorMsg: 'Unauthorized');
-  //     case 403:
-  //       return ServerFailure(errorMsg: 'Forbidden');
-  //     case 404:
-  //       return ServerFailure(errorMsg: 'Not Found');
-  //     case 500:
-  //       return ServerFailure(errorMsg: 'Internal Server Error');
-  //     case 502:
-  //       return ServerFailure(errorMsg: 'Bad Gateway');
-  //     case 503:
-  //       return ServerFailure(errorMsg: 'Service Unavailable');
-  //     case 504:
-  //       return ServerFailure(errorMsg: 'Gateway Timeout');
-  //     default:
-  //       return ServerFailure(errorMsg: 'Unknown Error');
-  //   }
+    //   switch(response.statusCode){
+    //     case 400:
+    //       return ServerFailure(errorMsg: 'Bad Request');
+    //     case 401:
+    //       return ServerFailure(errorMsg: 'Unauthorized');
+    //     case 403:
+    //       return ServerFailure(errorMsg: 'Forbidden');
+    //     case 404:
+    //       return ServerFailure(errorMsg: 'Not Found');
+    //     case 500:
+    //       return ServerFailure(errorMsg: 'Internal Server Error');
+    //     case 502:
+    //       return ServerFailure(errorMsg: 'Bad Gateway');
+    //     case 503:
+    //       return ServerFailure(errorMsg: 'Service Unavailable');
+    //     case 504:
+    //       return ServerFailure(errorMsg: 'Gateway Timeout');
+    //     default:
+    //       return ServerFailure(errorMsg: 'Unknown Error');
+    //   }
   }
 }

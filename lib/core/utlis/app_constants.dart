@@ -1,6 +1,3 @@
-
-
-
 abstract class AppConstants {
   static const double kMainPagePadding = 15;
   static const double kBorderCircularRadius = 14;

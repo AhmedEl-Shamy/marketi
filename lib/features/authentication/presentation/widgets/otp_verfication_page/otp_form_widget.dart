@@ -9,7 +9,8 @@ import '../../../../../core/widgets/custom_buttons/custom_button.dart';
 import 'otp_form_field.dart';
 
 class OtpFormWidget extends StatefulWidget {
-  const OtpFormWidget({super.key, required this.email, required this.verifyType});
+  const OtpFormWidget(
+      {super.key, required this.email, required this.verifyType});
   final String email;
   final String verifyType;
 

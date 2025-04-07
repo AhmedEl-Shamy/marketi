@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../home_product_item/home_product_item.dart';
 
-
 class BestForYouListView extends StatelessWidget {
   const BestForYouListView({
     super.key,

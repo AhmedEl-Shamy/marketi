@@ -73,9 +73,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   void startAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(
-        seconds: 1
-      ),
+      duration: const Duration(seconds: 1),
     );
     opacityTransition = CurvedAnimation(
       parent: animationController,
