@@ -1,5 +1,5 @@
 class Review {
-  int? rating;
+  double? rating;
   String? comment;
   DateTime? date;
   String? reviewerName;
@@ -14,7 +14,7 @@ class Review {
   });
 
   factory Review.fromJson(Map<String, dynamic> json) => Review(
-        rating: json['rating'] as int?,
+        rating: json['rating'] as double?,
         comment: json['comment'] as String?,
         date: json['date'] == null
             ? null
