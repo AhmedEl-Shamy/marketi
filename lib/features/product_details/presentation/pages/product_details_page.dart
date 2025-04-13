@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 import 'package:marketi/core/widgets/custom_buttons/custom_back_button.dart';
 import 'package:marketi/core/widgets/custom_buttons/custom_cart_icon_button.dart';
 import 'package:marketi/core/widgets/custom_page_widget/custom_page_widget.dart';
-import 'package:marketi/features/product_details/domain/entities/product_entity.dart';
 
 import '../widgets/product_details_images_section.dart';
 import '../widgets/product_details_info.dart';

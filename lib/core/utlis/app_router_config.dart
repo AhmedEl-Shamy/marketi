@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 import 'package:marketi/core/utlis/service_locator.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
@@ -24,7 +25,6 @@ import '../../features/authentication/presentation/controllers/account_preferenc
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import '../../features/home/presentation/pages/bay_again_page.dart';
 import '../../features/home/presentation/pages/popular_products_page.dart';
-import '../../features/product_details/domain/entities/product_entity.dart';
 
 abstract class AppRouterConfig {
   static const String kSplashPageRoute = '/';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/widgets/custom_page_widget/custom_page_item.dart';
-import '../../domain/entities/product_entity.dart';
 
 import 'images_indicator.dart';
 import 'small_images_list_view.dart';

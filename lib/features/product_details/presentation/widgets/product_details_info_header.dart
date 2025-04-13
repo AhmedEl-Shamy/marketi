@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../domain/entities/product_entity.dart';
 import 'product_details_rating_widget.dart';
 
 class ProductDetailsInfoHeader extends StatelessWidget {

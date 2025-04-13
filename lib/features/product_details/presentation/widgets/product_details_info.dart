@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 
 import '../../../../core/utlis/app_colors.dart';
 import '../../../../core/utlis/app_constants.dart';
 import '../../../../core/utlis/app_text_styles.dart';
-import '../../domain/entities/product_entity.dart';
 import 'add_to_cart_widget.dart';
 import 'product_details_description.dart';
 import 'product_details_info_header.dart';
@@ -30,7 +30,7 @@ class ProductDetailsInfo extends StatelessWidget {
           children: [
             ProductDetailsInfoHeader(product: product),
             Text(
-              product.name,
+              product.title,
               style: AppTextStyles.kStyleM18.copyWith(
                 color: AppColors.kDarkBlue900,
               ),

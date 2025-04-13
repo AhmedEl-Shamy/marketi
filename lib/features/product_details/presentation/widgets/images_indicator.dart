@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 
-import '../../domain/entities/product_entity.dart';
 import 'image_idicator_item.dart';
 
 class ImageSlidingIndicator extends StatelessWidget {

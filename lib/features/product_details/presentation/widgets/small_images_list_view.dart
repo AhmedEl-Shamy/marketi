@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/entities/product_entity.dart';
 
-import '../../domain/entities/product_entity.dart';
 import 'small_image_item.dart';
 
 class SmallImagesListView extends StatelessWidget {
