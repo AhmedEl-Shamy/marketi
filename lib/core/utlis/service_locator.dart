@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:marketi/core/services/api_service.dart';
 import 'package:marketi/core/services/secure_storage_service.dart';
+import 'package:marketi/core/utlis/app_constants.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_local_data_source.dart';
 import 'package:marketi/features/authentication/data/data_sources/auth_remote_data_source.dart';
 import 'package:marketi/features/authentication/data/repositories/auth_repo_impl.dart';
@@ -19,19 +20,18 @@ import 'package:marketi/features/authentication/presentation/controllers/account
 import 'package:marketi/features/authentication/presentation/controllers/log_in_cubit/log_in_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
+import 'package:marketi/features/home/data/data_sources/home_remote_data_source.dart';
 
 import '../../features/authentication/domain/usecases/update_user_data_usecase.dart';
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
+import '../../features/home/data/repositories/home_repo_impl.dart';
+import '../../features/home/domain/repositories/home_repo.dart';
 
 final GetIt sl = GetIt.I;
 
 void setupLoactor({required String baseUrl, required String apiKey}) {
   // services
-  sl.registerSingleton<Dio>(Dio(
-    BaseOptions(baseUrl: baseUrl, headers: {
-      "apiKey": apiKey,
-    }),
-  ));
+  sl.registerSingleton<Dio>(Dio());
   sl.registerSingleton<APIService>(
     ApiServiceImpl(
       dio: sl.get<Dio>(),
@@ -58,16 +58,28 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerSingleton<AuthLocalDataSource>(
     AuthLocalDataSourceImpl(storage: sl.get<SecureStorageService>()),
   );
-
   sl.registerSingleton<AuthRemoteDataSource>(
-    AuthRemoteDataSourceImpl(apiService: sl.get<APIService>()),
+    AuthRemoteDataSourceImpl(
+      apiService: sl.get<APIService>(),
+      baseUrl: baseUrl,
+      apiKey: apiKey,
+    ),
   );
+  sl.registerSingleton<HomeRemoteDataSource>(HomeRemoteDataSourceImpl(
+    apiService: sl.get<APIService>(),
+    baseUrl: AppConstants.kProductsBaseURL,
+  ));
 
   // repos
   sl.registerSingleton<AuthRepo>(
     AuthRepoImpl(
       localDataSource: sl.get<AuthLocalDataSource>(),
       remoteDataSource: sl.get<AuthRemoteDataSource>(),
+    ),
+  );
+  sl.registerSingleton<HomeRepo>(
+    HomeRepoImpl(
+      homeRemoteDataSource: sl.get<HomeRemoteDataSource>(),
     ),
   );
 

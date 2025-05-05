@@ -54,11 +54,22 @@ abstract class AuthRemoteDataSource {
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final APIService apiService;
-  AuthRemoteDataSourceImpl({required this.apiService});
+  AuthRemoteDataSourceImpl({
+    required this.apiService,
+    required this.baseUrl,
+    required this.apiKey,
+  });
+
+  final String baseUrl;
+  final String apiKey;
+
   @override
   Future<List> getUserData(String userId) async {
     List data = await apiService.get(
-      endPoint: '/rest/v1/Profiles?id=eq.$userId',
+      path: '$baseUrl/rest/v1/Profiles?id=eq.$userId',
+      headers: {
+        "apiKey": apiKey,
+      },
     );
     return data;
   }
@@ -77,7 +88,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     //   'email': email,
     // });
     await apiService.post(
-      endPoint: "/rest/v1/Profiles",
+      path: "$baseUrl/rest/v1/Profiles",
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'id': id,
         'display_name': name,
@@ -89,7 +103,13 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
 
   @override
   Future<bool> forgotPassword({required String email}) async {
-    await apiService.post(endPoint: "/auth/v1/recover", body: {'email': email});
+    await apiService.post(
+      path: "$baseUrl/auth/v1/recover",
+      body: {'email': email},
+      headers: {
+        "apiKey": apiKey,
+      },
+    );
     return true;
   }
 
@@ -99,7 +119,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String password,
   }) async {
     Map<String, dynamic> data = await apiService.post(
-      endPoint: '/auth/v1/token?grant_type=password',
+      path: '$baseUrl/auth/v1/token?grant_type=password',
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'email': email,
         'password': password,
@@ -111,8 +134,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   @override
   Future<bool> logOut(String accessToken) async {
     await apiService.post(
-        endPoint: "/auth/v1/logout",
-        headers: {"Authorization": "Bearer $accessToken"});
+      path: "$baseUrl/auth/v1/logout",
+      headers: {
+        "apiKey": apiKey,
+        "Authorization": "Bearer $accessToken",
+      },
+    );
     return true;
   }
 
@@ -122,7 +149,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String password,
   }) async {
     Map<String, dynamic> data = await apiService.post(
-      endPoint: "/auth/v1/signup",
+      path: "$baseUrl/auth/v1/signup",
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'email': email,
         'password': password,
@@ -137,7 +167,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   @override
   Future<UserEntity> updateAccessToken({required String refreshToken}) async {
     Map<String, dynamic> data = await apiService.post(
-      endPoint: "/auth/v1/token?grant_type=refresh_token",
+      path: "$baseUrl/auth/v1/token?grant_type=refresh_token",
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'refresh_token': refreshToken,
       },
@@ -152,7 +185,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String verifyType,
   }) async {
     Map<String, dynamic> data = await apiService.post(
-      endPoint: "/auth/v1/verify",
+      path: "$baseUrl/auth/v1/verify",
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'email': email,
         'token': otp,
@@ -165,7 +201,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   @override
   Future<bool> isUserNameExists(String username) async {
     List data = await apiService.get(
-      endPoint: '/rest/v1/Profiles?username=eq.$username',
+      path: '$baseUrl/rest/v1/Profiles?username=eq.$username',
+      headers: {
+        "apiKey": apiKey,
+      },
     );
     if (data.isEmpty) {
       return false;
@@ -180,11 +219,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String newPass,
   }) async {
     await apiService.put(
-      endPoint: '/auth/v1/user',
+      path: '$baseUrl/auth/v1/user',
       body: {
         'password': newPass,
       },
       headers: {
+        "apiKey": apiKey,
         'Authorization': 'Bearer $accessToken',
       },
     );
@@ -199,7 +239,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String username,
   }) async {
     await apiService.patch(
-      endPoint: "/rest/v1/Profiles?id=eq.$id",
+      path: "$baseUrl/rest/v1/Profiles?id=eq.$id",
+      headers: {
+        "apiKey": apiKey,
+      },
       body: {
         'id': id,
         'display_name': name,
