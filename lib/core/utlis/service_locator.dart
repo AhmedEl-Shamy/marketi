@@ -21,11 +21,17 @@ import 'package:marketi/features/authentication/presentation/controllers/log_in_
 import 'package:marketi/features/authentication/presentation/controllers/register_cubit/register_cubit.dart';
 import 'package:marketi/features/authentication/presentation/controllers/reset_pass_cubit/reset_pass_cubit.dart';
 import 'package:marketi/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:marketi/features/home/domain/usecases/fetch_best_products_usecase.dart';
+import 'package:marketi/features/home/domain/usecases/fetch_popular_products_usecase.dart';
 
 import '../../features/authentication/domain/usecases/update_user_data_usecase.dart';
 import '../../features/authentication/presentation/controllers/forgot_pass_cubit/forgot_pass_cubit.dart';
 import '../../features/home/data/repositories/home_repo_impl.dart';
 import '../../features/home/domain/repositories/home_repo.dart';
+import '../../features/home/domain/usecases/fetch_buy_again.dart';
+import '../../features/home/presentation/controllers/best_for_you/best_for_you_cubit.dart';
+import '../../features/home/presentation/controllers/buy_agin_cubit/buy_again_cubit.dart';
+import '../../features/home/presentation/controllers/popular_products_cubit/popular_products_cubit.dart';
 
 final GetIt sl = GetIt.I;
 
@@ -111,6 +117,15 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerSingleton<UpdateUserDataUsecase>(
     UpdateUserDataUsecase(authRepo: sl.get<AuthRepo>()),
   );
+  sl.registerSingleton<FetchBuyAgainUsecase>(
+    FetchBuyAgainUsecase(homeRepo: sl.get<HomeRepo>()),
+  );
+  sl.registerSingleton<FetchPopularProductsUsecase>(
+    FetchPopularProductsUsecase(homeRepo: sl.get<HomeRepo>()),
+  );
+  sl.registerSingleton<FetchBestProductsUsecase>(
+    FetchBestProductsUsecase(homeRepo: sl.get<HomeRepo>()),
+  );
 
   // cubits
   sl.registerSingleton<LogInCubit>(
@@ -140,6 +155,21 @@ void setupLoactor({required String baseUrl, required String apiKey}) {
   sl.registerFactory<AccountPreferencesCubit>(
     () => AccountPreferencesCubit(
       updateUserDataUsecase: sl.get<UpdateUserDataUsecase>(),
+    ),
+  );
+  sl.registerFactory<BestForYouCubit>(
+    () => BestForYouCubit(
+      fetchBestProductsUsecase: sl.get<FetchBestProductsUsecase>(),
+    ),
+  );
+  sl.registerFactory<BuyAgainCubit>(
+    () => BuyAgainCubit(
+      fetchBuyAgainUsecase: sl.get<FetchBuyAgainUsecase>(),
+    ),
+  );
+  sl.registerFactory<PopularProductsCubit>(
+    () => PopularProductsCubit(
+      fetchPopularProductsUsecase: sl.get<FetchPopularProductsUsecase>(),
     ),
   );
 }
