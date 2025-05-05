@@ -9,7 +9,7 @@ class FetchBuyAgainUsecase {
 
   FetchBuyAgainUsecase({required this.homeRepo});
 
-  Future<Either<Failure, List<ProductEntity>>> call({required int limit}) {
-    return homeRepo.fetchBuyAgain(limit: limit);
+  Future<Either<Failure, List<ProductEntity>>> call({int limit = 10, int skip = 0}) {
+    return homeRepo.fetchBuyAgain(limit: limit, skip: skip);
   }
 }

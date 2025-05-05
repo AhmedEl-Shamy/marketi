@@ -8,7 +8,7 @@ class FetchPopularProductsUsecase {
 
   FetchPopularProductsUsecase({required this.homeRepo});
 
-  Future<Either<Failure, List<ProductEntity>>> call({required int limit}) {
-    return homeRepo.fetchPupularProducts(limit: limit);
+  Future<Either<Failure, List<ProductEntity>>> call({required int limit, int skip = 0}) {
+    return homeRepo.fetchPupularProducts(limit: limit, skip: skip);
   }
 }

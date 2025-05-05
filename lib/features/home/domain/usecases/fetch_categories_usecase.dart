@@ -7,7 +7,7 @@ class FetchCategoriesUsecase {
 
   FetchCategoriesUsecase({required this.homeRepo});
 
-  Future<Either<Failure, List<String>>> call({required int limit}) {
-    return homeRepo.fetchCategories(limit: limit);
+  Future<Either<Failure, List<String>>> call({required int limit, int skip = 0}) {
+    return homeRepo.fetchCategories(limit: limit, skip: skip);
   }
 }

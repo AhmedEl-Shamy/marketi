@@ -8,7 +8,7 @@ class FetchBestProductsUsecase {
 
   FetchBestProductsUsecase({required this.homeRepo});
 
-  Future<Either<Failure, List<ProductEntity>>> call({required int limit}) {
-    return homeRepo.fetchBestProducts(limit: limit);
+  Future<Either<Failure, List<ProductEntity>>> call({int limit = 10, int skip = 0}) {
+    return homeRepo.fetchBestProducts(limit: limit, skip: skip);
   }
 }
